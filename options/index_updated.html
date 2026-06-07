@@ -1360,142 +1360,242 @@
             background: var(--ivory);
         }
         
+        /* ─── GEMSTONE GRID LAYOUT ─── */
         .gems-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            background: var(--border);
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            background: transparent;
+            padding: 1.5rem 0.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        
-        @media(max-width:900px) {
-            .gems-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media(max-width:520px) {
-            .gems-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
+
         .gc {
-            background: var(--ivory);
-            padding: 2.4rem 2rem;
-            cursor: pointer;
+            transition: opacity .35s ease, transform .35s ease;
+        }
+        
+        .gc.hidden {
+            display: none !important;
+        }
+
+        /* ─── PREMIUM HORIZONTAL LIGHT-CREAM CARDS ─── */
+        .gc.has-bg {
             position: relative;
-            overflow: hidden;
-            transition: background .3s;
+            background: #FAF6F0;
+            border: 1px solid rgba(184, 146, 42, 0.25);
+            border-radius: 8px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: row;
+            min-height: 380px;
+            box-sizing: border-box;
+            box-shadow: 0 10px 30px rgba(28, 21, 8, 0.04);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                        box-shadow 0.4s ease, 
+                        border-color 0.4s ease;
         }
-        
-        .gc::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--gold);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform .35s;
+
+        /* Make the 9th card (index 9, or child 9) span full-width for balance */
+        .gc.has-bg:nth-child(9) {
+            grid-column: span 2;
         }
-        
-        .gc:hover {
-            background: var(--gold-pale);
+
+        .gc.has-bg:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 36px rgba(28, 21, 8, 0.08), 0 0 20px rgba(184, 146, 42, 0.15);
+            border-color: rgba(184, 146, 42, 0.45);
         }
-        
-        .gc:hover::after {
-            transform: scaleX(1);
+
+        .gc.has-bg .gc-content {
+            flex: 1 1 55%;
+            padding-right: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 2;
         }
-        
-        .gvis {
-            width: 58px;
-            height: 58px;
-            margin-bottom: 1.4rem;
-        }
-        
-        .gvis svg {
-            width: 100%;
+
+        .gc.has-bg .gc-bg-img {
+            flex: 1 1 45%;
             height: 100%;
+            min-height: 250px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-        
-        .gname {
-            font-family: var(--ff-d);
-            font-size: 1.35rem;
-            font-weight: 500;
-            color: var(--ink);
-            margin-bottom: .18rem;
+
+        .gc.has-bg:hover .gc-bg-img {
+            transform: scale(1.06);
         }
-        
-        .gsk {
-            font-family: var(--ff-d);
-            font-size: .9rem;
-            font-style: italic;
-            color: var(--gold);
-            margin-bottom: .32rem;
-        }
-        
-        .gmantra-tag {
-            font-size: .65rem;
-            color: var(--gold);
-            background: var(--gold-pale);
-            display: inline-block;
-            padding: .2rem .6rem;
-            border-radius: 2px;
-            margin-bottom: .85rem;
-            letter-spacing: .03em;
-            border: 1px solid var(--border);
-        }
-        
-        .gdesc {
-            font-size: .8rem;
-            line-height: 1.82;
-            color: var(--muted);
-        }
-        
-        .gfoot {
+
+        /* Delicate vector SVG blueprint */
+        .gc.has-bg .gvis {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 1.2rem;
             display: flex;
             align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid rgba(184, 146, 42, 0.25);
+            background: rgba(184, 146, 42, 0.04);
+            padding: 8px;
+            transition: transform 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+            box-sizing: border-box;
+        }
+
+        .gc.has-bg:hover .gvis {
+            transform: scale(1.08);
+            border-color: var(--gold);
+            background: rgba(184, 146, 42, 0.08);
+        }
+
+        .gc.has-bg .gvis svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .gc.has-bg .gvis svg path,
+        .gc.has-bg .gvis svg polygon,
+        .gc.has-bg .gvis svg circle,
+        .gc.has-bg .gvis svg ellipse,
+        .gc.has-bg .gvis svg line {
+            stroke: var(--gold) !important;
+            stroke-width: 1.5px !important;
+            fill: none !important;
+            opacity: 0.95 !important;
+        }
+
+        .gc.has-bg .gname {
+            font-family: var(--ff-d);
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--ink) !important;
+            margin-bottom: 0.15rem;
+        }
+
+        .gc.has-bg .gsk {
+            font-family: var(--ff-d);
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--muted) !important;
+            margin-bottom: 0.75rem;
+        }
+
+        .gc.has-bg .gmantra-tag {
+            align-self: flex-start;
+            font-family: var(--ff-b);
+            font-size: 0.65rem;
+            padding: 0.3rem 0.65rem;
+            background: rgba(184, 146, 42, 0.07) !important;
+            color: #8B6914 !important;
+            border: 1px solid rgba(184, 146, 42, 0.25) !important;
+            border-radius: 2px;
+            margin-bottom: 1rem;
+            letter-spacing: 0.03em;
+            display: inline-block;
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .gc.has-bg:hover .gmantra-tag {
+            border-color: rgba(184, 146, 42, 0.4) !important;
+            background: rgba(184, 146, 42, 0.12) !important;
+        }
+
+        .gc.has-bg .gdesc {
+            font-size: 0.82rem;
+            line-height: 1.75;
+            color: rgba(28, 21, 8, 0.8) !important;
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+
+        .gc.has-bg .gfoot {
+            display: flex;
             justify-content: space-between;
-            margin-top: 1.4rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
+            align-items: center;
+            border-top: 1px solid rgba(184, 146, 42, 0.15);
+            padding-top: 0.9rem;
+            margin-top: auto;
         }
-        
-        .gplanet {
-            font-size: .6rem;
-            letter-spacing: .13em;
+
+        .gc.has-bg .gplanet {
+            font-size: 0.62rem;
+            letter-spacing: 0.13em;
             text-transform: uppercase;
-            color: var(--light-muted);
+            color: var(--muted) !important;
         }
-        
-        .garr {
-            width: 28px;
-            height: 28px;
-            border: 1px solid var(--border2);
+
+        .gc.has-bg .garr {
+            width: 30px;
+            height: 30px;
+            border: 1px solid rgba(184, 146, 42, 0.3) !important;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background .25s, border-color .25s;
+            color: var(--ink) !important;
+            transition: background 0.3s, border-color 0.3s, color 0.3s, transform 0.3s;
         }
-        
-        .garr svg {
+
+        .gc.has-bg .garr svg {
             width: 11px;
             height: 11px;
-            stroke: var(--gold);
             fill: none;
+            stroke: currentColor;
             stroke-width: 2;
+            display: block;
         }
-        
-        .gc:hover .garr {
-            background: var(--gold);
-            border-color: var(--gold);
+
+        .gc.has-bg:hover .garr {
+            background: var(--gold) !important;
+            border-color: var(--gold) !important;
+            color: var(--ivory) !important;
+            transform: translateX(4px);
         }
-        
-        .gc:hover .garr svg {
-            stroke: #fff;
+
+        /* ─── RESPONSIVE STACK ─── */
+        @media(max-width: 900px) {
+            .gems-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1rem 0;
+            }
+            .gc.has-bg {
+                flex-direction: column;
+                padding: 1.8rem;
+                min-height: auto;
+            }
+            .gc.has-bg:nth-child(9) {
+                grid-column: span 1;
+            }
+            .gc.has-bg .gc-bg-img {
+                order: -1;
+                width: 100%;
+                height: 200px;
+                min-height: 200px;
+                margin-bottom: 1.2rem;
+                flex: 0 0 auto;
+            }
+            .gc.has-bg .gc-content {
+                flex: 1 1 auto;
+                padding-right: 0;
+                width: 100%;
+            }
+        }
+
+        @media(max-width: 480px) {
+            .gc.has-bg {
+                padding: 1.4rem;
+            }
+            .gc.has-bg .gc-bg-img {
+                height: 160px;
+                min-height: 160px;
+            }
         }
         /* ══════════════════════════════════════════
    MANTRA BAND
@@ -3829,80 +3929,134 @@
             <button class="filter-pill" data-filter="semi-precious">Semi-Precious</button>
         </div>
         
-        <div class="gems-grid rv d1">
-            <div class="gc">
-                <div class="gvis"><svg viewBox="0 0 64 64"><polygon points="32,5 55,20 55,44 32,59 9,44 9,20" fill="#C41E3A" opacity=".9"/><polygon points="32,13 46,22 46,42 32,51 18,42 18,22" fill="#E8607A" opacity=".5"/><line x1="32" y1="5" x2="32" y2="59" stroke="#fff" stroke-width=".7" opacity=".28"/><line x1="9" y1="20" x2="55" y2="44" stroke="#fff" stroke-width=".6" opacity=".18"/><line x1="55" y1="20" x2="9" y2="44" stroke="#fff" stroke-width=".6" opacity=".18"/></svg></div>
-                <div class="gname">Ruby</div>
-                <div class="gsk">Manik</div>
-                <div class="gmantra-tag">ॐ ह्रां ह्रीं ह्रौं सः सूर्याय नमः</div>
-                <div class="gdesc">Gem of the Sun. Ignites leadership, royal authority, and vital life force.</div>
-                <div class="gfoot"><span class="gplanet">Sun · Surya</span><span class="garr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+            <div class="gems-grid rv d1">
+                <!-- 1. RUBY -->
+                <div class="gc has-bg">
+                    <div class="gc-content">
+                        <div class="gvis">
+                            <svg viewBox="0 0 64 64"><polygon points="32,5 55,20 55,44 32,59 9,44 9,20"/><polygon points="32,13 46,22 46,42 32,51 18,42 18,22"/><line x1="32" y1="5" x2="32" y2="59"/><line x1="9" y1="20" x2="55" y2="44"/><line x1="55" y1="20" x2="9" y2="44"/></svg>
+                        </div>
+                        <div class="gname">Ruby</div>
+                        <div class="gsk">Manik</div>
+                        <div class="gmantra-tag">ॐ ह्रां ह्रीं ह्रौं सः सूर्याय नमः</div>
+                        <div class="gdesc">Gem of the Sun. Ignites leadership, royal authority, and vital life force.</div>
+                        <div class="gfoot"><span class="gplanet">Sun · Surya</span><span class="garr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+                    </div>
+                    <div class="gc-bg-img" style="background-image: url('asserts/gem_ruby.png');"></div>
+                </div>
+                <!-- 2. PEARL -->
+                <div class="gc has-bg">
+                    <div class="gc-content">
+                        <div class="gvis">
+                            <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="24"/><circle cx="32" cy="32" r="16"/><circle cx="23" cy="23" r="6"/><circle cx="39" cy="37" r="3"/></svg>
+                        </div>
+                        <div class="gname">Pearl</div>
+                        <div class="gsk">Moti</div>
+                        <div class="gmantra-tag">ॐ श्रां श्रीं श्रौं सः चन्द्राय नमः</div>
+                        <div class="gdesc">Gem of the Moon. Calms the mind, deepens intuition, and nurtures emotional intelligence.</div>
+                        <div class="gfoot"><span class="gplanet">Moon · Chandra</span><span class="garr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+                    </div>
+                    <div class="gc-bg-img" style="background-image: url('asserts/gem_pearl.png');"></div>
+                </div>
+                <!-- 3. RED CORAL -->
+                <div class="gc has-bg">
+                    <div class="gc-content">
+                        <div class="gvis">
+                            <svg viewBox="0 0 64 64"><polygon points="32,7 52,22 46,46 18,46 12,22"/><polygon points="32,15 43,25 39,39 25,39 21,25"/><line x1="32" y1="7" x2="32" y2="46"/></svg>
+                        </div>
+                        <div class="gname">Red Coral</div>
+                        <div class="gsk">Moonga</div>
+                        <div class="gmantra-tag">ॐ क्रां क्रीं क्रौं सः भौमाय नमः</div>
+                        <div class="gdesc">Gem of Mars. Channels courage, willpower, and decisive action.</div>
+                        <div class="gfoot"><span class="gplanet">Mars · Mangal</span><span class="garr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+                    </div>
+                    <div class="gc-bg-img" style="background-image: url('asserts/gem_coral.png');"></div>
+                </div>
+                <!-- 4. EMERALD -->
+                <div class="gc has-bg">
+                    <div class="gc-content">
+                        <div class="gvis">
+                            <svg viewBox="0 0 64 64"><polygon points="32,7 54,18 54,46 32,57 10,46 10,18"/><polygon points="32,14 45,21 45,41 32,48 19,41 19,21"/><line x1="32" y1="7" x2="32" y2="57"/><line x1="10" y1="18" x2="54" y2="46"/></svg>
+                        </div>
+                        <div class="gname">Emerald</div>
+                        <div class="gsk">Panna</div>
+                        <div class="gmantra-tag">ॐ ब्रां ब्रीं ब्रौं सः बुधाय नमः</div>
+                        <div class="gdesc">Gem of Mercury. Sharpens intellect, speech, and business acumen.</div>
+                        <div class="gfoot"><span class="gplanet">Mercury · Budh</span><span class="garr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+                    </div>
+                    <div class="gc-bg-img" style="background-image: url('asserts/gem_emerald.png');"></div>
+                </div>
+                <!-- 5. YELLOW SAPPHIRE -->
+                <div class="gc has-bg">
+                    <div class="gc-content">
+                        <div class="gvis">
+                            <svg viewBox="0 0 64 64"><polygon points="32,5 56,22 50,46 14,46 8,22"/><polygon points="32,13 47,24 43,37 21,37 17,24"/><line x1="32" y1="5" x2="32" y2="46"/></svg>
+                        </div>
+                        <div class="gname">Yellow Sapphire</div>
+                        <div class="gsk">Pukhraj</div>
+                        <div class="gmantra-tag">ॐ ग्रां ग्रीं ग्रौं सः गुरवे नमः</div>
+                        <div class="gdesc">Gem of Jupiter. The most auspicious gem. Attracts wisdom, wealth, and the Guru's blessings.</div>
+                        <div class="gfoot"><span class="gplanet">Jupiter · Brihaspati</span><span class="garr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+                    </div>
+                    <div class="gc-bg-img" style="background-image: url('asserts/gem_yellow_sapphire.png');"></div>
+                </div>
+                <!-- 6. DIAMOND -->
+                <div class="gc has-bg">
+                    <div class="gc-content">
+                        <div class="gvis">
+                            <svg viewBox="0 0 64 64"><polygon points="32,7 54,24 32,57 10,24"/><polygon points="32,14 44,24 32,48 20,24"/><line x1="10" y1="24" x2="54" y2="24"/><line x1="32" y1="7" x2="10" y2="24"/><line x1="32" y1="7" x2="54" y2="24"/></svg>
+                        </div>
+                        <div class="gname">Diamond</div>
+                        <div class="gsk">Heera</div>
+                        <div class="gmantra-tag">ॐ द्रां द्रीं द्रौं सः शुक्राय नमः</div>
+                        <div class="gdesc">Gem of Venus. Embodies luxury, creativity, and eternal love and beauty.</div>
+                        <div class="gfoot"><span class="gplanet">Venus · Shukra</span><span class="garr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+                    </div>
+                    <div class="gc-bg-img" style="background-image: url('asserts/gem_diamond.png');"></div>
+                </div>
+                <!-- 7. BLUE SAPPHIRE -->
+                <div class="gc has-bg">
+                    <div class="gc-content">
+                        <div class="gvis">
+                            <svg viewBox="0 0 64 64"><polygon points="32,5 54,20 54,44 32,59 10,44 10,20"/><polygon points="32,13 44,21 44,40 32,48 20,40 20,21"/><line x1="32" y1="5" x2="32" y2="59"/><line x1="10" y1="20" x2="54" y2="20"/></svg>
+                        </div>
+                        <div class="gname">Blue Sapphire</div>
+                        <div class="gsk">Neelam</div>
+                        <div class="gmantra-tag">ॐ प्रां प्रीं प्रौं सः शनैश्चराय नमः</div>
+                        <div class="gdesc">Gem of Saturn. The fastest acting gem. Brings discipline, justice, and karmic transformation.</div>
+                        <div class="gfoot"><span class="gplanet">Saturn · Shani</span><span class="garr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+                    </div>
+                    <div class="gc-bg-img" style="background-image: url('asserts/gem_blue_sapphire.png');"></div>
+                </div>
+                <!-- 8. HESSONITE -->
+                <div class="gc has-bg">
+                    <div class="gc-content">
+                        <div class="gvis">
+                            <svg viewBox="0 0 64 64"><polygon points="32,7 52,20 52,42 32,55 12,42 12,20"/><polygon points="32,14 44,22 44,38 32,46 20,38 20,22"/><circle cx="32" cy="31" r="9"/></svg>
+                        </div>
+                        <div class="gname">Hessonite</div>
+                        <div class="gsk">Gomed</div>
+                        <div class="gmantra-tag">ॐ भ्रां भ्रीं भ्रौं सः राहवे नमः</div>
+                        <div class="gdesc">Gem of Rahu. Neutralises shadow planet effects, grants worldly ambition and sharp focus.</div>
+                        <div class="gfoot"><span class="gplanet">Rahu · North Node</span><span class="garr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+                    </div>
+                    <div class="gc-bg-img" style="background-image: url('asserts/gem_hessonite.png');"></div>
+                </div>
+                <!-- 9. CAT'S EYE -->
+                <div class="gc has-bg">
+                    <div class="gc-content">
+                        <div class="gvis">
+                            <svg viewBox="0 0 64 64"><ellipse cx="32" cy="32" rx="24" ry="18"/><ellipse cx="32" cy="32" rx="16" ry="11"/><ellipse cx="32" cy="32" rx="3" ry="15"/><line x1="32" y1="14" x2="32" y2="50"/></svg>
+                        </div>
+                        <div class="gname">Cat's Eye</div>
+                        <div class="gsk">Lehsunia</div>
+                        <div class="gmantra-tag">ॐ स्रां स्रीं स्रौं सः केतवे नमः</div>
+                        <div class="gdesc">Gem of Ketu. The mystical protector. Shields from evil eye and heightens spiritual vision.</div>
+                        <div class="gfoot"><span class="gplanet">Ketu · South Node</span><span class="garr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+                    </div>
+                    <div class="gc-bg-img" style="background-image: url('asserts/gem_cats_eye.png');"></div>
+                </div>
             </div>
-            <div class="gc">
-                <div class="gvis"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="24" fill="#E8E4DE" opacity=".9"/><circle cx="32" cy="32" r="16" fill="#F8F6F3" opacity=".6"/><circle cx="23" cy="23" r="6" fill="#fff" opacity=".5"/></svg></div>
-                <div class="gname">Pearl</div>
-                <div class="gsk">Moti</div>
-                <div class="gmantra-tag">ॐ श्रां श्रीं श्रौं सः चन्द्राय नमः</div>
-                <div class="gdesc">Gem of the Moon. Calms the mind, deepens intuition, and nurtures emotional intelligence.</div>
-                <div class="gfoot"><span class="gplanet">Moon · Chandra</span><span class="garr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
-            </div>
-            <div class="gc">
-                <div class="gvis"><svg viewBox="0 0 64 64"><polygon points="32,7 52,22 46,46 18,46 12,22" fill="#C24030" opacity=".88"/><polygon points="32,15 43,25 39,39 25,39 21,25" fill="#DF6A55" opacity=".52"/></svg></div>
-                <div class="gname">Red Coral</div>
-                <div class="gsk">Moonga</div>
-                <div class="gmantra-tag">ॐ क्रां क्रीं क्रौं सः भौमाय नमः</div>
-                <div class="gdesc">Gem of Mars. Channels courage, willpower, and decisive action.</div>
-                <div class="gfoot"><span class="gplanet">Mars · Mangal</span><span class="garr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
-            </div>
-            <div class="gc">
-                <div class="gvis"><svg viewBox="0 0 64 64"><polygon points="32,7 54,18 54,46 32,57 10,46 10,18" fill="#1C7A45" opacity=".88"/><polygon points="32,14 45,21 45,41 32,48 19,41 19,21" fill="#3EAD6B" opacity=".48"/></svg></div>
-                <div class="gname">Emerald</div>
-                <div class="gsk">Panna</div>
-                <div class="gmantra-tag">ॐ ब्रां ब्रीं ब्रौं सः बुधाय नमः</div>
-                <div class="gdesc">Gem of Mercury. Sharpens intellect, speech, and business acumen.</div>
-                <div class="gfoot"><span class="gplanet">Mercury · Budh</span><span class="garr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
-            </div>
-            <div class="gc">
-                <div class="gvis"><svg viewBox="0 0 64 64"><polygon points="32,5 56,22 50,46 14,46 8,22" fill="#C8901A" opacity=".88"/><polygon points="32,13 47,24 43,37 21,37 17,24" fill="#E8B84B" opacity=".52"/></svg></div>
-                <div class="gname">Yellow Sapphire</div>
-                <div class="gsk">Pukhraj</div>
-                <div class="gmantra-tag">ॐ ग्रां ग्रीं ग्रौं सः गुरवे नमः</div>
-                <div class="gdesc">Gem of Jupiter. The most auspicious gem. Attracts wisdom, wealth, and the Guru's blessings.</div>
-                <div class="gfoot"><span class="gplanet">Jupiter · Brihaspati</span><span class="garr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
-            </div>
-            <div class="gc">
-                <div class="gvis"><svg viewBox="0 0 64 64"><polygon points="32,7 54,24 32,57 10,24" fill="#D0D0E0" opacity=".9"/><polygon points="32,14 44,24 32,48 20,24" fill="#F0F0F8" opacity=".5"/><line x1="10" y1="24" x2="54" y2="24" stroke="#8888A8" stroke-width=".8" opacity=".48"/></svg></div>
-                <div class="gname">Diamond</div>
-                <div class="gsk">Heera</div>
-                <div class="gmantra-tag">ॐ द्रां द्रीं द्रौं सः शुक्राय नमः</div>
-                <div class="gdesc">Gem of Venus. Embodies luxury, creativity, and eternal love and beauty.</div>
-                <div class="gfoot"><span class="gplanet">Venus · Shukra</span><span class="garr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
-            </div>
-            <div class="gc">
-                <div class="gvis"><svg viewBox="0 0 64 64"><polygon points="32,5 54,20 54,44 32,59 10,44 10,20" fill="#1A3A7A" opacity=".9"/><polygon points="32,13 44,21 44,40 32,48 20,40 20,21" fill="#3860B8" opacity=".48"/></svg></div>
-                <div class="gname">Blue Sapphire</div>
-                <div class="gsk">Neelam</div>
-                <div class="gmantra-tag">ॐ प्रां प्रीं प्रौं सः शनैश्चराय नमः</div>
-                <div class="gdesc">Gem of Saturn. The fastest acting gem. Brings discipline, justice, and karmic transformation.</div>
-                <div class="gfoot"><span class="gplanet">Saturn · Shani</span><span class="garr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
-            </div>
-            <div class="gc">
-                <div class="gvis"><svg viewBox="0 0 64 64"><polygon points="32,7 52,20 52,42 32,55 12,42 12,20" fill="#7A3A10" opacity=".85"/><circle cx="32" cy="31" r="9" fill="#D48050" opacity=".38"/></svg></div>
-                <div class="gname">Hessonite</div>
-                <div class="gsk">Gomed</div>
-                <div class="gmantra-tag">ॐ भ्रां भ्रीं भ्रौं सः राहवे नमः</div>
-                <div class="gdesc">Gem of Rahu. Neutralises shadow planet effects, grants worldly ambition and sharp focus.</div>
-                <div class="gfoot"><span class="gplanet">Rahu · North Node</span><span class="garr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
-            </div>
-            <div class="gc">
-                <div class="gvis"><svg viewBox="0 0 64 64"><ellipse cx="32" cy="32" rx="24" ry="18" fill="#706010" opacity=".85"/><ellipse cx="32" cy="32" rx="16" ry="11" fill="#B89820" opacity=".52"/><ellipse cx="32" cy="32" rx="3" ry="15" fill="#1A1600" opacity=".78"/><line x1="32" y1="14" x2="32" y2="50" stroke="#E0C040" stroke-width="1.8" opacity=".42"/></svg></div>
-                <div class="gname">Cat's Eye</div>
-                <div class="gsk">Lehsunia</div>
-                <div class="gmantra-tag">ॐ स्रां स्रीं स्रौं सः केतवे नमः</div>
-                <div class="gdesc">Gem of Ketu. The mystical protector. Shields from evil eye and heightens spiritual vision.</div>
-                <div class="gfoot"><span class="gplanet">Ketu · South Node</span><span class="garr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
-            </div>
-        </div>
     </section>
 
     <!-- MANTRA BAND -->
