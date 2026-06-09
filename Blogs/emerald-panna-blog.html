@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emerald (Panna) — Ratnavali Knowledge Centre</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --green:        #2E8B57;
+      --green-light:  #5DBF85;
+      --green-dim:    #1A5C38;
+      --green-deep:   #0E3D25;
+      --silver:       #D0E8D8;
+      --silver-dim:   #6A9A7A;
+      --cream:        #EAF5EE;
+      --deep:         #030806;
+      --dark:         #060F09;
+      --dark-mid:     #0A1A0D;
+      --dark-card:    #07110A;
+      --text-muted:   #5A8A6A;
+      --text-body:    #A8CEB8;
+      --border:       rgba(46,139,87,0.2);
+      --border-s:     rgba(208,232,216,0.1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--deep);
+      color: var(--text-body);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 60px;
+      background: rgba(3,8,6,0.93);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem; letter-spacing: 0.18em;
+      color: var(--green-light); text-decoration: none;
+    }
+    .nav-logo span { color: var(--cream); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-family: 'Raleway', sans-serif; font-size: 0.72rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--green-light); }
+    .nav-badge {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.12em; color: var(--cream);
+      background: var(--green-deep); padding: 6px 16px;
+      border: 1px solid var(--green); border-radius: 2px;
+    }
+
+    /* ── HERO ────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+      padding: 140px 60px 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 70% at 72% 50%, rgba(20,100,55,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 15% 75%, rgba(46,139,87,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 40% at 50% 10%, rgba(10,60,30,0.12) 0%, transparent 60%),
+        linear-gradient(150deg, #030806 0%, #050F08 50%, #030806 100%);
+    }
+    .hero-grain {
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      opacity: 0.5; pointer-events: none;
+    }
+    .hero-stars {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        radial-gradient(1px 1px at 10% 20%, rgba(208,232,216,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 25% 60%, rgba(208,232,216,0.3) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 40% 15%, rgba(208,232,216,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 80%, rgba(208,232,216,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 75% 35%, rgba(208,232,216,0.3) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 85% 65%, rgba(208,232,216,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 92% 20%, rgba(208,232,216,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 5%  85%, rgba(208,232,216,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 45%, rgba(208,232,216,0.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 90%, rgba(208,232,216,0.35) 0%, transparent 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 580px;
+      animation: fadeUp 1.2s ease both;
+    }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem; letter-spacing: 0.35em;
+      color: var(--green-light); text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 40px; height: 1px; background: var(--green-dim);
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300; line-height: 1.08;
+      color: var(--cream); margin-bottom: 12px;
+    }
+    h1 em { font-style: italic; color: var(--green-light); display: block; }
+    .hero-tagline {
+      font-family: 'Cinzel', serif; font-size: 0.7rem;
+      letter-spacing: 0.3em; color: var(--green-dim);
+      text-transform: uppercase; margin-bottom: 28px;
+    }
+    .hero-desc {
+      font-size: 1rem; color: var(--text-body);
+      max-width: 440px; margin-bottom: 44px;
+      border-left: 2px solid var(--green-dim); padding-left: 20px;
+    }
+    .hero-warning {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: rgba(46,139,87,0.08);
+      border: 1px solid rgba(46,139,87,0.3);
+      padding: 16px 20px; margin-bottom: 36px;
+      max-width: 460px;
+    }
+    .hero-warning-icon { color: var(--green-light); flex-shrink: 0; margin-top: 2px; }
+    .hero-warning-text { font-size: 0.78rem; line-height: 1.6; color: var(--text-body); }
+    .hero-warning-text strong { color: var(--green-light); font-weight: 500; }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: 'Cinzel', serif; font-size: 0.7rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--cream); background: var(--green-deep);
+      border: 1px solid var(--green);
+      padding: 14px 32px; text-decoration: none;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .hero-cta:hover { background: var(--green-dim); border-color: var(--green-light); }
+    .hero-cta svg { width: 14px; height: 14px; }
+
+    /* Hero gem */
+    .hero-gem {
+      position: absolute; right: 7%; top: 50%;
+      transform: translateY(-50%);
+      width: 440px; height: 440px;
+      animation: fadeUp 1.4s 0.3s ease both, float 7s ease-in-out infinite 1.7s;
+    }
+    .gem-glow {
+      position: absolute; inset: -80px;
+      background: radial-gradient(ellipse, rgba(30,140,80,0.22) 0%, transparent 70%);
+      border-radius: 50%; animation: pulse-glow 5s ease-in-out infinite;
+    }
+
+    /* Scroll hint */
+    .scroll-hint {
+      position: absolute; bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      font-family: 'Cinzel', serif; font-size: 0.55rem;
+      letter-spacing: 0.3em; color: var(--green-dim);
+      text-transform: uppercase;
+    }
+    .scroll-hint-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(180deg, var(--green-dim), transparent);
+      animation: scroll-drop 2s ease-in-out infinite;
+    }
+
+    /* ── SECTION COMMONS ─────────────────── */
+    section { padding: 100px 60px; }
+    .section-label {
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      letter-spacing: 0.35em; color: var(--green-light);
+      text-transform: uppercase; margin-bottom: 14px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .section-label::before {
+      content: ''; display: block;
+      width: 30px; height: 1px; background: var(--green-dim);
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 300; color: var(--cream);
+      line-height: 1.15; margin-bottom: 20px;
+    }
+    h2 em { font-style: italic; color: var(--green-light); }
+    .divider {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, var(--green), transparent);
+      margin-bottom: 40px;
+    }
+
+    /* ── CAUTION BANNER ──────────────────── */
+    .caution-banner {
+      background: linear-gradient(135deg, rgba(20,80,45,0.6), rgba(10,45,25,0.8));
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 40px 60px;
+    }
+    .caution-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; gap: 32px;
+    }
+    .caution-icon { flex-shrink: 0; width: 56px; height: 56px; color: var(--green-light); }
+    .caution-text h3 {
+      font-family: 'Cinzel', serif; font-size: 0.8rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 6px;
+    }
+    .caution-text p { font-size: 0.88rem; line-height: 1.7; }
+    .caution-text p strong { color: var(--green-light); }
+
+    /* ── ABOUT ───────────────────────────── */
+    .about-section { background: var(--dark); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start; max-width: 1100px; margin: 0 auto;
+    }
+    .about-prose p { margin-bottom: 20px; font-size: 0.95rem; }
+    .about-prose p:first-child { font-size: 1.1rem; color: var(--cream); }
+
+    .props-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+      border: 1px solid var(--border);
+    }
+    .prop-item {
+      padding: 22px 24px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .prop-item:nth-child(even) { border-right: none; }
+    .prop-item:last-child, .prop-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+    .prop-item:hover { background: rgba(46,139,87,0.05); }
+    .prop-label {
+      font-family: 'Cinzel', serif; font-size: 0.58rem;
+      letter-spacing: 0.25em; color: var(--green-light);
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .prop-value { font-size: 0.88rem; color: var(--cream); }
+
+    /* ── WARNING SECTION ─────────────────── */
+    .warn-section { background: var(--dark-mid); }
+    .warn-inner { max-width: 1100px; margin: 0 auto; }
+    .warn-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px;
+    }
+    .warn-card {
+      background: var(--dark-card); border: 1px solid var(--border);
+      padding: 32px; position: relative; overflow: hidden;
+      transition: border-color 0.4s, transform 0.3s;
+    }
+    .warn-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--green), transparent);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .warn-card:hover { border-color: rgba(46,139,87,0.5); transform: translateY(-4px); }
+    .warn-card:hover::before { opacity: 1; }
+    .warn-card-icon { width: 40px; height: 40px; color: var(--green-light); margin-bottom: 18px; }
+    .warn-card-title {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 12px;
+    }
+    .warn-card-text { font-size: 0.84rem; line-height: 1.7; }
+
+    /* ── BENEFITS ────────────────────────── */
+    .benefits-section { background: var(--deep); }
+    .benefits-inner { max-width: 1100px; margin: 0 auto; }
+    .benefits-header { text-align: center; margin-bottom: 60px; }
+    .benefits-header .section-label { justify-content: center; }
+    .benefits-header .section-label::before { display: none; }
+    .benefits-header .divider { margin: 0 auto; }
+    .benefits-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+    .benefit-card {
+      background: var(--dark-card); padding: 40px 32px;
+      border: 1px solid var(--border);
+      position: relative; overflow: hidden;
+      transition: border-color 0.4s, transform 0.3s;
+    }
+    .benefit-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--green-light), transparent);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .benefit-card:hover { border-color: rgba(46,139,87,0.4); transform: translateY(-4px); }
+    .benefit-card:hover::before { opacity: 1; }
+    .benefit-icon { width: 44px; height: 44px; margin-bottom: 20px; color: var(--green-light); }
+    .benefit-title {
+      font-family: 'Cinzel', serif; font-size: 0.8rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 12px;
+    }
+    .benefit-text { font-size: 0.85rem; line-height: 1.7; }
+
+    /* ── TYPES ───────────────────────────── */
+    .types-section { background: var(--dark); }
+    .types-inner { max-width: 1100px; margin: 0 auto; }
+    .types-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; margin-top: 60px; }
+    .type-card {
+      background: var(--dark-card); border: 1px solid var(--border);
+      padding: 32px 24px 28px; text-align: center;
+      transition: border-color 0.4s, transform 0.3s;
+    }
+    .type-card:hover { border-color: rgba(46,139,87,0.5); transform: translateY(-6px); }
+    .type-gem-wrap { width: 80px; height: 80px; margin: 0 auto 20px; }
+    .type-gem-wrap svg { width: 100%; height: 100%; }
+    .type-name {
+      font-family: 'Cinzel', serif; font-size: 0.72rem;
+      letter-spacing: 0.18em; color: var(--green-light);
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .type-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── ASTROLOGICAL ────────────────────── */
+    .astro-section { background: var(--dark-mid); position: relative; overflow: hidden; }
+    .astro-bg-decor {
+      position: absolute; right: -120px; top: 50%;
+      transform: translateY(-50%);
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(46,139,87,0.04) 0%, transparent 70%);
+      border: 1px solid rgba(46,139,87,0.08);
+    }
+    .astro-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: center;
+    }
+    .astro-visual { display: flex; justify-content: center; }
+    .planet-dial {
+      position: relative; width: 220px; height: 220px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .planet-dial-ring {
+      position: absolute; inset: 0; border-radius: 50%;
+      border: 1px solid rgba(46,139,87,0.3);
+      animation: spin-slow 20s linear infinite;
+    }
+    .planet-dial-ring-2 {
+      position: absolute; inset: 20px; border-radius: 50%;
+      border: 1px dashed rgba(46,139,87,0.15);
+      animation: spin-slow 30s linear infinite reverse;
+    }
+    .planet-dial-inner {
+      position: absolute; inset: 40px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(46,139,87,0.12) 0%, transparent 70%);
+      border: 1px solid rgba(46,139,87,0.2);
+    }
+    .planet-center { position: relative; text-align: center; z-index: 2; }
+    .planet-name { font-family: 'Cinzel', serif; font-size: 2.8rem; color: var(--green-light); line-height: 1; }
+    .planet-sub {
+      font-family: 'Raleway', sans-serif; font-size: 0.65rem;
+      letter-spacing: 0.25em; color: var(--text-muted);
+      text-transform: uppercase; margin-top: 6px;
+    }
+    .astro-list { list-style: none; margin-top: 0; }
+    .astro-list li {
+      display: flex; gap: 24px; align-items: flex-start;
+      padding: 24px 0; border-bottom: 1px solid var(--border);
+    }
+    .astro-list li:first-child { padding-top: 0; }
+    .astro-num {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.2em; color: var(--green-dim);
+      flex-shrink: 0; margin-top: 4px;
+    }
+    .astro-item-title {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 8px;
+    }
+    .astro-item-text { font-size: 0.84rem; line-height: 1.7; }
+
+    /* ── IDENTIFY ────────────────────────── */
+    .identify-section { background: var(--deep); }
+    .identify-inner { max-width: 1100px; margin: 0 auto; }
+    .identify-steps {
+      display: grid; grid-template-columns: repeat(3,1fr); margin-top: 60px;
+      border: 1px solid var(--border);
+    }
+    .identify-step {
+      padding: 40px 32px; border-right: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .identify-step:last-child { border-right: none; }
+    .identify-step:hover { background: rgba(46,139,87,0.04); }
+    .step-num {
+      font-family: 'Cinzel', serif; font-size: 2rem;
+      color: var(--green-deep); margin-bottom: 16px;
+    }
+    .step-title {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 12px;
+    }
+    .step-text { font-size: 0.84rem; line-height: 1.7; }
+
+    /* ── CARE ────────────────────────────── */
+    .care-section { background: var(--dark); }
+    .care-inner { max-width: 1100px; margin: 0 auto; }
+    .care-header { text-align: center; margin-bottom: 48px; }
+    .care-header .section-label { justify-content: center; }
+    .care-header .section-label::before { display: none; }
+    .care-header .divider { margin: 0 auto; }
+    .care-intro { max-width: 680px; margin: 0 auto; font-size: 0.9rem; }
+    .care-tabs {
+      display: flex; flex-wrap: wrap; gap: 2px;
+      margin-bottom: 48px; border: 1px solid var(--border);
+    }
+    .care-tab-btn {
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--text-muted); background: none;
+      border: none; padding: 14px 24px; cursor: pointer;
+      transition: color 0.3s, background 0.3s; flex: 1;
+    }
+    .care-tab-btn:hover { color: var(--green-light); background: rgba(46,139,87,0.05); }
+    .care-tab-btn.active { color: var(--cream); background: rgba(46,139,87,0.1); }
+    .care-panel { display: none; }
+    .care-panel.active { display: block; }
+    .care-tips { display: flex; flex-direction: column; gap: 24px; }
+    .care-tip {
+      display: flex; gap: 28px; align-items: flex-start;
+      background: var(--dark-card); border: 1px solid var(--border);
+      padding: 32px;
+    }
+    .care-tip-icon { flex-shrink: 0; width: 36px; height: 36px; color: var(--green-light); margin-top: 4px; }
+    .care-tip-title {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 10px;
+    }
+    .care-tip-text { font-size: 0.84rem; line-height: 1.75; }
+    .care-tip-note {
+      display: block; margin-top: 14px;
+      font-size: 0.75rem; color: var(--text-muted);
+      font-style: italic; border-left: 2px solid var(--green-dim); padding-left: 12px;
+    }
+    .care-season-grid {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 2px; margin-bottom: 24px;
+    }
+    .care-season-card {
+      background: var(--dark-card); border: 1px solid var(--border); padding: 32px;
+    }
+    .care-season-title {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 10px; display: flex; gap: 10px; align-items: center;
+    }
+    .care-season-text { font-size: 0.84rem; line-height: 1.7; }
+    .care-dondont { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .care-do, .care-dont {
+      background: var(--dark-card); border: 1px solid var(--border); padding: 32px;
+    }
+    .care-list-title {
+      font-family: 'Cinzel', serif; font-size: 0.72rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 20px;
+    }
+    .care-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .care-list li { font-size: 0.83rem; line-height: 1.5; display: flex; gap: 10px; align-items: flex-start; }
+    .care-list li::before { flex-shrink: 0; font-size: 0.7rem; margin-top: 3px; }
+    .care-do   .care-list li::before { content: '✓'; color: #6BBB70; }
+    .care-dont .care-list li::before { content: '✕'; color: #C8503C; }
+
+    /* ── FACT TABLE ──────────────────────── */
+    .table-section { background: var(--dark-mid); }
+    .table-inner { max-width: 900px; margin: 0 auto; }
+    table { width: 100%; border-collapse: collapse; margin-top: 48px; }
+    thead th {
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      letter-spacing: 0.25em; color: var(--green-light);
+      text-transform: uppercase; padding: 16px 24px;
+      border-bottom: 1px solid var(--green-dim); text-align: left;
+    }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background 0.2s; }
+    tbody tr:hover { background: rgba(46,139,87,0.05); }
+    tbody td { padding: 18px 24px; font-size: 0.88rem; vertical-align: top; }
+    tbody td:first-child { color: var(--text-muted); width: 30%; }
+    tbody td:last-child { color: var(--cream); }
+
+    /* ── FOOTER ──────────────────────────── */
+    footer {
+      background: var(--deep); border-top: 1px solid var(--border);
+      padding: 60px 60px 40px;
+    }
+    .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
+    .footer-brand .nav-logo { font-size: 1.3rem; display: inline-block; margin-bottom: 16px; }
+    .footer-brand p { font-size: 0.82rem; max-width: 280px; }
+    .footer-col-title {
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      letter-spacing: 0.25em; color: var(--green-light);
+      text-transform: uppercase; margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { font-size: 0.82rem; color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+    .footer-col ul li a:hover { color: var(--green-light); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 32px; border-top: 1px solid var(--border);
+      font-size: 0.72rem; color: var(--text-muted);
+    }
+    .footer-bottom a { color: var(--green-dim); text-decoration: none; }
+
+    /* ── ANIMATIONS ──────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(-50%) translateY(0px); }
+      50%      { transform: translateY(-50%) translateY(-18px); }
+    }
+    @keyframes pulse-glow {
+      0%,100% { opacity: 0.5; transform: scale(1); }
+      50%      { opacity: 1;   transform: scale(1.1); }
+    }
+    @keyframes scroll-drop {
+      0%   { opacity: 1; transform-origin: top; }
+      100% { opacity: 0; transform: scaleY(0); transform-origin: bottom; }
+    }
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* ── REVEAL ──────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ──────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links, .nav-badge { display: none; }
+      section { padding: 70px 24px; }
+      .hero { padding: 120px 24px 80px; }
+      .hero-gem { display: none; }
+      .about-grid, .astro-inner { grid-template-columns: 1fr; gap: 40px; }
+      .benefits-grid, .types-row, .identify-steps, .warn-grid { grid-template-columns: 1fr; }
+      .identify-step { border-right: none; border-bottom: 1px solid var(--border); }
+      .care-dondont, .care-season-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .caution-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────── -->
+<nav>
+  <a class="nav-logo" href="#"><span>RATNA</span>VALI</a>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#" class="active">Knowledge Centre</a></li>
+    <li><a href="#">Gem Library</a></li>
+    <li><a href="#">Astrology</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <span class="nav-badge">Gemstone Guide</span>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-stars"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">The Gemstone of Mercury</p>
+    <h1>Emerald<em>(Panna)</em></h1>
+    <p class="hero-tagline">Intellect · Eloquence · Prosperity</p>
+    <p class="hero-desc">
+      The gemstone of Mercury — lord of intellect, communication, and commerce. Panna sharpens the mind and quickens fortune when Mercury is strong, and scatters focus and invites nervous disorders when it is not.
+    </p>
+    <div class="hero-warning">
+      <svg class="hero-warning-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+      <p class="hero-warning-text"><strong>Astrological Note:</strong> Panna should only be worn after consultation with a qualified Jyotishi. Mercury's dual nature means this stone suits certain ascendants deeply and conflicts sharply with others — particularly those where Mercury rules challenging houses.</p>
+    </div>
+    <a href="#about" class="hero-cta">
+      Explore the Guide
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 8h10M9 4l4 4-4 4"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Emerald Gem SVG -->
+  <div class="hero-gem">
+    <div class="gem-glow"></div>
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="eGlow" cx="50%" cy="40%" r="55%">
+          <stop offset="0%" stop-color="#40B060" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#107030" stop-opacity="0"/>
+        </radialGradient>
+        <!-- Emerald cut: rectangular stepped facets -->
+        <radialGradient id="eFace" cx="38%" cy="30%" r="65%">
+          <stop offset="0%"   stop-color="#A8E8C0"/>
+          <stop offset="20%"  stop-color="#38A860"/>
+          <stop offset="55%"  stop-color="#0E6835"/>
+          <stop offset="100%" stop-color="#03200E"/>
+        </radialGradient>
+        <radialGradient id="eLeft" cx="15%" cy="50%" r="75%">
+          <stop offset="0%"   stop-color="#1A7840"/>
+          <stop offset="100%" stop-color="#041508"/>
+        </radialGradient>
+        <radialGradient id="eRight" cx="85%" cy="50%" r="75%">
+          <stop offset="0%"   stop-color="#28A050"/>
+          <stop offset="100%" stop-color="#051A0A"/>
+        </radialGradient>
+        <radialGradient id="eBottom" cx="50%" cy="90%" r="70%">
+          <stop offset="0%"   stop-color="#0C5828"/>
+          <stop offset="100%" stop-color="#020C05"/>
+        </radialGradient>
+        <radialGradient id="eStep1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#60D890" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#60D890" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="eGem">
+          <feDropShadow dx="0" dy="14" stdDeviation="22" flood-color="#0A6025" flood-opacity="0.65"/>
+        </filter>
+        <radialGradient id="eGlint" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="white" stop-opacity="0.85"/>
+          <stop offset="40%"  stop-color="white" stop-opacity="0.2"/>
+          <stop offset="100%" stop-color="white" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- Ambient glow -->
+      <ellipse cx="200" cy="228" rx="150" ry="50" fill="url(#eGlow)" opacity="0.9"/>
+
+      <g filter="url(#eGem)" transform="translate(200,195)">
+        <!-- Emerald cut: octagonal table -->
+        <polygon points="0,-105 55,-80 90,-30 90,30 55,80 0,105 -55,80 -90,30 -90,-30 -55,-80"
+                 fill="url(#eFace)" opacity="0.97"/>
+        <!-- Left step facet -->
+        <polygon points="-90,-30 -130,-15 -130,15 -90,30"
+                 fill="url(#eLeft)" opacity="0.90"/>
+        <!-- Right step facet -->
+        <polygon points="90,-30 130,-15 130,15 90,30"
+                 fill="url(#eRight)" opacity="0.90"/>
+        <!-- Bottom culet -->
+        <polygon points="-90,30 -130,15 0,130 130,15 90,30"
+                 fill="url(#eBottom)" opacity="0.95"/>
+        <!-- Top bevel facet -->
+        <polygon points="-55,-80 -90,-30 -55,-50 0,-65 55,-50 90,-30 55,-80"
+                 fill="url(#eStep1)" opacity="0.4"/>
+
+        <!-- Step cut inner table lines (characteristic of emerald cut) -->
+        <polygon points="0,-72 38,-55 62,-20 62,20 38,55 0,72 -38,55 -62,20 -62,-20 -38,-55"
+                 fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+        <polygon points="0,-44 24,-34 38,-12 38,12 24,34 0,44 -24,34 -38,12 -38,-12 -24,-34"
+                 fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.7"/>
+
+        <!-- Facet edge lines -->
+        <line x1="-55" y1="-80" x2="-90" y2="-30" stroke="rgba(255,255,255,0.1)" stroke-width="0.7"/>
+        <line x1="55"  y1="-80" x2="90"  y2="-30" stroke="rgba(255,255,255,0.1)" stroke-width="0.7"/>
+        <line x1="-90" y1="-30" x2="-90" y2="30"  stroke="rgba(0,0,0,0.2)" stroke-width="0.6"/>
+        <line x1="90"  y1="-30" x2="90"  y2="30"  stroke="rgba(0,0,0,0.2)" stroke-width="0.6"/>
+        <line x1="-55" y1="80"  x2="-90" y2="30"  stroke="rgba(0,0,0,0.15)" stroke-width="0.6"/>
+        <line x1="55"  y1="80"  x2="90"  y2="30"  stroke="rgba(0,0,0,0.15)" stroke-width="0.6"/>
+
+        <!-- Primary highlight — upper left -->
+        <ellipse cx="-18" cy="-48" rx="28" ry="10"
+                 fill="white" opacity="0.45" transform="rotate(-22,-18,-48)"/>
+        <ellipse cx="12" cy="-65" rx="12" ry="4"
+                 fill="white" opacity="0.28" transform="rotate(-15,12,-65)"/>
+        <!-- Green internal flash -->
+        <ellipse cx="25" cy="8" rx="20" ry="7"
+                 fill="#80FFB0" opacity="0.12" transform="rotate(12,25,8)"/>
+      </g>
+
+      <!-- Sparkles -->
+      <g opacity="0.6">
+        <line x1="322" y1="72"  x2="322" y2="86"  stroke="#80DCA0" stroke-width="1.5"/>
+        <line x1="314" y1="79"  x2="330" y2="79"  stroke="#80DCA0" stroke-width="1.5"/>
+        <line x1="68"  y1="130" x2="68"  y2="143" stroke="#5DBF85" stroke-width="1.2"/>
+        <line x1="61"  y1="136" x2="75"  y2="136" stroke="#5DBF85" stroke-width="1.2"/>
+        <line x1="340" y1="268" x2="340" y2="278" stroke="#70C890" stroke-width="1"/>
+        <line x1="335" y1="273" x2="345" y2="273" stroke="#70C890" stroke-width="1"/>
+        <circle cx="285" cy="116" r="2" fill="#A8E8C0" opacity="0.6"/>
+        <circle cx="112" cy="272" r="1.5" fill="#A8E8C0" opacity="0.5"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-hint-line"></div>
+  </div>
+</section>
+
+<!-- ── CAUTION BANNER ────────────────────────────────── -->
+<div class="caution-banner">
+  <div class="caution-inner reveal">
+    <svg class="caution-icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4">
+      <path d="M28 6L4 48h48L28 6z"/><line x1="28" y1="22" x2="28" y2="34"/><circle cx="28" cy="41" r="1.5" fill="currentColor"/>
+    </svg>
+    <div class="caution-text">
+      <h3>Important Notice Before Reading</h3>
+      <p>Emerald (Panna) is the gemstone of Mercury — the planet governing <strong>intellect, speech, trade, and the nervous system</strong>. It is a relatively benign stone compared to Saturn's or the Sun's gem, but Mercury's quick, mutable nature means Panna can amplify both brilliance and anxiety depending on chart placement. This guide is purely informational. Always consult a <strong>qualified Jyotishi</strong> before wearing Panna.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── ABOUT ─────────────────────────────────────────── -->
+<section class="about-section" id="about">
+  <div class="about-grid">
+    <div class="about-prose reveal">
+      <p class="section-label">About the Stone</p>
+      <h2>What is <em>Emerald?</em></h2>
+      <div class="divider"></div>
+      <p>
+        Emerald, known as Panna in Sanskrit, is the gemstone of Mercury in Vedic astrology. A variety of beryl coloured by chromium and vanadium, its hues range from yellow-green to the deep, saturated "Muzo Green" of Colombia — the most coveted emerald colour in the world of fine gemology.
+      </p>
+      <p>
+        Ranked 7.5–8 on the Mohs scale, Panna is softer than corundum and nearly all natural emeralds contain characteristic internal features known as the "jardin" — a garden of fractures, inclusions, and growth patterns that is considered proof of natural origin. Flawless emeralds are rarer, carat for carat, than diamonds.
+      </p>
+      <p>
+        In Jyotish (Vedic astrology), Panna is the stone of Budha — Mercury — the planet governing intellect, communication, commerce, skill, and the nervous system. A strong Mercury brings sharp reasoning, eloquence, and business acumen; a weak Mercury brings confusion, indecisiveness, poor communication, and nervous ailments.
+      </p>
+    </div>
+    <div class="props-grid reveal">
+      <div class="prop-item">
+        <p class="prop-label">Mineral</p>
+        <p class="prop-value">Beryl (Be₃Al₂Si₆O₁₈)</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Planet</p>
+        <p class="prop-value">Mercury (Budha Dev)</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Colour Range</p>
+        <p class="prop-value">Yellow-Green → Vivid Green → Deep Muzo Green</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Hardness</p>
+        <p class="prop-value">7.5 – 8.0 on Mohs Scale</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Refractive Index</p>
+        <p class="prop-value">1.565 – 1.602</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Element</p>
+        <p class="prop-value">Earth (Prithvi)</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Origins</p>
+        <p class="prop-value">Colombia, Zambia, Brazil, Zimbabwe</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Wearing Finger</p>
+        <p class="prop-value">Little Finger, Right Hand</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MERCURY'S POWER ─────────────────────────────────── -->
+<section class="warn-section">
+  <div class="warn-inner">
+    <div class="reveal">
+      <p class="section-label">Mercury's Influence</p>
+      <h2>The Nature <em>of Panna</em></h2>
+      <div class="divider"></div>
+      <p style="max-width:640px;font-size:0.95rem;">Mercury is considered the most neutral of planets — neither inherently benefic nor malefic, but a chameleon that adopts the nature of whatever planets it associates with. Panna reflects this duality: profoundly helpful when Mercury is well-placed, and subtly disruptive when it is not.</p>
+    </div>
+    <div class="warn-grid">
+      <div class="warn-card reveal">
+        <svg class="warn-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="20" cy="14" r="8"/><path d="M20 22v10M14 28h12"/>
+        </svg>
+        <p class="warn-card-title">When Beneficial</p>
+        <p class="warn-card-text">When Mercury rules benefic houses or sits strongly in the chart — especially for Gemini (Mithuna) and Virgo (Kanya) ascendants — Panna sharpens analytical thinking, improves eloquence, accelerates business and financial decisions, and supports careers in writing, medicine, finance, and technology.</p>
+      </div>
+      <div class="warn-card reveal">
+        <svg class="warn-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M20 6L4 34h32L20 6z"/><line x1="20" y1="16" x2="20" y2="24"/><circle cx="20" cy="29" r="1.5" fill="currentColor"/>
+        </svg>
+        <p class="warn-card-title">When Inauspicious</p>
+        <p class="warn-card-text">If Mercury rules malefic houses (6th, 8th, or 12th) for a given ascendant, wearing Panna can amplify anxiety, scattered thinking, skin irritations, digestive imbalances, and conflicts in relationships and business dealings. Mercury's mercurial nature means effects — positive or negative — manifest quickly.</p>
+      </div>
+      <div class="warn-card reveal">
+        <svg class="warn-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="20" cy="20" r="16"/><path d="M20 10v10l6 4"/>
+        </svg>
+        <p class="warn-card-title">Observing Compatibility</p>
+        <p class="warn-card-text">Panna is generally considered milder and safer to trial than Blue Sapphire or Ruby. Traditional guidance advises wearing the stone at night for 3–7 days before permanent installation. Observe mental clarity, speech, dreams, and business interactions. Enhanced clarity and calm communication indicate compatibility.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BENEFITS ──────────────────────────────────────── -->
+<section class="benefits-section">
+  <div class="benefits-inner">
+    <div class="benefits-header reveal">
+      <p class="section-label">When Suited</p>
+      <h2>Believed <em>Benefits</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M8 12h32M8 20h24M8 28h28M8 36h20"/>
+        </svg>
+        <p class="benefit-title">Intellect & Memory</p>
+        <p class="benefit-text">Mercury governs the intellect, analytical mind, and retention of knowledge. Panna is traditionally worn by students, researchers, and academics to sharpen concentration, improve memory recall, and navigate complex reasoning with clarity and precision.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M8 32c4-16 28-16 32 0"/><circle cx="16" cy="20" r="4"/><circle cx="32" cy="20" r="4"/>
+        </svg>
+        <p class="benefit-title">Communication & Speech</p>
+        <p class="benefit-text">Budha rules all forms of communication — speech, writing, negotiation, and persuasion. Panna is believed to give the wearer the gift of eloquence, confidence in public speaking, and the ability to articulate complex ideas with ease and conviction.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M24 8l4 12h12l-10 7 4 12L24 32l-10 7 4-12L8 20h12z"/>
+        </svg>
+        <p class="benefit-title">Business & Commerce</p>
+        <p class="benefit-text">Mercury is the lord of merchants, traders, and financiers. Panna is among the most recommended stones for business owners, entrepreneurs, and those in financial services — said to attract profitable opportunities, improve commercial judgment, and support ethical negotiations.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M24 8c-8 0-14 7-14 16 0 6 3 11 8 14v4h12v-4c5-3 8-8 8-14 0-9-6-16-14-16z"/>
+        </svg>
+        <p class="benefit-title">Nervous System & Skin</p>
+        <p class="benefit-text">Mercury governs the nervous system, skin, and respiratory organs. A well-suited Panna is associated with calming nervous disorders, reducing anxiety, improving skin radiance, and supporting overall neurological health and coordination.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="24" cy="20" r="10"/><path d="M8 42c0-8 7-14 16-14s16 6 16 14"/>
+        </svg>
+        <p class="benefit-title">Learning & Education</p>
+        <p class="benefit-text">As the planet of learning and skill, Mercury's stone is particularly prescribed for those pursuing higher education, professional examinations, or learning of new languages and artistic crafts. Panna is said to give access to higher mental faculties and lateral thinking.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M10 38V24L24 10l14 14v14"/><path d="M18 38v-10h12v10"/>
+        </svg>
+        <p class="benefit-title">Creative Arts & Media</p>
+        <p class="benefit-text">Writers, journalists, astrologers, mathematicians, and creative professionals of all kinds have long favoured Panna. Mercury's restless, inventive energy channels through the stone into works of language, art, and intellect — supporting originality, wit, and fertile imagination.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TYPES ─────────────────────────────────────────── -->
+<section class="types-section">
+  <div class="types-inner">
+    <div class="reveal">
+      <p class="section-label">Varieties</p>
+      <h2>Origins of <em>Panna</em></h2>
+      <div class="divider"></div>
+      <p style="max-width:580px;">Geographic origin dramatically shapes the colour, jardin character, and astrological quality of Emerald. Colombian stones with deep, warm green and characteristic three-phase inclusions remain the global benchmark for the finest Panna.</p>
+    </div>
+    <div class="types-row">
+      <div class="type-card reveal">
+        <div class="type-gem-wrap">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="ec1" cx="38%" cy="32%" r="62%">
+              <stop offset="0%"   stop-color="#A0E8B8"/>
+              <stop offset="40%"  stop-color="#28A055"/>
+              <stop offset="100%" stop-color="#083520"/>
+            </radialGradient></defs>
+            <ellipse cx="50" cy="50" rx="36" ry="28" fill="url(#ec1)" opacity="0.97"/>
+            <ellipse cx="40" cy="38" rx="12" ry="5" fill="white" opacity="0.4" transform="rotate(-30,40,38)"/>
+          </svg>
+        </div>
+        <p class="type-name">Colombia</p>
+        <p class="type-desc">The world benchmark — deep, warm green with a slight yellow or blue undertone, intense colour saturation, and distinctive three-phase inclusions known as the "Muzo jardin." Muzo, Chivor, and Coscuez mines produce the finest Panna; unheated Colombian stones of top colour command exceptional prices.</p>
+      </div>
+      <div class="type-card reveal">
+        <div class="type-gem-wrap">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="ec2" cx="38%" cy="32%" r="62%">
+              <stop offset="0%"   stop-color="#80D0A0"/>
+              <stop offset="35%"  stop-color="#1A8848"/>
+              <stop offset="100%" stop-color="#052818"/>
+            </radialGradient></defs>
+            <ellipse cx="50" cy="50" rx="36" ry="28" fill="url(#ec2)" opacity="0.97"/>
+            <ellipse cx="40" cy="38" rx="12" ry="5" fill="white" opacity="0.35" transform="rotate(-30,40,38)"/>
+          </svg>
+        </div>
+        <p class="type-name">Zambia</p>
+        <p class="type-desc">Zambian emeralds offer a cooler, slightly blue-green hue with exceptional clarity relative to Colombian material. Often used for astrological purposes as fine, relatively clean specimens are more accessible. Considered highly suitable for Panna by many Jyotishis for their deep, pure green saturation.</p>
+      </div>
+      <div class="type-card reveal">
+        <div class="type-gem-wrap">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="ec3" cx="38%" cy="32%" r="62%">
+              <stop offset="0%"   stop-color="#60C088"/>
+              <stop offset="35%"  stop-color="#0E7038"/>
+              <stop offset="100%" stop-color="#031E10"/>
+            </radialGradient></defs>
+            <ellipse cx="50" cy="50" rx="36" ry="28" fill="url(#ec3)" opacity="0.97"/>
+            <ellipse cx="40" cy="38" rx="12" ry="5" fill="white" opacity="0.3" transform="rotate(-30,40,38)"/>
+          </svg>
+        </div>
+        <p class="type-name">Brazil</p>
+        <p class="type-desc">Brazilian stones range from yellowish-green to medium green, often with good clarity. They are widely used in jewellery and are among the more commercially available natural emeralds. For astrological use, fine Brazilian Panna with strong saturation and minimal treatment is acceptable.</p>
+      </div>
+      <div class="type-card reveal">
+        <div class="type-gem-wrap">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="ec4" cx="38%" cy="32%" r="62%">
+              <stop offset="0%"   stop-color="#48B070"/>
+              <stop offset="35%"  stop-color="#0A5830"/>
+              <stop offset="100%" stop-color="#021508"/>
+            </radialGradient></defs>
+            <ellipse cx="50" cy="50" rx="36" ry="28" fill="url(#ec4)" opacity="0.97"/>
+            <ellipse cx="40" cy="38" rx="12" ry="5" fill="white" opacity="0.25" transform="rotate(-30,40,38)"/>
+          </svg>
+        </div>
+        <p class="type-name">Zimbabwe</p>
+        <p class="type-desc">Sandawana emeralds from Zimbabwe are famous for their intense, vivid green colour despite their small crystal size. Remarkably clean for natural emeralds. Considered excellent for astrological Panna when specimens of sufficient carat weight can be sourced; their deep saturation is highly valued by Jyotishis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ASTROLOGICAL ───────────────────────────────────── -->
+<section class="astro-section">
+  <div class="astro-bg-decor"></div>
+  <div class="astro-inner">
+    <div class="astro-visual reveal">
+      <div class="planet-dial">
+        <div class="planet-dial-ring"></div>
+        <div class="planet-dial-ring-2"></div>
+        <div class="planet-dial-inner"></div>
+        <div class="planet-center">
+          <p class="planet-name">☿</p>
+          <p class="planet-name" style="font-size:1.4rem;margin-top:4px;">Mercury</p>
+          <p class="planet-sub">Budha Dev</p>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="section-label">Vedic Astrology</p>
+      <h2>Mercury's <em>Gemstone</em></h2>
+      <div class="divider"></div>
+      <ul class="astro-list">
+        <li>
+          <span class="astro-num">01</span>
+          <div>
+            <p class="astro-item-title">Who Should Wear</p>
+            <p class="astro-item-text">Primarily those with Gemini (Mithuna) or Virgo (Kanya) ascendants, where Mercury rules the chart directly. Also recommended during Mercury Mahadasha or Antardasha, and when Mercury is placed in the 1st, 2nd, 5th, 9th, 10th, or 11th house in strength. Taurus and Libra ascendants may also benefit where Mercury rules friendly houses. A qualified Jyotishi must confirm suitability.</p>
+          </div>
+        </li>
+        <li>
+          <span class="astro-num">02</span>
+          <div>
+            <p class="astro-item-title">Auspicious Day & Time</p>
+            <p class="astro-item-text">Wednesday (Budhavar) is Mercury's day — the traditional choice for installing Panna. The ring should be worn during Shukla Paksha (waxing moon) at sunrise, ideally during Mercury's hora. The month of Jyeshtha (May–June), when the Sun transits Gemini, and the nakshatras Ashlesha, Jyeshtha, and Revati — all ruled by Mercury — are especially auspicious moments.</p>
+          </div>
+        </li>
+        <li>
+          <span class="astro-num">03</span>
+          <div>
+            <p class="astro-item-title">Metal & Setting</p>
+            <p class="astro-item-text">Gold is the traditional metal for Panna; some traditions also accept silver or white gold. The stone must touch the skin through an open-backed setting. Panna is worn on the little finger (Kanishtha) of the right hand — the finger associated with Mercury in Vedic tradition. Minimum recommended weight for astrological benefit is 3 carats, though larger stones with good colour are preferred.</p>
+          </div>
+        </li>
+        <li>
+          <span class="astro-num">04</span>
+          <div>
+            <p class="astro-item-title">Incompatible Stones</p>
+            <p class="astro-item-text">Panna should never be combined with Pearl (Moti) — the Moon's stone — as Mercury and the Moon are considered planetary enemies in Jyotish. Ruby (Manik), the Sun's stone, is generally avoided alongside Panna. Red Coral (Moonga), Mars's stone, is also traditionally incompatible. Diamond and Blue Sapphire may be worn with Panna depending on the ascendant and a Jyotishi's specific guidance.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── IDENTIFY ───────────────────────────────────────── -->
+<section class="identify-section">
+  <div class="identify-inner">
+    <div class="reveal">
+      <p class="section-label">Gemology</p>
+      <h2>How to <em>Identify</em> a Genuine Stone</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="identify-steps">
+      <div class="identify-step reveal">
+        <p class="step-num">01</p>
+        <p class="step-title">The Jardin Test</p>
+        <p class="step-text">Virtually all natural emeralds contain internal inclusions collectively called the "jardin" — French for garden. Under 10× magnification, these appear as three-phase inclusions (liquid, gas, and solid crystals), fingerprints, and needles. A completely flawless emerald at any price is almost certainly synthetic. The jardin is proof of natural origin, not a flaw.</p>
+      </div>
+      <div class="identify-step reveal">
+        <p class="step-num">02</p>
+        <p class="step-title">Oil & Resin Treatment</p>
+        <p class="step-text">Over 90% of commercial emeralds are oiled or resin-filled to improve clarity — an industry-accepted practice. For astrological Panna, minor traditional oiling (cedar oil) is acceptable; significant fracture-filling with resins (Opticon, glass) is not. Only a GIA, GRS, or Gübelin laboratory report specifying "minor" or "none" enhancement is acceptable for serious astrological use.</p>
+      </div>
+      <div class="identify-step reveal">
+        <p class="step-num">03</p>
+        <p class="step-title">Colour & Tone Assessment</p>
+        <p class="step-text">Genuine Panna quality emeralds exhibit a medium-to-deep, saturated green with no grey or brown masking tone. Stones that appear too dark (losing colour to black), too pale (near transparent), or strongly yellowish are considered suboptimal for astrological use. The ideal astrological Panna shows a rich, lively green that appears to glow from within — sometimes called "velvet green."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CARE GUIDE ─────────────────────────────────────── -->
+<section class="care-section">
+  <div class="care-inner">
+    <div class="care-header reveal">
+      <p class="section-label">Maintenance</p>
+      <h2>Complete Care <em>Guide</em></h2>
+      <div class="divider"></div>
+      <p class="care-intro">Emerald is softer and more inclusion-prone than corundum, making careful handling essential. Panna requires more delicate care than Ruby or Blue Sapphire — both physically and energetically — to preserve its inner fire, the clarity of its jardin, and its potency as Mercury's planetary stone.</p>
+    </div>
+
+    <div class="care-tabs reveal">
+      <button class="care-tab-btn active" onclick="showCareTab('daily')">Daily Care</button>
+      <button class="care-tab-btn" onclick="showCareTab('cleaning')">Deep Cleaning</button>
+      <button class="care-tab-btn" onclick="showCareTab('storage')">Storage</button>
+      <button class="care-tab-btn" onclick="showCareTab('seasonal')">Seasonal Guide</button>
+      <button class="care-tab-btn" onclick="showCareTab('vedic')">Vedic Rituals</button>
+      <button class="care-tab-btn" onclick="showCareTab('donts')">Do's &amp; Don'ts</button>
+    </div>
+
+    <!-- Daily Care -->
+    <div class="care-panel active" id="tab-daily">
+      <div class="care-tips">
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="18" cy="18" r="14"/><path d="M18 10v8l5 3"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Morning Protocol</p>
+            <p class="care-tip-text">Always apply perfume, moisturiser, sunscreen, and hand creams before placing your Panna ring on your finger. Chemical compounds in these products are particularly aggressive toward emerald — they can dissolve cedar oil treatments, penetrate the jardin, and dull the surface lustre over time. Mercury rewards attention to detail; meticulous daily care is itself a form of honouring this planet of precision.</p>
+            <span class="care-tip-note">Tradition: Wear Panna after Wednesday morning prayers, ideally after reciting the Budha mantra, for greatest alignment with Mercury's energy.</span>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M10 26c0-8 4-14 8-18 4 4 8 10 8 18a8 8 0 01-16 0z"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Evening Wipe Routine</p>
+            <p class="care-tip-text">Before storing each evening, wipe gently with a soft, dry microfibre cloth. Remove skin oils, sweat, and dust, especially from beneath the stone where the open-back setting allows debris to accumulate. Emerald is more porous than corundum; skin oils penetrate more deeply and should be removed daily rather than allowed to build up. This contact point is considered the energy-transfer zone in Vedic tradition — it must be kept clean and unobstructed.</p>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="6" y="12" width="24" height="18" rx="2"/><path d="M12 12V9a6 6 0 0112 0v3"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Removal During Activities</p>
+            <p class="care-tip-text">Emerald is more vulnerable to chipping, cracking, and surface damage than sapphire or ruby. Remove your Panna ring before the gym, swimming, cooking, gardening, cleaning with chemicals, and any task involving hard impacts or vibration. The jardin — natural fractures and inclusions inside the stone — makes emerald structurally more brittle than corundum. Even a single sharp knock can cause a visible chip or extend an existing fracture.</p>
+            <span class="care-tip-note">Never sleep wearing an emerald ring — fractures can propagate from sustained pressure against hard surfaces overnight.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deep Cleaning -->
+    <div class="care-panel" id="tab-cleaning">
+      <div class="care-tips">
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M10 26c0-8 4-14 8-18 4 4 8 10 8 18a8 8 0 01-16 0z"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Fortnightly Gentle Wash</p>
+            <p class="care-tip-text">Fill a small bowl with lukewarm (never hot) water and one drop of very mild, alcohol-free, pH-neutral soap. Soak for no more than 5 minutes — unlike sapphire, extended soaking risks loosening oil treatments in the fractures. Use only a very soft brush (cosmetic brush or artist's watercolour brush) and clean with the lightest possible strokes. Rinse gently, dry immediately with a lint-free cloth, and allow to air-dry for 30 minutes before storing. Wednesday mornings align with Mercury's energy for this ritual.</p>
+            <span class="care-tip-note">Limit soak time to 5 minutes maximum. Extended water exposure dissolves oil treatments.</span>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="6" y="10" width="24" height="18" rx="2"/><path d="M12 10V7a6 6 0 0112 0v3"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Ultrasonic & Steam — Strictly Prohibited</p>
+            <p class="care-tip-text">Ultrasonic cleaners and steam cleaning are absolutely contraindicated for emerald. Virtually all natural emeralds have internal fractures and oil or resin treatments. Ultrasonic vibrations propagate through these fractures and shatter the stone from within; steam forces moisture and heat into the fractures, expelling oil treatments and causing visible whitening of the jardin. These methods cause irreversible damage. There is no exception to this rule.</p>
+            <span class="care-tip-note">Never use ultrasonic or steam cleaning on any emerald, regardless of treatment disclosure.</span>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="18" cy="18" r="12"/><path d="M13 18h10M18 13v10"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">What to Strictly Avoid</p>
+            <p class="care-tip-text">Never use bleach, chlorine, ammonia, acetone, nail polish remover, isopropyl alcohol, hand sanitiser, or any household cleaning product. Alcohol and solvents dissolve the cedar oil or resin in fractures instantly — the stone's appearance will deteriorate irreversibly. Baking soda and toothpaste are abrasive enough to scratch the surface of an emerald. Use only lukewarm water and the mildest possible soap.</p>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M18 6l2 6h7l-5.5 4 2 6L18 18l-5.5 4 2-6L9 12h7z"/><circle cx="18" cy="28" r="2"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Annual Professional Service</p>
+            <p class="care-tip-text">Schedule a specialist jeweller inspection every 12 months. A gemologist-jeweller will check prong integrity, look for developing fractures at the girdle, assess whether the oil treatment needs refreshing (a gentle re-oiling process performed by specialists), re-polish the gold setting, and verify the stone hasn't shifted in its mount. Re-oiling a faded emerald can dramatically restore its appearance and is considered acceptable for astrological use as long as only natural cedar oil or minimal traditional oil is used.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Storage -->
+    <div class="care-panel" id="tab-storage">
+      <div class="care-tips">
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="4" y="10" width="28" height="22" rx="2"/><path d="M12 10V8a6 6 0 0112 0v2"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Individual Storage</p>
+            <p class="care-tip-text">Store your Panna ring in its own dedicated soft pouch — green or deep emerald velvet is traditional and appropriate. Never store alongside diamond, which at Mohs 10 can scratch emerald's comparatively softer surface. Do not store with Pearl (Moti) — Mercury and the Moon are enemies in Jyotish, and the stones' energies should not intermingle. A compartmented jewellery box where the emerald sits cushioned and isolated is ideal.</p>
+            <span class="care-tip-note">Tradition: Panna must never share a pouch or compartment with Pearl (Moti) — planetary enemies in Vedic gemology.</span>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M18 6l2 7h7l-6 4 2 7-5-4-5 4 2-7-6-4h7z"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Environment & Conditions</p>
+            <p class="care-tip-text">Store in a consistently cool, dark, and moderately humid environment. Unlike sapphire or ruby, emerald benefits from a small degree of ambient humidity — extreme dryness can cause existing fractures to expand microscopically over years. Avoid bathroom storage (too humid and fluctuating temperature), but avoid also a bone-dry safe in a heated room without humidity control. A bedroom jewellery box at ambient room temperature is generally ideal for Panna storage.</p>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M8 28V14l10-8 10 8v14"/><path d="M14 28v-8h8v8"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Travel Precautions</p>
+            <p class="care-tip-text">When travelling with Panna, use a padded, soft-lined hard-case jewellery organiser in carry-on luggage only. Cargo hold temperature extremes are particularly damaging to emerald — thermal shock can extend existing fractures. X-ray machines do not harm emerald or gold settings. When visiting temples or removing jewellery in public, always place the ring in a dedicated green silk or velvet pouch rather than loose in a pocket or bag.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seasonal -->
+    <div class="care-panel" id="tab-seasonal">
+      <div class="care-season-grid reveal">
+        <div class="care-season-card">
+          <p class="care-season-title"><span>☀️</span> Summer</p>
+          <p class="care-season-text">Heat and perspiration increase the rate at which oil treatments evaporate from fractures, causing the jardin to appear more visible and the stone to look duller. Wipe daily and consider annual re-oiling after a hot season. Remove before any outdoor activities where the stone will be exposed to direct intense sunlight for extended periods.</p>
+        </div>
+        <div class="care-season-card">
+          <p class="care-season-title"><span>🌧️</span> Monsoon</p>
+          <p class="care-season-text">The most favourable season for emerald storage conditions — moderate ambient humidity is beneficial. However, always dry the ring completely after any water contact before storing. Check the setting monthly to ensure stones haven't shifted after repeated moisture cycles. Keep away from heavily chlorinated water sources entirely during this season.</p>
+        </div>
+        <div class="care-season-card">
+          <p class="care-season-title"><span>🍂</span> Post-Monsoon</p>
+          <p class="care-season-text">Ideal time for professional inspection after the season. Have the jeweller assess the stone for any fracture development, check prong security after thermal cycles, and evaluate whether the oil treatment needs refreshing. A gentle professional re-oiling at this point can restore luster lost through summer heat and monsoon humidity fluctuations.</p>
+        </div>
+        <div class="care-season-card">
+          <p class="care-season-title"><span>❄️</span> Winter</p>
+          <p class="care-season-text">Cold, dry indoor heating is the most challenging condition for emerald. The combination of low humidity and cool temperatures can stress fractures — keep the jewellery box away from direct heating vents. Fingers contract in cold; check ring fit and have it resized if notably loose, rather than wearing on a different finger which would alter astrological alignment.</p>
+        </div>
+      </div>
+      <div class="care-tip reveal" style="margin-top:20px;">
+        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="18" cy="14" r="8"/><path d="M18 22v10M12 28h12"/>
+        </svg>
+        <div class="care-tip-body">
+          <p class="care-tip-title">Mercury's Weekly Honouring</p>
+          <p class="care-tip-text">Every Wednesday — Budhavar, Mercury's day — is the ideal moment for a mindful wipe-clean and brief ritual acknowledgement of the stone's planetary significance. Lighting a green or white candle near the ring, or holding the stone toward morning light while reciting the Budha mantra, is considered an effective weekly practice for maintaining Mercury's favour and ensuring the stone remains energetically aligned with its purpose.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vedic Rituals -->
+    <div class="care-panel" id="tab-vedic">
+      <div class="care-tips">
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M18 4C10 12 6 18 6 24a12 12 0 0024 0c0-6-4-12-12-20z"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Wednesday Panchamrit Cleansing</p>
+            <p class="care-tip-text">On the first Wednesday of each month during Shukla Paksha, place the ring in a clean brass or gold bowl. Pour over it in sequence: raw cow's milk, pure honey, ghee, curd, and clean water — the five Panchamrit substances. Let it rest for no more than 10 minutes (shorter than for harder stones, to protect treatments). Rinse gently with clean lukewarm water and dry immediately. While the stone rests, recite the Budha Beej Mantra — "Om Braam Breem Braum Sah Budhaya Namah" — 108 times. Offer green flowers or grass (durva) to a Mercury image if possible.</p>
+            <span class="care-tip-note">Limit Panchamrit immersion to 10 minutes only for Panna — extended exposure risks oil treatment.</span>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M12 28V16l6-10 6 10v12"/><path d="M9 28h18"/><circle cx="18" cy="16" r="2"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Re-consecration After Absence</p>
+            <p class="care-tip-text">If the ring has not been worn for more than 40 days, it must be re-energised before resuming wear. Perform the brief Panchamrit cleansing on a Wednesday morning. Hold the stone facing north — Mercury's direction — at sunrise. Visualise a clear emerald-green light filling the stone completely. Recite "Om Budhaya Namah" 108 times. Then place it on the little finger of the right hand. Mercury governs transitions; this ritual marks a fresh beginning of the stone's active relationship with its wearer.</p>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M18 6l2 7h7l-6 4 2 7-5-4-5 4 2-7-6-4h7z"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">If the Stone Cracks, Chips, or is Lost</p>
+            <p class="care-tip-text">A damaged or lost Panna is considered a significant event in Vedic tradition — interpreted as the stone absorbing a negative mental or communicative event on the wearer's behalf. Do not continue wearing a cracked or visibly damaged emerald for astrological purposes. Consult a Jyotishi for guidance. Perform a Budha Shanti Puja and replace with a new certified natural stone through a fresh Wednesday consecration ceremony. The fracture may be purely physical, but ritual response is considered important for maintaining Mercury's protection.</p>
+            <span class="care-tip-note">A damaged Panna requires ritual response — do not ignore or continue wearing it for astrological benefit.</span>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="18" cy="18" r="14"/><path d="M12 18h12M18 12v12"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Removing Panna Permanently</p>
+            <p class="care-tip-text">If a Jyotishi advises discontinuing the stone, or if consistent negative mental or communicative effects are observed, removal must follow a simple protocol. Remove on a Wednesday, ideally at sunrise. Immerse the ring briefly in flowing water, or place it at the base of a pipal tree in green earth — traditional methods of returning Mercury's energy to nature. Never casually discard or gift a worn Panna; the wearer's Mercury imprint remains in the stone. A Jyotishi should advise on the appropriate closing ritual for a stone that has been worn for years.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Do's & Don'ts -->
+    <div class="care-panel" id="tab-donts">
+      <div class="care-dondont reveal">
+        <div class="care-do">
+          <p class="care-list-title">✦ Do's</p>
+          <ul class="care-list">
+            <li>Consult a qualified Jyotishi before wearing for the first time</li>
+            <li>Wear on the little finger (Kanishtha) of the right hand in gold</li>
+            <li>Install on a Wednesday during Shukla Paksha at sunrise</li>
+            <li>Apply all perfumes and creams before wearing the ring</li>
+            <li>Clean fortnightly with lukewarm water and the mildest soap only</li>
+            <li>Dry immediately and completely after any contact with water</li>
+            <li>Store in a dedicated green or deep velvet pouch separately</li>
+            <li>Perform monthly Panchamrit cleansing on Wednesdays</li>
+            <li>Honour the stone each Wednesday with mindful acknowledgement</li>
+            <li>Obtain GIA / GRS lab certification with oil enhancement disclosure</li>
+            <li>Remove before swimming, gym, cooking, cleaning, or manual work</li>
+            <li>Schedule annual professional jeweller inspection and re-oiling assessment</li>
+          </ul>
+        </div>
+        <div class="care-dont">
+          <p class="care-list-title">✦ Don'ts</p>
+          <ul class="care-list">
+            <li>Never wear without astrological consultation first</li>
+            <li>Do not wear alongside Pearl (Moti) — planetary enemies</li>
+            <li>Never use ultrasonic or steam cleaning — causes irreversible damage</li>
+            <li>Never use bleach, alcohol, acetone, ammonia, or abrasive cleaners</li>
+            <li>Do not soak in water for more than 5–10 minutes at a time</li>
+            <li>Never sleep wearing the ring — fracture risk under pressure</li>
+            <li>Do not expose to extreme temperature changes (thermal shock)</li>
+            <li>Never store with diamond, Pearl (Moti), or Ruby (Manik)</li>
+            <li>Never continue wearing a cracked or chipped Panna</li>
+            <li>Do not gift a worn Panna without proper ritual clearing</li>
+            <li>Never purchase without a lab certificate for astrological use</li>
+            <li>Do not wear perfume or hand sanitiser after the ring is on</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FACT TABLE ─────────────────────────────────────── -->
+<section class="table-section">
+  <div class="table-inner">
+    <div class="reveal">
+      <p class="section-label">Quick Reference</p>
+      <h2>Complete <em>Fact Sheet</em></h2>
+      <div class="divider"></div>
+    </div>
+    <table class="reveal">
+      <thead>
+        <tr><th>Property</th><th>Detail</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sanskrit Name</td><td>Panna / Marakata / Haritamani</td></tr>
+        <tr><td>Mineral Species</td><td>Beryl (Beryllium Aluminium Silicate — Be₃Al₂Si₆O₁₈)</td></tr>
+        <tr><td>Colour Agent</td><td>Chromium (Cr³⁺) and Vanadium (V³⁺)</td></tr>
+        <tr><td>Hardness (Mohs)</td><td>7.5 – 8.0</td></tr>
+        <tr><td>Specific Gravity</td><td>2.67 – 2.78</td></tr>
+        <tr><td>Refractive Index</td><td>1.565 – 1.602 (birefringence 0.006)</td></tr>
+        <tr><td>Crystal System</td><td>Hexagonal</td></tr>
+        <tr><td>Cleavage</td><td>Imperfect basal; conchoidal fracture common</td></tr>
+        <tr><td>Lustre</td><td>Vitreous; characteristic jardin (internal inclusions)</td></tr>
+        <tr><td>Ideal Colour</td><td>Vivid, deep green — "Muzo Green" (Colombian benchmark)</td></tr>
+        <tr><td>Primary Origins</td><td>Colombia (Muzo, Chivor), Zambia, Brazil, Zimbabwe</td></tr>
+        <tr><td>Ruling Planet</td><td>Mercury (Budha Dev)</td></tr>
+        <tr><td>Zodiac Ascendants</td><td>Gemini (Mithuna) and Virgo (Kanya) primary</td></tr>
+        <tr><td>Recommended Finger</td><td>Little finger (Kanishtha), right hand</td></tr>
+        <tr><td>Setting Metal</td><td>Gold (yellow gold traditional; white gold acceptable)</td></tr>
+        <tr><td>Auspicious Day</td><td>Wednesday (Budhavar), Shukla Paksha, sunrise hora</td></tr>
+        <tr><td>Mantra</td><td>Om Budhaya Namah (108 repetitions)</td></tr>
+        <tr><td>Beej Mantra</td><td>Om Braam Breem Braum Sah Budhaya Namah</td></tr>
+        <tr><td>Incompatible Stones</td><td>Pearl (Moti), Ruby (Manik), Red Coral (Moonga)</td></tr>
+        <tr><td>Treatment Status</td><td>Minor traditional oiling acceptable; significant resin-filling not acceptable for astrological use — GIA/GRS certification required</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a class="nav-logo" href="#"><span>RATNA</span>VALI</a>
+      <p>A curated knowledge resource on Vedic gemstones, planetary stones, and the ancient science of Navaratna.</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Knowledge Centre</p>
+      <ul>
+        <li><a href="#">Yellow Sapphire (Pukhraj)</a></li>
+        <li><a href="#">Blue Sapphire (Neelam)</a></li>
+        <li><a href="#">Ruby (Manik)</a></li>
+        <li><a href="#">Emerald (Panna)</a></li>
+        <li><a href="#">Diamond (Heera)</a></li>
+        <li><a href="#">Pearl (Moti)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Explore</p>
+      <ul>
+        <li><a href="#">Navaratna Guide</a></li>
+        <li><a href="#">Astrology &amp; Gems</a></li>
+        <li><a href="#">Gemstone Grading</a></li>
+        <li><a href="#">Lab Certification</a></li>
+        <li><a href="#">About Ratnavali</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Ratnavali. For educational purposes only. Always consult a qualified Jyotishi before wearing Emerald.</p>
+    <p>Crafted with reverence in India &nbsp;·&nbsp; <a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Disclaimer</a></p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  function showCareTab(id) {
+    document.querySelectorAll('.care-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.care-tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    document.querySelectorAll('#tab-' + id + ' .reveal').forEach(el => {
+      el.classList.remove('visible');
+      setTimeout(() => observer.observe(el), 50);
+    });
+  }
+</script>
+</body>
+</html>

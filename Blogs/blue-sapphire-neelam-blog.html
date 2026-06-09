@@ -1,0 +1,2247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blue Sapphire (Neelam) — Ratnavali Knowledge Centre</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <style>
+         :root {
+            --blue: #4A7FBF;
+            --blue-light: #7AAEDD;
+            --blue-dim: #2A4E7A;
+            --blue-deep: #1A3358;
+            --silver: #C8D8E8;
+            --silver-dim: #7A90A8;
+            --cream: #E8EEF5;
+            --deep: #040608;
+            --dark: #080C12;
+            --dark-mid: #0D1420;
+            --dark-card: #0A1018;
+            --text-muted: #6A80A0;
+            --text-body: #A8BCD0;
+            --border: rgba(74, 127, 191, 0.2);
+            --border-s: rgba(200, 216, 232, 0.1);
+        }
+        
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: var(--deep);
+            color: var(--text-body);
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        /* ── NAV ─────────────────────────────── */
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 60px;
+            background: rgba(4, 6, 8, 0.93);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.15rem;
+            letter-spacing: 0.18em;
+            color: var(--blue-light);
+            text-decoration: none;
+        }
+        
+        .nav-logo span {
+            color: var(--cream);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--blue-light);
+        }
+        
+        .nav-badge {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            color: var(--cream);
+            background: var(--blue-deep);
+            padding: 6px 16px;
+            border: 1px solid var(--blue);
+            border-radius: 2px;
+        }
+        /* ── HERO ────────────────────────────── */
+        
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding: 140px 60px 80px;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 65% 70% at 72% 50%, rgba(30, 70, 140, 0.18) 0%, transparent 65%), radial-gradient(ellipse 40% 50% at 15% 75%, rgba(74, 127, 191, 0.07) 0%, transparent 60%), radial-gradient(ellipse 30% 40% at 50% 10%, rgba(20, 40, 90, 0.12) 0%, transparent 60%), linear-gradient(150deg, #040608 0%, #06090F 50%, #040608 100%);
+        }
+        
+        .hero-grain {
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        /* Starfield dots */
+        
+        .hero-stars {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image: radial-gradient(1px 1px at 10% 20%, rgba(200, 216, 232, 0.5) 0%, transparent 100%), radial-gradient(1px 1px at 25% 60%, rgba(200, 216, 232, 0.3) 0%, transparent 100%), radial-gradient(1.5px 1.5px at 40% 15%, rgba(200, 216, 232, 0.6) 0%, transparent 100%), radial-gradient(1px 1px at 60% 80%, rgba(200, 216, 232, 0.4) 0%, transparent 100%), radial-gradient(1px 1px at 75% 35%, rgba(200, 216, 232, 0.3) 0%, transparent 100%), radial-gradient(1.5px 1.5px at 85% 65%, rgba(200, 216, 232, 0.5) 0%, transparent 100%), radial-gradient(1px 1px at 92% 20%, rgba(200, 216, 232, 0.4) 0%, transparent 100%), radial-gradient(1px 1px at 5% 85%, rgba(200, 216, 232, 0.3) 0%, transparent 100%), radial-gradient(1px 1px at 55% 45%, rgba(200, 216, 232, 0.25) 0%, transparent 100%), radial-gradient(1px 1px at 30% 90%, rgba(200, 216, 232, 0.35) 0%, transparent 100%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 580px;
+            animation: fadeUp 1.2s ease both;
+        }
+        
+        .hero-eyebrow {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.35em;
+            color: var(--blue-light);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--blue-dim);
+        }
+        
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 300;
+            line-height: 1.08;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+        
+        h1 em {
+            font-style: italic;
+            color: var(--blue-light);
+            display: block;
+        }
+        
+        .hero-tagline {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            color: var(--blue-dim);
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+        
+        .hero-desc {
+            font-size: 1rem;
+            color: var(--text-body);
+            max-width: 440px;
+            margin-bottom: 44px;
+            border-left: 2px solid var(--blue-dim);
+            padding-left: 20px;
+        }
+        
+        .hero-warning {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: rgba(74, 127, 191, 0.08);
+            border: 1px solid rgba(74, 127, 191, 0.3);
+            padding: 16px 20px;
+            margin-bottom: 36px;
+            max-width: 460px;
+        }
+        
+        .hero-warning-icon {
+            color: var(--blue-light);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .hero-warning-text {
+            font-size: 0.78rem;
+            line-height: 1.6;
+            color: var(--text-body);
+        }
+        
+        .hero-warning-text strong {
+            color: var(--blue-light);
+            font-weight: 500;
+        }
+        
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--cream);
+            background: var(--blue-deep);
+            border: 1px solid var(--blue);
+            padding: 14px 32px;
+            text-decoration: none;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        
+        .hero-cta:hover {
+            background: var(--blue-dim);
+            border-color: var(--blue-light);
+        }
+        
+        .hero-cta svg {
+            width: 14px;
+            height: 14px;
+        }
+        /* Hero gem */
+        
+        .hero-gem {
+            position: absolute;
+            right: 7%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 440px;
+            height: 440px;
+            animation: fadeUp 1.4s 0.3s ease both, float 7s ease-in-out infinite 1.7s;
+        }
+        
+        .gem-glow {
+            position: absolute;
+            inset: -80px;
+            background: radial-gradient(ellipse, rgba(40, 90, 180, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse-glow 5s ease-in-out infinite;
+        }
+        /* Scroll hint */
+        
+        .scroll-hint {
+            position: absolute;
+            bottom: 36px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            letter-spacing: 0.3em;
+            color: var(--blue-dim);
+            text-transform: uppercase;
+        }
+        
+        .scroll-hint-line {
+            width: 1px;
+            height: 48px;
+            background: linear-gradient(180deg, var(--blue-dim), transparent);
+            animation: scroll-drop 2s ease-in-out infinite;
+        }
+        /* ── SECTION COMMONS ─────────────────── */
+        
+        section {
+            padding: 100px 60px;
+        }
+        
+        .section-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.35em;
+            color: var(--blue-light);
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 1px;
+            background: var(--blue-dim);
+        }
+        
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            font-weight: 300;
+            color: var(--cream);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+        
+        h2 em {
+            font-style: italic;
+            color: var(--blue-light);
+        }
+        
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, var(--blue), transparent);
+            margin-bottom: 40px;
+        }
+        /* ── CAUTION BANNER ──────────────────── */
+        
+        .caution-banner {
+            background: linear-gradient(135deg, rgba(20, 40, 90, 0.6), rgba(10, 20, 50, 0.8));
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 40px 60px;
+        }
+        
+        .caution-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        
+        .caution-icon {
+            flex-shrink: 0;
+            width: 56px;
+            height: 56px;
+            color: var(--blue-light);
+        }
+        
+        .caution-text h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--cream);
+            margin-bottom: 6px;
+        }
+        
+        .caution-text p {
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+        
+        .caution-text p strong {
+            color: var(--blue-light);
+        }
+        /* ── ABOUT ───────────────────────────── */
+        
+        .about-section {
+            background: var(--dark);
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .about-prose p {
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .about-prose p:first-child {
+            font-size: 1.1rem;
+            color: var(--cream);
+        }
+        
+        .props-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border: 1px solid var(--border);
+        }
+        
+        .prop-item {
+            padding: 22px 24px;
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            transition: background 0.3s;
+        }
+        
+        .prop-item:nth-child(even) {
+            border-right: none;
+        }
+        
+        .prop-item:last-child,
+        .prop-item:nth-last-child(2):nth-child(odd) {
+            border-bottom: none;
+        }
+        
+        .prop-item:hover {
+            background: rgba(74, 127, 191, 0.05);
+        }
+        
+        .prop-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.58rem;
+            letter-spacing: 0.25em;
+            color: var(--blue-light);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        
+        .prop-value {
+            font-size: 0.88rem;
+            color: var(--cream);
+        }
+        /* ── WARNING SECTION ─────────────────── */
+        
+        .warn-section {
+            background: var(--dark-mid);
+        }
+        
+        .warn-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .warn-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 56px;
+        }
+        
+        .warn-card {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.4s, transform 0.3s;
+        }
+        
+        .warn-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--blue), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        
+        .warn-card:hover {
+            border-color: rgba(74, 127, 191, 0.5);
+            transform: translateY(-4px);
+        }
+        
+        .warn-card:hover::before {
+            opacity: 1;
+        }
+        
+        .warn-card-icon {
+            width: 40px;
+            height: 40px;
+            color: var(--blue-light);
+            margin-bottom: 18px;
+        }
+        
+        .warn-card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+        
+        .warn-card-text {
+            font-size: 0.84rem;
+            line-height: 1.7;
+        }
+        /* ── BENEFITS ────────────────────────── */
+        
+        .benefits-section {
+            background: var(--deep);
+        }
+        
+        .benefits-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .benefits-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .benefits-header .section-label {
+            justify-content: center;
+        }
+        
+        .benefits-header .section-label::before {
+            display: none;
+        }
+        
+        .benefits-header .divider {
+            margin: 0 auto;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+        
+        .benefit-card {
+            background: var(--dark-card);
+            padding: 40px 32px;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.4s, transform 0.3s;
+        }
+        
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--blue-light), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        
+        .benefit-card:hover {
+            border-color: rgba(74, 127, 191, 0.4);
+            transform: translateY(-4px);
+        }
+        
+        .benefit-card:hover::before {
+            opacity: 1;
+        }
+        
+        .benefit-icon {
+            width: 44px;
+            height: 44px;
+            margin-bottom: 20px;
+            color: var(--blue-light);
+        }
+        
+        .benefit-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+        
+        .benefit-text {
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+        /* ── TYPES ───────────────────────────── */
+        
+        .types-section {
+            background: var(--dark);
+        }
+        
+        .types-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .types-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+        
+        .type-card {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            padding: 32px 24px 28px;
+            text-align: center;
+            transition: border-color 0.4s, transform 0.3s;
+        }
+        
+        .type-card:hover {
+            border-color: rgba(74, 127, 191, 0.5);
+            transform: translateY(-6px);
+        }
+        
+        .type-gem-wrap {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+        }
+        
+        .type-gem-wrap svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .type-name {
+            font-family: 'Cinzel', serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            color: var(--blue-light);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        
+        .type-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        /* ── ASTROLOGICAL ────────────────────── */
+        
+        .astro-section {
+            background: var(--dark-mid);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .astro-bg-decor {
+            position: absolute;
+            right: -120px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 500px;
+            height: 500px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+        
+        .astro-bg-decor::before {
+            content: '';
+            position: absolute;
+            inset: 40px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+        }
+        
+        .astro-bg-decor::after {
+            content: '';
+            position: absolute;
+            inset: 80px;
+            border: 1px solid rgba(74, 127, 191, 0.1);
+            border-radius: 50%;
+        }
+        
+        .astro-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .astro-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .planet-dial {
+            position: relative;
+            width: 320px;
+            height: 320px;
+        }
+        
+        .planet-dial-ring {
+            position: absolute;
+            inset: 0;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            animation: spin-slow 30s linear infinite;
+        }
+        
+        .planet-dial-ring::before {
+            content: '♄';
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.3rem;
+            color: var(--blue-light);
+            animation: spin-slow 30s linear infinite reverse;
+        }
+        
+        .planet-dial-ring-2 {
+            position: absolute;
+            inset: 24px;
+            border: 1px solid rgba(74, 127, 191, 0.12);
+            border-radius: 50%;
+            animation: spin-slow 20s linear infinite reverse;
+        }
+        
+        .planet-dial-ring-2::before {
+            content: '◆';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.6rem;
+            color: var(--blue-dim);
+            animation: spin-slow 20s linear infinite;
+        }
+        
+        .planet-dial-inner {
+            position: absolute;
+            inset: 52px;
+            border: 1px solid rgba(74, 127, 191, 0.08);
+            border-radius: 50%;
+        }
+        
+        .planet-center {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .planet-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--blue-light);
+            line-height: 1;
+        }
+        
+        .planet-sub {
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            color: var(--blue-dim);
+            text-transform: uppercase;
+            margin-top: 6px;
+        }
+        
+        .astro-list {
+            list-style: none;
+        }
+        
+        .astro-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .astro-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .astro-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: var(--blue-dim);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 28px;
+        }
+        
+        .astro-item-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            color: var(--cream);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        
+        .astro-item-text {
+            font-size: 0.83rem;
+        }
+        /* ── IDENTIFY ────────────────────────── */
+        
+        .identify-section {
+            background: var(--deep);
+        }
+        
+        .identify-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .identify-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-top: 60px;
+            border: 1px solid var(--border);
+        }
+        
+        .identify-step {
+            padding: 40px 32px;
+            border-right: 1px solid var(--border);
+        }
+        
+        .identify-step:last-child {
+            border-right: none;
+        }
+        
+        .step-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            color: rgba(74, 127, 191, 0.12);
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+        
+        .step-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.15em;
+            color: var(--blue-light);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        
+        .step-text {
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+        /* ── CARE GUIDE ──────────────────────── */
+        
+        .care-section {
+            background: var(--dark);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .care-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .care-header {
+            margin-bottom: 56px;
+        }
+        
+        .care-intro {
+            font-size: 0.96rem;
+            max-width: 620px;
+            border-left: 2px solid var(--blue-dim);
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+        
+        .care-tabs {
+            display: flex;
+            gap: 0;
+            border: 1px solid var(--border);
+            margin-bottom: 32px;
+            overflow-x: auto;
+        }
+        
+        .care-tab-btn {
+            font-family: 'Cinzel', serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--border);
+            padding: 16px 24px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        .care-tab-btn:last-child {
+            border-right: none;
+        }
+        
+        .care-tab-btn:hover {
+            color: var(--blue-light);
+            background: rgba(74, 127, 191, 0.06);
+        }
+        
+        .care-tab-btn.active {
+            color: var(--cream);
+            background: var(--blue-deep);
+            border-color: var(--blue);
+        }
+        
+        .care-panel {
+            display: none;
+        }
+        
+        .care-panel.active {
+            display: block;
+        }
+        
+        .care-tips {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .care-tip {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            padding: 28px 32px;
+            transition: border-color 0.3s;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+        
+        .care-tip:hover {
+            border-color: rgba(74, 127, 191, 0.4);
+        }
+        
+        .care-tip-icon {
+            width: 36px;
+            height: 36px;
+            color: var(--blue-light);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .care-tip-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            color: var(--cream);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        
+        .care-tip-text {
+            font-size: 0.84rem;
+            line-height: 1.7;
+        }
+        
+        .care-tip-note {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.75rem;
+            color: var(--blue-dim);
+            border-left: 2px solid var(--blue-dim);
+            padding-left: 10px;
+            font-style: italic;
+        }
+        
+        .care-season-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .care-season-card {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            padding: 24px;
+            transition: border-color 0.3s;
+        }
+        
+        .care-season-card:hover {
+            border-color: rgba(74, 127, 191, 0.4);
+        }
+        
+        .care-season-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            color: var(--blue-light);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .care-season-title span {
+            font-size: 1.1rem;
+        }
+        
+        .care-season-text {
+            font-size: 0.82rem;
+            line-height: 1.65;
+        }
+        
+        .care-dondont {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        
+        .care-do,
+        .care-dont {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            padding: 28px;
+        }
+        
+        .care-do {
+            border-top: 2px solid rgba(80, 180, 100, 0.5);
+        }
+        
+        .care-dont {
+            border-top: 2px solid rgba(200, 80, 60, 0.5);
+        }
+        
+        .care-list-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        
+        .care-do .care-list-title {
+            color: #6BBB70;
+        }
+        
+        .care-dont .care-list-title {
+            color: #C8503C;
+        }
+        
+        .care-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .care-list li {
+            font-size: 0.83rem;
+            line-height: 1.5;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        
+        .care-list li::before {
+            flex-shrink: 0;
+            font-size: 0.7rem;
+            margin-top: 3px;
+        }
+        
+        .care-do .care-list li::before {
+            content: '✓';
+            color: #6BBB70;
+        }
+        
+        .care-dont .care-list li::before {
+            content: '✕';
+            color: #C8503C;
+        }
+        /* ── FACT TABLE ──────────────────────── */
+        
+        .table-section {
+            background: var(--dark-mid);
+        }
+        
+        .table-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 48px;
+        }
+        
+        thead th {
+            font-family: 'Cinzel', serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.25em;
+            color: var(--blue-light);
+            text-transform: uppercase;
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--blue-dim);
+            text-align: left;
+        }
+        
+        tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+        
+        tbody tr:hover {
+            background: rgba(74, 127, 191, 0.05);
+        }
+        
+        tbody td {
+            padding: 18px 24px;
+            font-size: 0.88rem;
+            vertical-align: top;
+        }
+        
+        tbody td:first-child {
+            color: var(--text-muted);
+            width: 30%;
+        }
+        
+        tbody td:last-child {
+            color: var(--cream);
+        }
+        /* ── FOOTER ──────────────────────────── */
+        
+        footer {
+            background: var(--deep);
+            border-top: 1px solid var(--border);
+            padding: 60px 60px 40px;
+        }
+        
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 48px;
+        }
+        
+        .footer-brand .nav-logo {
+            font-size: 1.3rem;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+        
+        .footer-brand p {
+            font-size: 0.82rem;
+            max-width: 280px;
+        }
+        
+        .footer-col-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.25em;
+            color: var(--blue-light);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--blue-light);
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+        
+        .footer-bottom a {
+            color: var(--blue-dim);
+            text-decoration: none;
+        }
+        /* ── ANIMATIONS ──────────────────────── */
+        
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(-50%) translateY(0px);
+            }
+            50% {
+                transform: translateY(-50%) translateY(-18px);
+            }
+        }
+        
+        @keyframes pulse-glow {
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+        
+        @keyframes scroll-drop {
+            0% {
+                opacity: 1;
+                transform-origin: top;
+            }
+            100% {
+                opacity: 0;
+                transform: scaleY(0);
+                transform-origin: bottom;
+            }
+        }
+        
+        @keyframes spin-slow {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        /* ── REVEAL ──────────────────────────── */
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+        /* ── RESPONSIVE ──────────────────────── */
+        
+        @media (max-width: 900px) {
+            nav {
+                padding: 16px 24px;
+            }
+            .nav-links,
+            .nav-badge {
+                display: none;
+            }
+            section {
+                padding: 70px 24px;
+            }
+            .hero {
+                padding: 120px 24px 80px;
+            }
+            .hero-gem {
+                display: none;
+            }
+            .about-grid,
+            .astro-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .benefits-grid,
+            .types-row,
+            .identify-steps,
+            .warn-grid {
+                grid-template-columns: 1fr;
+            }
+            .identify-step {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+            .care-dondont,
+            .care-season-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+            .caution-inner {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── NAV ──────────────────────────────────────────── -->
+    <nav>
+        <a class="nav-logo" href="#"><span>RATNA</span>VALI</a>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#" class="active">Knowledge Centre</a></li>
+            <li><a href="#">Gem Library</a></li>
+            <li><a href="#">Astrology</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+        <span class="nav-badge">Gemstone Guide</span>
+    </nav>
+
+    <!-- ── HERO ─────────────────────────────────────────── -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-grain"></div>
+        <div class="hero-stars"></div>
+
+        <div class="hero-content">
+            <p class="hero-eyebrow">The Gemstone of Saturn</p>
+            <h1>Blue Sapphire<em>(Neelam)</em></h1>
+            <p class="hero-tagline">Discipline · Justice · Transformation</p>
+            <p class="hero-desc">
+                The most powerful and fastest-acting gemstone in Vedic astrology. Blue Sapphire channels Saturn's immense energy — bringing swift fortune when suited, swift misfortune when not.
+            </p>
+            <div class="hero-warning">
+                <svg class="hero-warning-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+                <p class="hero-warning-text"><strong>Astrological Caution:</strong> Neelam must only be worn after a proper trial period and consultation with a qualified Jyotishi. It is the most potent planetary stone and unsuitable for many horoscopes.</p>
+            </div>
+            <a href="#about" class="hero-cta">
+      Explore the Guide
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 8h10M9 4l4 4-4 4"/>
+      </svg>
+    </a>
+        </div>
+
+        <!-- Blue Sapphire Gem SVG -->
+        <div class="hero-gem">
+            <div class="gem-glow"></div>
+            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="bGlow" cx="50%" cy="40%" r="55%">
+          <stop offset="0%" stop-color="#6090D0" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#2040A0" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="bFace" cx="38%" cy="30%" r="65%">
+          <stop offset="0%"   stop-color="#C0D8F8"/>
+          <stop offset="20%"  stop-color="#6090D8"/>
+          <stop offset="55%"  stop-color="#2850A8"/>
+          <stop offset="100%" stop-color="#0A1840"/>
+        </radialGradient>
+        <radialGradient id="bLeft" cx="15%" cy="50%" r="75%">
+          <stop offset="0%"   stop-color="#3060B0"/>
+          <stop offset="100%" stop-color="#08112A"/>
+        </radialGradient>
+        <radialGradient id="bRight" cx="85%" cy="50%" r="75%">
+          <stop offset="0%"   stop-color="#4070C0"/>
+          <stop offset="100%" stop-color="#0C1A38"/>
+        </radialGradient>
+        <radialGradient id="bBottom" cx="50%" cy="90%" r="70%">
+          <stop offset="0%"   stop-color="#184080"/>
+          <stop offset="100%" stop-color="#040810"/>
+        </radialGradient>
+        <filter id="bGem">
+          <feDropShadow dx="0" dy="14" stdDeviation="22" flood-color="#1840A0" flood-opacity="0.6"/>
+        </filter>
+        <!-- Asterism (star effect) -->
+        <radialGradient id="bStar" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="white" stop-opacity="0.9"/>
+          <stop offset="40%"  stop-color="white" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="white" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- Ambient glow -->
+      <ellipse cx="200" cy="225" rx="155" ry="55" fill="url(#bGlow)" opacity="0.9"/>
+
+      <g filter="url(#bGem)" transform="translate(200,195)">
+        <!-- Top crown facets -->
+        <polygon points="0,-100 70,-52 70,52 0,100 -70,52 -70,-52"
+                 fill="url(#bFace)" opacity="0.97"/>
+        <!-- Left pavilion -->
+        <polygon points="-70,-52 -115,-22 -115,22 -70,52"
+                 fill="url(#bLeft)" opacity="0.92"/>
+        <!-- Right pavilion -->
+        <polygon points="70,-52 115,-22 115,22 70,52"
+                 fill="url(#bRight)" opacity="0.92"/>
+        <!-- Bottom culet -->
+        <polygon points="-70,52 -115,22 0,125 115,22 70,52"
+                 fill="url(#bBottom)" opacity="0.96"/>
+
+        <!-- Star asterism rays (feature of finest Kashmir sapphires) -->
+        <line x1="0" y1="-80" x2="0" y2="80" stroke="url(#bStar)" stroke-width="1.8" opacity="0.4"/>
+        <line x1="-69" y1="-40" x2="69" y2="40" stroke="url(#bStar)" stroke-width="1.8" opacity="0.4" transform="rotate(60)"/>
+        <line x1="-69" y1="40" x2="69" y2="-40" stroke="url(#bStar)" stroke-width="1.8" opacity="0.4" transform="rotate(-60)"/>
+
+        <!-- Primary highlight -->
+        <ellipse cx="-22" cy="-42" rx="24" ry="9"
+                 fill="white" opacity="0.5" transform="rotate(-28,-22,-42)"/>
+        <ellipse cx="10" cy="-62" rx="11" ry="4"
+                 fill="white" opacity="0.3" transform="rotate(-18,10,-62)"/>
+        <!-- Secondary blue flash -->
+        <ellipse cx="30" cy="10" rx="18" ry="6"
+                 fill="#A0C8F8" opacity="0.2" transform="rotate(15,30,10)"/>
+
+        <!-- Facet lines -->
+        <line x1="0" y1="-100" x2="70"  y2="-52" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
+        <line x1="0" y1="-100" x2="-70" y2="-52" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
+        <line x1="0" y1="-100" x2="0"   y2="100"  stroke="rgba(255,255,255,0.06)" stroke-width="0.6"/>
+        <line x1="-115" y1="0" x2="115" y2="0"    stroke="rgba(255,255,255,0.05)" stroke-width="0.6"/>
+        <line x1="-70" y1="-52" x2="-70" y2="52"  stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+        <line x1="70"  y1="-52" x2="70"  y2="52"  stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+      </g>
+
+      <!-- Sparkles -->
+      <g opacity="0.65">
+        <line x1="318" y1="75"  x2="318" y2="90"  stroke="#A0C8F8" stroke-width="1.5"/>
+        <line x1="310" y1="82"  x2="326" y2="82"  stroke="#A0C8F8" stroke-width="1.5"/>
+        <line x1="72"  y1="135" x2="72"  y2="148" stroke="#7AAEDD" stroke-width="1.2"/>
+        <line x1="65"  y1="141" x2="79"  y2="141" stroke="#7AAEDD" stroke-width="1.2"/>
+        <line x1="338" y1="265" x2="338" y2="275" stroke="#90B8E8" stroke-width="1"/>
+        <line x1="333" y1="270" x2="343" y2="270" stroke="#90B8E8" stroke-width="1"/>
+        <circle cx="290" cy="120" r="2" fill="#C0D8F8" opacity="0.6"/>
+        <circle cx="110" cy="270" r="1.5" fill="#C0D8F8" opacity="0.5"/>
+      </g>
+    </svg>
+        </div>
+
+        <div class="scroll-hint">
+            <span>Scroll</span>
+            <div class="scroll-hint-line"></div>
+        </div>
+    </section>
+
+    <!-- ── CAUTION BANNER ────────────────────────────────── -->
+    <div class="caution-banner">
+        <div class="caution-inner reveal">
+            <svg class="caution-icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4">
+      <path d="M28 6L4 48h48L28 6z"/><line x1="28" y1="22" x2="28" y2="34"/><circle cx="28" cy="41" r="1.5" fill="currentColor"/>
+    </svg>
+            <div class="caution-text">
+                <h3>Important Notice Before Reading</h3>
+                <p>Blue Sapphire (Neelam) is regarded as the <strong>most powerful and fastest-acting</strong> gemstone in Vedic astrology. It can bring extraordinary blessings — or significant adversity — depending on its compatibility with the wearer's
+                    horoscope. Traditional practice requires a <strong>3-day trial period</strong> before permanent wear. This guide is purely informational. Always consult a qualified Jyotishi before wearing Neelam.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── ABOUT ─────────────────────────────────────────── -->
+    <section class="about-section" id="about">
+        <div class="about-grid">
+            <div class="about-prose reveal">
+                <p class="section-label">About the Stone</p>
+                <h2>What is <em>Blue Sapphire?</em></h2>
+                <div class="divider"></div>
+                <p>
+                    Blue Sapphire, known as Neelam in Sanskrit, is the most potent planetary gemstone in Vedic astrology. A variety of corundum coloured by iron and titanium, its hues range from pale cornflower to the legendary velvety "Royal Blue" of Kashmir — one of the
+                    most coveted colours in gemology.
+                </p>
+                <p>
+                    Ranked 9 on the Mohs hardness scale, Neelam is second only to diamond in durability. Its extraordinary brilliance, combined with its deep blue colour, has made it one of the world's most prized gemstones across cultures — from ancient Persia to the courts
+                    of Mughal emperors and European royalty.
+                </p>
+                <p>
+                    In Jyotish (Vedic astrology), it is the gemstone of Saturn (Shani) — the planet of karma, discipline, limitation, and transformation. Saturn governs time itself, and its gemstone is said to accelerate karmic outcomes with startling swiftness.
+                </p>
+            </div>
+            <div class="props-grid reveal">
+                <div class="prop-item">
+                    <p class="prop-label">Mineral</p>
+                    <p class="prop-value">Corundum (Al₂O₃)</p>
+                </div>
+                <div class="prop-item">
+                    <p class="prop-label">Planet</p>
+                    <p class="prop-value">Saturn (Shani)</p>
+                </div>
+                <div class="prop-item">
+                    <p class="prop-label">Colour Range</p>
+                    <p class="prop-value">Cornflower → Royal Blue → Midnight</p>
+                </div>
+                <div class="prop-item">
+                    <p class="prop-label">Hardness</p>
+                    <p class="prop-value">9.0 on Mohs Scale</p>
+                </div>
+                <div class="prop-item">
+                    <p class="prop-label">Refractive Index</p>
+                    <p class="prop-value">1.762 – 1.770</p>
+                </div>
+                <div class="prop-item">
+                    <p class="prop-label">Element</p>
+                    <p class="prop-value">Air (Vayu)</p>
+                </div>
+                <div class="prop-item">
+                    <p class="prop-label">Origins</p>
+                    <p class="prop-value">Kashmir, Sri Lanka, Burma, Madagascar</p>
+                </div>
+                <div class="prop-item">
+                    <p class="prop-label">Wearing Finger</p>
+                    <p class="prop-value">Middle Finger, Right Hand</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SATURN'S POWER ─────────────────────────────────── -->
+    <section class="warn-section">
+        <div class="warn-inner">
+            <div class="reveal">
+                <p class="section-label">Saturn's Influence</p>
+                <h2>The Double-Edged <em>Power of Neelam</em></h2>
+                <div class="divider"></div>
+                <p style="max-width:640px;font-size:0.95rem;">Unlike most gemstones which are broadly safe to wear, Blue Sapphire is known in tradition for its swift and decisive effects — both positive and negative — making understanding Saturn's nature essential before approaching this stone.</p>
+            </div>
+            <div class="warn-grid">
+                <div class="warn-card reveal">
+                    <svg class="warn-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M20 4l4 12h12l-10 7 4 12L20 28l-10 7 4-12L4 16h12z"/>
+        </svg>
+                    <p class="warn-card-title">When Beneficial</p>
+                    <p class="warn-card-text">When Saturn is well-placed or is the ruling planet of the ascendant (especially Capricorn and Aquarius), Neelam can bring sudden wealth, rapid career advancement, clarity of thought, and freedom from long-standing obstacles. Effects
+                        are often felt within 3–7 days of wearing.</p>
+                </div>
+                <div class="warn-card reveal">
+                    <svg class="warn-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M20 6L4 34h32L20 6z"/><line x1="20" y1="16" x2="20" y2="24"/><circle cx="20" cy="29" r="1.5" fill="currentColor"/>
+        </svg>
+                    <p class="warn-card-title">When Inauspicious</p>
+                    <p class="warn-card-text">When Saturn is malefic in the chart, Neelam can amplify adversity — bringing accidents, legal troubles, financial loss, illness, broken relationships, or intense psychological distress. This is why the traditional trial period exists
+                        as a safeguard before permanent commitment to the stone.</p>
+                </div>
+                <div class="warn-card reveal">
+                    <svg class="warn-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="20" cy="20" r="16"/><path d="M20 10v10l6 4"/>
+        </svg>
+                    <p class="warn-card-title">The Trial Period</p>
+                    <p class="warn-card-text">The traditional practice is to place the stone under your pillow or keep it wrapped in blue cloth on your body for 3 consecutive days. Observe your dreams, mood, events, and general wellbeing. If positive signs emerge, proceed. Any
+                        disturbing signs — nightmares, anxiety, mishaps — indicate incompatibility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── BENEFITS ──────────────────────────────────────── -->
+    <section class="benefits-section">
+        <div class="benefits-inner">
+            <div class="benefits-header reveal">
+                <p class="section-label">When Suited</p>
+                <h2>Believed <em>Benefits</em></h2>
+                <div class="divider"></div>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card reveal">
+                    <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M24 6l4 12h12l-10 7 4 12L24 30l-10 7 4-12L8 18h12z"/>
+        </svg>
+                    <p class="benefit-title">Swift Success</p>
+                    <p class="benefit-text">When suited, Neelam is said to accelerate results in career and business with unmatched speed — cases of sudden promotions, unexpected windfalls, and dramatic reversals of fortune are commonly cited in Vedic tradition.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="24" cy="24" r="18"/><path d="M16 24l6 6 10-12"/>
+        </svg>
+                    <p class="benefit-title">Mental Discipline</p>
+                    <p class="benefit-text">Saturn governs concentration, structure, and clarity of purpose. The stone is traditionally associated with cutting through confusion, reducing procrastination, and building the mental fortitude needed for sustained achievement.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M8 28V14l16-8 16 8v14c0 10-16 18-16 18S8 38 8 28z"/>
+        </svg>
+                    <p class="benefit-title">Protection from Evil</p>
+                    <p class="benefit-text">As Saturn is the karmic enforcer, his stone is believed to create a protective shield against black magic, evil eye (nazar), and malicious intentions from others — returning negative energy to its source.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="24" cy="20" r="10"/><path d="M8 42c0-8 7-14 16-14s16 6 16 14"/>
+        </svg>
+                    <p class="benefit-title">Justice & Legal Matters</p>
+                    <p class="benefit-text">Saturn is the planet of law and justice. Neelam is historically worn by lawyers, judges, and those involved in legal disputes — it is said to bring fair outcomes and expose deception in adversarial proceedings.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M24 6C15.2 8 8 15 8 24s7.2 16 16 16 16-7 16-16"/><path d="M32 8l8 8-8 8"/>
+        </svg>
+                    <p class="benefit-title">Karmic Clearing</p>
+                    <p class="benefit-text">Saturn's domain includes past-life karma. The stone is believed to accelerate the resolution of karmic debts — compressing what might take years of karmic learning into shorter, more intense periods of transformation.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M10 38V24L24 10l14 14v14"/><path d="M18 38v-10h12v10"/>
+        </svg>
+                    <p class="benefit-title">Property & Wealth</p>
+                    <p class="benefit-text">Saturn rules land, real estate, and durable material assets. When benefic, Neelam is associated with accumulation of property, gains from mines and machinery, and steady long-term wealth building under disciplined effort.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── TYPES ─────────────────────────────────────────── -->
+    <section class="types-section">
+        <div class="types-inner">
+            <div class="reveal">
+                <p class="section-label">Varieties</p>
+                <h2>Origins of <em>Neelam</em></h2>
+                <div class="divider"></div>
+                <p style="max-width:580px;">Geographic origin defines the character, colour, and astrological grading of Blue Sapphire. Kashmir-origin stones command the highest premium and are considered unparalleled in quality.</p>
+            </div>
+            <div class="types-row">
+                <div class="type-card reveal">
+                    <div class="type-gem-wrap">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="bc1" cx="38%" cy="32%" r="62%">
+              <stop offset="0%"   stop-color="#B0C8F0"/>
+              <stop offset="40%"  stop-color="#4878C8"/>
+              <stop offset="100%" stop-color="#0C2060"/>
+            </radialGradient></defs>
+            <ellipse cx="50" cy="50" rx="36" ry="28" fill="url(#bc1)" opacity="0.97"/>
+            <ellipse cx="40" cy="38" rx="12" ry="5" fill="white" opacity="0.4" transform="rotate(-30,40,38)"/>
+          </svg>
+                    </div>
+                    <p class="type-name">Kashmir</p>
+                    <p class="type-desc">The legendary "velvety" cornflower blue with a characteristic sleepy, silky appearance from fine rutile needles. Extremely rare; commands the highest premium. Unheated Kashmir sapphires are among the world's most valuable gems.</p>
+                </div>
+                <div class="type-card reveal">
+                    <div class="type-gem-wrap">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="bc2" cx="38%" cy="32%" r="62%">
+              <stop offset="0%"   stop-color="#90B0E8"/>
+              <stop offset="35%"  stop-color="#2858B8"/>
+              <stop offset="100%" stop-color="#081840"/>
+            </radialGradient></defs>
+            <ellipse cx="50" cy="50" rx="36" ry="28" fill="url(#bc2)" opacity="0.97"/>
+            <ellipse cx="40" cy="38" rx="12" ry="5" fill="white" opacity="0.35" transform="rotate(-30,40,38)"/>
+          </svg>
+                    </div>
+                    <p class="type-name">Ceylon</p>
+                    <p class="type-desc">Sri Lanka produces a wide range from pale cornflower to medium royal blue. Excellent clarity and transparency; highly regarded astrologically. Unheated Ceylon Neelam is the most accessible premium option.</p>
+                </div>
+                <div class="type-card reveal">
+                    <div class="type-gem-wrap">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="bc3" cx="38%" cy="32%" r="62%">
+              <stop offset="0%"   stop-color="#7090D8"/>
+              <stop offset="35%"  stop-color="#1840A0"/>
+              <stop offset="100%" stop-color="#060E30"/>
+            </radialGradient></defs>
+            <ellipse cx="50" cy="50" rx="36" ry="28" fill="url(#bc3)" opacity="0.97"/>
+            <ellipse cx="40" cy="38" rx="12" ry="5" fill="white" opacity="0.3" transform="rotate(-30,40,38)"/>
+          </svg>
+                    </div>
+                    <p class="type-name">Burma</p>
+                    <p class="type-desc">Rich, saturated royal to deep blue with strong colour concentration. Burmese sapphires often have exceptional brilliance. Second in prestige only to Kashmir for many collectors and astrologers.</p>
+                </div>
+                <div class="type-card reveal">
+                    <div class="type-gem-wrap">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="bc4" cx="38%" cy="32%" r="62%">
+              <stop offset="0%"   stop-color="#6080C8"/>
+              <stop offset="35%"  stop-color="#1030880"/>
+              <stop offset="100%" stop-color="#040C28"/>
+            </radialGradient></defs>
+            <ellipse cx="50" cy="50" rx="36" ry="28" fill="url(#bc4)" opacity="0.97"/>
+            <ellipse cx="40" cy="38" rx="12" ry="5" fill="white" opacity="0.25" transform="rotate(-30,40,38)"/>
+          </svg>
+                    </div>
+                    <p class="type-name">Madagascar</p>
+                    <p class="type-desc">Produces sapphires across the full colour spectrum. Good clarity at competitive prices; increasingly a major source. Heat treatment is common in this origin; unheated specimens require careful certification.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── ASTROLOGICAL ───────────────────────────────────── -->
+    <section class="astro-section">
+        <div class="astro-bg-decor"></div>
+        <div class="astro-inner">
+            <div class="astro-visual reveal">
+                <div class="planet-dial">
+                    <div class="planet-dial-ring"></div>
+                    <div class="planet-dial-ring-2"></div>
+                    <div class="planet-dial-inner"></div>
+                    <div class="planet-center">
+                        <p class="planet-name">♄</p>
+                        <p class="planet-name" style="font-size:1.4rem;margin-top:4px;">Saturn</p>
+                        <p class="planet-sub">Shani Dev</p>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal">
+                <p class="section-label">Vedic Astrology</p>
+                <h2>Saturn's <em>Gemstone</em></h2>
+                <div class="divider"></div>
+                <ul class="astro-list">
+                    <li>
+                        <span class="astro-num">01</span>
+                        <div>
+                            <p class="astro-item-title">Who Should Wear</p>
+                            <p class="astro-item-text">Primarily those with Capricorn (Makar) or Aquarius (Kumbha) ascendants where Saturn rules the chart. Also beneficial during Saturn Mahadasha or Antardasha, when Saturn is in the 1st, 2nd, 9th, 10th, 11th, or 12th house in a
+                                strong position. A qualified Jyotishi must confirm suitability.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="astro-num">02</span>
+                        <div>
+                            <p class="astro-item-title">Auspicious Day & Time</p>
+                            <p class="astro-item-text">Saturday (Shanivar) during Shukla Paksha (waxing moon) is the traditional prescription. The stone should be installed during Saturn's hora — ideally at sunrise on a Saturday in the month of Pushya or Shravan. Wearing during
+                                Sade Sati requires extra caution and expert guidance.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="astro-num">03</span>
+                        <div>
+                            <p class="astro-item-title">Metal & Setting</p>
+                            <p class="astro-item-text">Panchdhatu (five-metal alloy) or silver are the traditional metals for Neelam. Some traditions also permit white gold or platinum. The stone must touch the skin — open-back settings on the middle finger of the right hand are
+                                standard. The weight should be minimum 2 carats.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="astro-num">04</span>
+                        <div>
+                            <p class="astro-item-title">Sade Sati Consideration</p>
+                            <p class="astro-item-text">During Sade Sati — Saturn's 7.5-year transit over the natal moon — opinions among Jyotishis are divided on whether Neelam helps or aggravates. Some recommend iron or blue amethyst as milder alternatives during this period.
+                                Never decide independently; this period requires careful astrological counsel.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── IDENTIFY ───────────────────────────────────────── -->
+    <section class="identify-section">
+        <div class="identify-inner">
+            <div class="reveal">
+                <p class="section-label">Gemology</p>
+                <h2>How to <em>Identify</em> a Genuine Stone</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="identify-steps">
+                <div class="identify-step reveal">
+                    <p class="step-num">01</p>
+                    <p class="step-title">Spectroscope Test</p>
+                    <p class="step-text">Natural blue sapphires show characteristic iron absorption bands at 450nm and 460nm under a spectroscope. Blue glass, synthetic sapphires, and tanzanite have distinctly different spectra. This is one of the most reliable field tests,
+                        though lab analysis remains definitive.</p>
+                </div>
+                <div class="identify-step reveal">
+                    <p class="step-num">02</p>
+                    <p class="step-title">Heat Treatment Detection</p>
+                    <p class="step-text">Over 95% of commercial Blue Sapphires are heat-treated to enhance colour and clarity. For astrological use, unheated stones are essential. Only a certified gemological laboratory (GIA, GRS, or Gübelin) can reliably confirm absence
+                        of heat treatment through microscopic and spectroscopic analysis.</p>
+                </div>
+                <div class="identify-step reveal">
+                    <p class="step-num">03</p>
+                    <p class="step-title">Silk & Natural Inclusions</p>
+                    <p class="step-text">Under 10× magnification, natural Blue Sapphires often show rutile silk needles, fingerprint inclusions, or needle-like growth tubes. Kashmir sapphires show characteristic fine silk causing the "velvety" appearance. Completely clean
+                        stones at low prices almost certainly indicate synthetic material.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CARE GUIDE ─────────────────────────────────────── -->
+    <section class="care-section">
+        <div class="care-inner">
+            <div class="care-header reveal">
+                <p class="section-label">Maintenance</p>
+                <h2>Complete Care <em>Guide</em></h2>
+                <div class="divider"></div>
+                <p class="care-intro">Blue Sapphire is one of the hardest and most durable gemstones on earth, but specific care — both physical and energetic — is essential to preserve its quality and, in Vedic tradition, its potency as a planetary stone of Saturn.</p>
+            </div>
+
+            <div class="care-tabs reveal">
+                <button class="care-tab-btn active" onclick="showCareTab('daily')">Daily Care</button>
+                <button class="care-tab-btn" onclick="showCareTab('cleaning')">Deep Cleaning</button>
+                <button class="care-tab-btn" onclick="showCareTab('storage')">Storage</button>
+                <button class="care-tab-btn" onclick="showCareTab('seasonal')">Seasonal Guide</button>
+                <button class="care-tab-btn" onclick="showCareTab('vedic')">Vedic Rituals</button>
+                <button class="care-tab-btn" onclick="showCareTab('donts')">Do's &amp; Don'ts</button>
+            </div>
+
+            <!-- Daily Care -->
+            <div class="care-panel active" id="tab-daily">
+                <div class="care-tips">
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="18" cy="18" r="14"/><path d="M18 10v8l5 3"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Morning Discipline</p>
+                            <p class="care-tip-text">Always apply perfume, moisturiser, sunscreen, and hand creams before wearing your Neelam ring. Chemical compounds in these products build up on the stone's surface, progressively dulling the brilliant blue colour and silky
+                                lustre that defines a fine Blue Sapphire. Saturn's stone deserves the same discipline Saturn teaches — consistent small habits compound over time.</p>
+                            <span class="care-tip-note">Tradition: Saturn governs routine. Consistent care of the stone is itself considered a form of honouring the planet.</span>
+                        </div>
+                    </div>
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M10 26c0-8 4-14 8-18 4 4 8 10 8 18a8 8 0 01-16 0z"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Evening Wipe Routine</p>
+                            <p class="care-tip-text">Before storing the ring each evening, wipe gently with a soft, dry microfibre cloth to remove skin oils, sweat, and fine dust. Pay attention to the underside of the stone where debris accumulates between the gem and the open-back
+                                setting. This is especially important for Neelam as the contact point with the finger is considered the energy-transfer point in Vedic tradition — it must remain clean.</p>
+                        </div>
+                    </div>
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="6" y="12" width="24" height="18" rx="2"/><path d="M12 12V9a6 6 0 0112 0v3"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Removal During Activities</p>
+                            <p class="care-tip-text">Remove your Neelam ring before gym sessions, swimming, cooking, gardening, cleaning with chemicals, and any heavy manual work. While corundum is extremely hard, sharp impacts can chip the girdle edges, and gold or silver settings
+                                can bend under force — loosening prongs and risking loss of the stone. A lost Neelam is considered a serious astrological event requiring ritual attention.</p>
+                            <span class="care-tip-note">Never sleep wearing the ring — prongs can deform and the stone may scratch other surfaces.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deep Cleaning -->
+            <div class="care-panel" id="tab-cleaning">
+                <div class="care-tips">
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M10 26c0-8 4-14 8-18 4 4 8 10 8 18a8 8 0 01-16 0z"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Fortnightly Soap Wash</p>
+                            <p class="care-tip-text">Fill a small bowl with lukewarm water and two drops of mild, pH-neutral dish soap. Soak the ring for 10–15 minutes. Using a soft-bristled brush (baby toothbrush or cosmetic brush), clean gently around the prongs, beneath the
+                                stone, and along the band. Rinse thoroughly under lukewarm running water with the drain plugged. Dry completely with a lint-free cloth and air-dry for 30 minutes before storing. Perform this on a Saturday or Thursday for
+                                alignment with Saturn's energy.</p>
+                            <span class="care-tip-note">Frequency: Fortnightly for daily wear; monthly for occasional wear.</span>
+                        </div>
+                    </div>
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="6" y="10" width="24" height="18" rx="2"/><path d="M12 10V7a6 6 0 0112 0v3"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Ultrasonic Cleaning</p>
+                            <p class="care-tip-text">Safe for clean, unheated natural Blue Sapphires with no significant fractures. However, if your stone is fracture-filled, oiled, or has clarity treatments, ultrasonic cleaning will cause immediate and irreversible damage —
+                                the vibrations propagate through the filling material and shatter internal cracks. Always verify treatment status (via your lab certificate) before attempting ultrasonic cleaning.</p>
+                            <span class="care-tip-note">When in doubt, stick to the warm soap-and-brush method — it is always safe.</span>
+                        </div>
+                    </div>
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="18" cy="18" r="12"/><path d="M13 18h10M18 13v10"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">What to Strictly Avoid</p>
+                            <p class="care-tip-text">Never use bleach, chlorine, ammonia, abrasive pastes (toothpaste, baking soda), or harsh chemical glass cleaners. Silver settings are particularly reactive to sulphur compounds. Panchdhatu settings can tarnish with certain
+                                cleaning agents. Hand sanitisers with high alcohol or hydrogen peroxide content damage both metal finishes and any fracture-fill treatments in the stone. Use only mild soap and water.</p>
+                        </div>
+                    </div>
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M18 6l2 6h7l-5.5 4 2 6L18 18l-5.5 4 2-6L9 12h7z"/><circle cx="18" cy="28" r="2"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Annual Professional Service</p>
+                            <p class="care-tip-text">Schedule a jeweller inspection every 12 months. The jeweller will check prong tightness, look for micro-fractures developing in the stone, re-polish the metal setting, check solder joints, and professionally steam-clean areas
+                                the brush cannot reach. An annual service is especially important for silver and panchdhatu settings which tarnish and require periodic re-polishing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Storage -->
+            <div class="care-panel" id="tab-storage">
+                <div class="care-tips">
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="4" y="10" width="28" height="22" rx="2"/><path d="M12 10V8a6 6 0 0112 0v2"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Individual Storage</p>
+                            <p class="care-tip-text">Store your Neelam ring in its own dedicated pouch — blue or dark velvet is traditional and appropriate — or in a compartmented jewellery box. Do not store with diamonds (which at Mohs 10 can scratch sapphire surfaces) or with
+                                softer stones that the sapphire can in turn damage. Isolation prevents both physical scratching and, in traditional belief, energetic interference between differently-aligned planetary stones.</p>
+                            <span class="care-tip-note">Tradition: Saturn stones should never be stored with Mars stones (coral/red stones) as the planetary energies are inimical.</span>
+                        </div>
+                    </div>
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M18 6l2 7h7l-6 4 2 7-5-4-5 4 2-7-6-4h7z"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Environment & Conditions</p>
+                            <p class="care-tip-text">Store in a cool, dark, dry environment. Avoid bathroom storage — steam and humidity accelerate tarnishing of silver and panchdhatu settings. Keep away from prolonged direct sunlight, which while unlikely to damage the corundum
+                                itself, can fade certain fracture-fill treatments over years. A locked jewellery box or small safe in a bedroom is ideal — both practically and for the security of a high-value stone.</p>
+                        </div>
+                    </div>
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M8 28V14l10-8 10 8v14"/><path d="M14 28v-8h8v8"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Travel Precautions</p>
+                            <p class="care-tip-text">When travelling with your Neelam, use a padded hard-case jewellery organiser and keep it in carry-on luggage only. Cargo hold conditions — temperature extremes, pressure changes, rough handling — are unsuitable for fine gemstone
+                                jewellery. X-ray scanners do not harm corundum or metal settings. If visiting temples or sacred sites where jewellery must be removed, carry a small dedicated pouch rather than placing the ring loose in a bag.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seasonal -->
+            <div class="care-panel" id="tab-seasonal">
+                <div class="care-season-grid reveal">
+                    <div class="care-season-card">
+                        <p class="care-season-title"><span>☀️</span> Summer</p>
+                        <p class="care-season-text">Increased perspiration means more frequent wiping is needed. Avoid swimming in pools (chlorine) or the sea (salt). Sunscreen and sweat build-up on silver and panchdhatu settings can cause rapid tarnishing in humid heat — clean
+                            more frequently. Keep away from dashboard or car windowsill in direct sun.</p>
+                    </div>
+                    <div class="care-season-card">
+                        <p class="care-season-title"><span>🌧️</span> Monsoon</p>
+                        <p class="care-season-text">Highest risk season for tarnishing of silver and panchdhatu settings. Always dry the ring completely before storing. Check that the stone hasn't shifted in its setting after exposure to water. A dry environment storage with small
+                            silica packets (not touching the stone) helps control moisture in the jewellery box.</p>
+                    </div>
+                    <div class="care-season-card">
+                        <p class="care-season-title"><span>🍂</span> Post-Monsoon</p>
+                        <p class="care-season-text">An ideal time for professional cleaning and inspection after the humid season. Have the jeweller check for any tarnish build-up in crevices, re-polish the setting if needed, and verify prong tightness after potential thermal expansion
+                            and contraction cycles during the wet season.</p>
+                    </div>
+                    <div class="care-season-card">
+                        <p class="care-season-title"><span>❄️</span> Winter</p>
+                        <p class="care-season-text">Cold causes fingers to contract — the ring may feel looser and is at higher risk of slipping off outdoors. Have it resized if it becomes significantly loose rather than wearing it on a different finger, which alters its astrological
+                            alignment. Dry indoor heating can stress older solder joints in the setting over time.</p>
+                    </div>
+                </div>
+                <div class="care-tip reveal" style="margin-top:20px;">
+                    <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M18 4v4M18 28v4M4 18h4M28 18h4M7.8 7.8l2.8 2.8M25.4 25.4l2.8 2.8M7.8 28.2l2.8-2.8M25.4 10.6l2.8-2.8"/><circle cx="18" cy="18" r="7"/>
+        </svg>
+                    <div class="care-tip-body">
+                        <p class="care-tip-title">Saturn's Weekly Honouring</p>
+                        <p class="care-tip-text">Every Saturday, as Saturn's day, is considered an appropriate time for a quick wipe-clean of the stone and a moment of mindful acknowledgement of its planetary significance. Lighting a sesame oil lamp (til ka tel ka deepak) near
+                            the ring on Saturday evenings is a traditional practice for maintaining Saturn's favour — a ritual honouring that complements the physical care routine.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vedic Rituals -->
+            <div class="care-panel" id="tab-vedic">
+                <div class="care-tips">
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M18 4C10 12 6 18 6 24a12 12 0 0024 0c0-6-4-12-12-20z"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Saturday Panchamrit Cleansing</p>
+                            <p class="care-tip-text">On the first Saturday of each month during Shukla Paksha, place the ring in a clean copper or iron bowl. Pour over it, in sequence: raw cow's milk, pure honey, ghee, curd, and clean water (the five Panchamrit substances). Let
+                                it rest for 15 minutes. Rinse with clean water and dry gently. While the stone rests, recite the Shani Beej Mantra — "Om Pram Preem Praum Sah Shanaye Namah" — 108 times. This is a purely energetic ritual; the physical cleaning
+                                with soap and water is separate.</p>
+                            <span class="care-tip-note">Iron vessel is traditionally associated with Saturn; copper is an acceptable alternative.</span>
+                        </div>
+                    </div>
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M12 28V16l6-10 6 10v12"/><path d="M9 28h18"/><circle cx="18" cy="16" r="2"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Re-consecration After Absence</p>
+                            <p class="care-tip-text">If the ring has not been worn for more than 40 days — due to ritual impurity periods, illness, travel, or any other reason — it must be re-energised before wearing again. Perform the Panchamrit cleansing on a Saturday morning.
+                                Hold the ring facing west (Saturn's direction) at sunrise. Visualise deep blue-black Saturn light entering the stone. Recite "Om Sham Shanishcharaya Namah" 108 times. Only then wear it on the middle finger of the right
+                                hand.</p>
+                        </div>
+                    </div>
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M18 6l2 7h7l-6 4 2 7-5-4-5 4 2-7-6-4h7z"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">If the Stone Cracks, Chips, or is Lost</p>
+                            <p class="care-tip-text">A damaged or lost Neelam is considered a highly significant event in Vedic tradition — interpreted as the stone having absorbed a major negative karmic event that would otherwise have befallen the wearer. Do not attempt to
+                                repair or re-set a cracked stone for astrological use. Consult a Jyotishi immediately for the appropriate ritual response. Perform a Shani Shanti Puja. Replace with a new certified natural, unheated stone through a fresh
+                                consecration ceremony.</p>
+                            <span class="care-tip-note">Never continue wearing a cracked or chipped Neelam — it is considered the most inauspicious act in Vedic gem therapy.</span>
+                        </div>
+                    </div>
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="18" cy="18" r="14"/><path d="M12 18h12M18 12v12"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Removing Neelam Permanently</p>
+                            <p class="care-tip-text">If a Jyotishi advises discontinuing the stone, or if consistent negative effects are observed, removal must also follow protocol. Remove on a Saturday, ideally during a waning moon. Immerse the ring in flowing water (a river,
+                                ideally) or bury it in dark earth — traditional methods of returning Saturn's energy to its source. Never casually discard or gift a Neelam that has been worn; the energetic imprint of your Saturn placement remains in the
+                                stone.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Do's & Don'ts -->
+            <div class="care-panel" id="tab-donts">
+                <div class="care-dondont reveal">
+                    <div class="care-do">
+                        <p class="care-list-title">✦ Do's</p>
+                        <ul class="care-list">
+                            <li>Consult a qualified Jyotishi before wearing for the first time</li>
+                            <li>Perform the 3-day trial period before permanent wear</li>
+                            <li>Clean fortnightly with lukewarm water and mild soap</li>
+                            <li>Dry completely before storing each time</li>
+                            <li>Store in a dedicated blue velvet pouch or compartment</li>
+                            <li>Remove before swimming, gym, cooking, or manual labour</li>
+                            <li>Wear on the middle finger of the right hand in silver or panchdhatu</li>
+                            <li>Install on a Saturday during Shukla Paksha</li>
+                            <li>Perform monthly Panchamrit cleansing on Saturdays</li>
+                            <li>Schedule annual professional jeweller inspection</li>
+                            <li>Obtain GIA / GRS lab certification confirming unheated status</li>
+                            <li>Consult your Jyotishi if negative effects are felt within the first week</li>
+                        </ul>
+                    </div>
+                    <div class="care-dont">
+                        <p class="care-list-title">✦ Don'ts</p>
+                        <ul class="care-list">
+                            <li>Never wear without astrological consultation — risk of serious harm</li>
+                            <li>Do not skip the trial period under any circumstances</li>
+                            <li>Never use bleach, ammonia, chlorine, or abrasive cleaners</li>
+                            <li>Do not store with red/coral stones — inimical planetary energies</li>
+                            <li>Never sleep wearing the ring — prong damage and stone risk</li>
+                            <li>Do not use ultrasonic cleaners on fracture-filled or treated stones</li>
+                            <li>Never wear a cracked or chipped Neelam — highly inauspicious</li>
+                            <li>Do not gift a worn Neelam to another person without ritual clearing</li>
+                            <li>Never wear a heat-treated stone for astrological purposes</li>
+                            <li>Avoid wearing during certain inauspicious transits without guidance</li>
+                            <li>Do not wear perfume or chemicals before putting the ring on</li>
+                            <li>Never purchase without a lab certificate for astrological use</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ── FACT TABLE ─────────────────────────────────────── -->
+    <section class="table-section">
+        <div class="table-inner">
+            <div class="reveal">
+                <p class="section-label">Quick Reference</p>
+                <h2>Complete <em>Fact Sheet</em></h2>
+                <div class="divider"></div>
+            </div>
+            <table class="reveal">
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sanskrit Name</td>
+                        <td>Neelam / Nīla / Indranīla</td>
+                    </tr>
+                    <tr>
+                        <td>Mineral Species</td>
+                        <td>Corundum (Aluminium Oxide — Al₂O₃)</td>
+                    </tr>
+                    <tr>
+                        <td>Colour Agent</td>
+                        <td>Iron (Fe²⁺/Fe³⁺) and Titanium (Ti⁴⁺)</td>
+                    </tr>
+                    <tr>
+                        <td>Hardness (Mohs)</td>
+                        <td>9.0</td>
+                    </tr>
+                    <tr>
+                        <td>Specific Gravity</td>
+                        <td>3.99 – 4.01</td>
+                    </tr>
+                    <tr>
+                        <td>Refractive Index</td>
+                        <td>1.762 – 1.770 (birefringence 0.008)</td>
+                    </tr>
+                    <tr>
+                        <td>Crystal System</td>
+                        <td>Trigonal</td>
+                    </tr>
+                    <tr>
+                        <td>Cleavage</td>
+                        <td>None; conchoidal fracture</td>
+                    </tr>
+                    <tr>
+                        <td>Lustre</td>
+                        <td>Vitreous to adamantine</td>
+                    </tr>
+                    <tr>
+                        <td>Ideal Colour</td>
+                        <td>Vivid Royal Blue to Velvety Cornflower Blue</td>
+                    </tr>
+                    <tr>
+                        <td>Primary Origins</td>
+                        <td>Kashmir (finest), Sri Lanka, Myanmar, Madagascar, Australia</td>
+                    </tr>
+                    <tr>
+                        <td>Ruling Planet</td>
+                        <td>Saturn (Shani Dev)</td>
+                    </tr>
+                    <tr>
+                        <td>Zodiac Ascendants</td>
+                        <td>Capricorn (Makar), Aquarius (Kumbha)</td>
+                    </tr>
+                    <tr>
+                        <td>Recommended Finger</td>
+                        <td>Middle finger (Madhyamā), right hand</td>
+                    </tr>
+                    <tr>
+                        <td>Setting Metal</td>
+                        <td>Panchdhatu, Silver, White Gold, Platinum</td>
+                    </tr>
+                    <tr>
+                        <td>Auspicious Day</td>
+                        <td>Saturday (Shanivar), Shukla Paksha</td>
+                    </tr>
+                    <tr>
+                        <td>Trial Period</td>
+                        <td>3 days (under pillow / in cloth on body)</td>
+                    </tr>
+                    <tr>
+                        <td>Mantra</td>
+                        <td>Om Sham Shanishcharaya Namah (108 repetitions)</td>
+                    </tr>
+                    <tr>
+                        <td>Beej Mantra</td>
+                        <td>Om Pram Preem Praum Sah Shanaye Namah</td>
+                    </tr>
+                    <tr>
+                        <td>Treatment Status</td>
+                        <td>Unheated, no clarity enhancement — mandatory for astrological use</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ─────────────────────────────────────────── -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-brand">
+                <a class="nav-logo" href="#"><span>RATNA</span>VALI</a>
+                <p>A curated knowledge resource on Vedic gemstones, planetary stones, and the ancient science of Navaratna.</p>
+            </div>
+            <div class="footer-col">
+                <p class="footer-col-title">Knowledge Centre</p>
+                <ul>
+                    <li><a href="#">Yellow Sapphire (Pukhraj)</a></li>
+                    <li><a href="#">Blue Sapphire (Neelam)</a></li>
+                    <li><a href="#">Ruby (Manik)</a></li>
+                    <li><a href="#">Emerald (Panna)</a></li>
+                    <li><a href="#">Diamond (Heera)</a></li>
+                    <li><a href="#">Pearl (Moti)</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <p class="footer-col-title">Explore</p>
+                <ul>
+                    <li><a href="#">Navaratna Guide</a></li>
+                    <li><a href="#">Astrology &amp; Gems</a></li>
+                    <li><a href="#">Gemstone Grading</a></li>
+                    <li><a href="#">Lab Certification</a></li>
+                    <li><a href="#">About Ratnavali</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Ratnavali. For educational purposes only. Always consult a qualified Jyotishi before wearing Blue Sapphire.</p>
+            <p>Crafted with reverence in India &nbsp;·&nbsp; <a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Disclaimer</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Care tab switcher
+        function showCareTab(id) {
+            document.querySelectorAll('.care-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.care-tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('tab-' + id).classList.add('active');
+            event.currentTarget.classList.add('active');
+            document.querySelectorAll('#tab-' + id + ' .reveal').forEach(el => {
+                el.classList.remove('visible');
+                setTimeout(() => observer.observe(el), 50);
+            });
+        }
+    </script>
+</body>
+
+</html>

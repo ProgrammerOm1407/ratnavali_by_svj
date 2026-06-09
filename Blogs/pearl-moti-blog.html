@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pearl (Moti) — Ratnavali Knowledge Centre</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --pearl:        #E8E8E8;
+      --pearl-light:  #F5F5F5;
+      --pearl-dim:    #C0C0C0;
+      --pearl-deep:   #A8A8A8;
+      --silver:       #F0F8FF;
+      --silver-dim:   #B8C5D6;
+      --cream:        #FEFDFB;
+      --deep:         #0F0E0D;
+      --dark:         #1A1918;
+      --dark-mid:     #252321;
+      --dark-card:    #1F1D1C;
+      --text-muted:   #8A8985;
+      --text-body:    #B5B0A8;
+      --border:       rgba(232,232,232,0.15);
+      --border-s:     rgba(240,248,255,0.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--deep);
+      color: var(--text-body);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 60px;
+      background: rgba(15,14,13,0.93);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem; letter-spacing: 0.18em;
+      color: var(--pearl-light); text-decoration: none;
+    }
+    .nav-logo span { color: var(--cream); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-family: 'Raleway', sans-serif; font-size: 0.72rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--pearl-light); }
+    .nav-badge {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.12em; color: var(--cream);
+      background: var(--pearl-deep); padding: 6px 16px;
+      border: 1px solid var(--pearl); border-radius: 2px;
+    }
+
+    /* ── HERO ────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+      padding: 140px 60px 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 70% at 72% 50%, rgba(200,200,210,0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 15% 75%, rgba(232,232,232,0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 40% at 50% 10%, rgba(160,160,170,0.08) 0%, transparent 60%),
+        linear-gradient(150deg, #0F0E0D 0%, #1B1918 50%, #0F0E0D 100%);
+    }
+    .hero-grain {
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      opacity: 0.5; pointer-events: none;
+    }
+    .hero-stars {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        radial-gradient(1px 1px at 10% 20%, rgba(245,245,245,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 25% 60%, rgba(240,248,255,0.3) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 40% 15%, rgba(245,245,245,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 80%, rgba(232,232,232,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 75% 35%, rgba(240,248,255,0.3) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 85% 65%, rgba(245,245,245,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 92% 20%, rgba(232,232,232,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 5%  85%, rgba(240,248,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 45%, rgba(245,245,245,0.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 90%, rgba(232,232,232,0.35) 0%, transparent 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 580px;
+      animation: fadeUp 1.2s ease both;
+    }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem; letter-spacing: 0.35em;
+      color: var(--pearl-light); text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 40px; height: 1px; background: var(--pearl-dim);
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300; line-height: 1.08;
+      color: var(--cream); margin-bottom: 12px;
+    }
+    h1 em { font-style: italic; color: var(--pearl-light); display: block; }
+    .hero-tagline {
+      font-family: 'Cinzel', serif; font-size: 0.7rem;
+      letter-spacing: 0.3em; color: var(--pearl-dim);
+      text-transform: uppercase; margin-bottom: 28px;
+    }
+    .hero-desc {
+      font-size: 1rem; color: var(--text-body);
+      max-width: 440px; margin-bottom: 44px;
+      border-left: 2px solid var(--pearl-dim); padding-left: 20px;
+    }
+    .hero-warning {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: rgba(232,232,232,0.06);
+      border: 1px solid rgba(232,232,232,0.2);
+      padding: 16px 20px; margin-bottom: 36px;
+      max-width: 460px;
+    }
+    .hero-warning-icon { color: var(--pearl-light); flex-shrink: 0; margin-top: 2px; }
+    .hero-warning-text { font-size: 0.78rem; line-height: 1.6; color: var(--text-body); }
+    .hero-warning-text strong { color: var(--pearl-light); font-weight: 500; }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: 'Cinzel', serif; font-size: 0.7rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--cream); background: var(--pearl-deep);
+      border: 1px solid var(--pearl);
+      padding: 14px 32px; text-decoration: none;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .hero-cta:hover { background: var(--pearl-dim); border-color: var(--pearl-light); }
+    .hero-cta svg { width: 14px; height: 14px; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── BENEFITS ────────────────────────── */
+    .benefits {
+      position: relative; padding: 140px 60px;
+      background: linear-gradient(180deg, rgba(15,14,13,0.4) 0%, rgba(31,29,28,0.6) 100%);
+    }
+    .benefits-inner { max-width: 1000px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.2em; color: var(--pearl-dim);
+      text-transform: uppercase; margin-bottom: 16px;
+      display: inline-block;
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 300; line-height: 1.1; margin-bottom: 8px;
+    }
+    h2 em { font-style: italic; color: var(--pearl-light); }
+    .divider {
+      width: 60px; height: 2px;
+      background: linear-gradient(90deg, var(--pearl-dim), transparent);
+      margin: 28px 0 48px;
+    }
+    .benefit-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 36px; margin-top: 40px;
+    }
+    .benefit-card {
+      background: rgba(31,29,28,0.6);
+      border: 1px solid var(--border);
+      padding: 36px; border-radius: 8px;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+      opacity: 0; transform: translateY(30px);
+    }
+    .benefit-card.visible {
+      opacity: 1; transform: translateY(0);
+    }
+    .benefit-card:hover {
+      background: rgba(37,35,33,0.8);
+      border-color: var(--border-s);
+      transform: translateY(-12px);
+    }
+    .benefit-icon {
+      width: 56px; height: 56px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(232,232,232,0.08);
+      border: 1px solid var(--border-s);
+      border-radius: 6px;
+      color: var(--pearl-light);
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+    .benefit-title {
+      font-family: 'Cinzel', serif; font-size: 1rem;
+      letter-spacing: 0.08em; color: var(--cream);
+      margin-bottom: 12px; text-transform: uppercase;
+    }
+    .benefit-desc {
+      font-size: 0.88rem; line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    /* ── CHARACTERISTICS ───────────────── */
+    .characteristics {
+      position: relative; padding: 140px 60px;
+    }
+    .characteristics-inner { max-width: 1200px; margin: 0 auto; }
+    .char-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px; margin-top: 40px;
+    }
+    .char-item {
+      background: rgba(31,29,28,0.6);
+      border: 1px solid var(--border);
+      padding: 24px; border-radius: 6px;
+      opacity: 0; transform: translateY(20px);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+    .char-item.visible { opacity: 1; transform: translateY(0); }
+    .char-item:hover {
+      background: rgba(37,35,33,0.8);
+      border-color: var(--border-s);
+    }
+    .char-label {
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      letter-spacing: 0.15em; color: var(--pearl-dim);
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .char-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; color: var(--cream); line-height: 1.4;
+    }
+
+    /* ── CARE SECTION ─────────────────────── */
+    .care-section {
+      position: relative; padding: 140px 60px;
+      background: linear-gradient(180deg, rgba(15,14,13,0.4) 0%, rgba(31,29,28,0.6) 100%);
+    }
+    .care-inner { max-width: 1000px; margin: 0 auto; }
+    .care-tabs {
+      display: flex; gap: 16px; margin: 40px 0; border-bottom: 1px solid var(--border);
+    }
+    .care-tab-btn {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--text-muted); background: none; border: none;
+      padding: 16px 24px; border-bottom: 2px solid transparent;
+      cursor: pointer; transition: all 0.3s;
+    }
+    .care-tab-btn:hover { color: var(--pearl-light); }
+    .care-tab-btn.active {
+      color: var(--pearl-light);
+      border-bottom-color: var(--pearl-light);
+    }
+    .care-panel {
+      display: none; opacity: 0; animation: fadeUp 0.6s ease;
+    }
+    .care-panel.active { display: block; opacity: 1; }
+    .care-tip {
+      background: rgba(31,29,28,0.6);
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 32px; margin-bottom: 24px;
+      display: flex; gap: 24px;
+      opacity: 0; transform: translateY(20px);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+    .care-tip.visible { opacity: 1; transform: translateY(0); }
+    .care-tip-icon {
+      width: 36px; height: 36px;
+      color: var(--pearl-light); flex-shrink: 0;
+    }
+    .care-tip-body { flex: 1; }
+    .care-tip-title {
+      font-family: 'Cinzel', serif; font-size: 0.85rem;
+      letter-spacing: 0.1em; color: var(--cream);
+      text-transform: uppercase; margin-bottom: 12px;
+    }
+    .care-tip-text {
+      font-size: 0.88rem; line-height: 1.7; color: var(--text-body);
+      margin-bottom: 12px;
+    }
+    .care-tip-note {
+      font-size: 0.78rem; color: var(--text-muted);
+      display: block; margin-top: 12px; padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .care-dondont {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 36px;
+    }
+    .care-do, .care-dont { padding: 32px; background: rgba(31,29,28,0.6);
+      border: 1px solid var(--border); border-radius: 8px;
+    }
+    .care-list-title {
+      font-family: 'Cinzel', serif; font-size: 0.8rem;
+      letter-spacing: 0.15em; color: var(--cream);
+      text-transform: uppercase; margin-bottom: 20px;
+    }
+    .care-list { list-style: none; }
+    .care-list li {
+      font-size: 0.85rem; line-height: 1.8;
+      color: var(--text-body); margin-bottom: 12px;
+      padding-left: 20px; position: relative;
+    }
+    .care-list li::before {
+      content: '–'; position: absolute; left: 0;
+      color: var(--pearl-dim);
+    }
+
+    /* ── TABLE SECTION ────────────────────── */
+    .table-section {
+      position: relative; padding: 140px 60px;
+    }
+    .table-inner { max-width: 1200px; margin: 0 auto; }
+    table {
+      width: 100%; margin-top: 40px;
+      border-collapse: collapse;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    table.visible { opacity: 1; }
+    thead {
+      background: rgba(31,29,28,0.8);
+      border-bottom: 2px solid var(--border);
+    }
+    th {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--pearl-light); padding: 20px; text-align: left;
+    }
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:hover { background: rgba(31,29,28,0.4); }
+    td {
+      padding: 18px 20px; font-size: 0.88rem;
+      color: var(--text-body); line-height: 1.6;
+    }
+    td:first-child {
+      font-family: 'Cinzel', serif; font-size: 0.78rem;
+      letter-spacing: 0.08em; color: var(--cream);
+      text-transform: uppercase; font-weight: 500;
+    }
+
+    /* ── FOOTER ──────────────────────────── */
+    footer {
+      background: rgba(10,9,8,0.8);
+      border-top: 1px solid var(--border);
+      padding: 60px; color: var(--text-muted);
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px; max-width: 1200px; margin: 0 auto;
+      margin-bottom: 60px; padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.7; margin-top: 16px; }
+    .footer-col-title {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.12em; color: var(--cream);
+      text-transform: uppercase; margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 12px; }
+    .footer-col a {
+      font-size: 0.85rem; color: var(--text-muted);
+      text-decoration: none; transition: color 0.3s;
+    }
+    .footer-col a:hover { color: var(--pearl-light); }
+    .footer-bottom {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.78rem;
+    }
+    .footer-bottom p:last-child { text-align: right; }
+    .footer-bottom a { color: var(--text-muted); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--pearl-light); }
+
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      .hero { padding: 120px 20px 60px; }
+      .benefits, .characteristics, .care-section, .table-section { padding: 80px 20px; }
+      .footer-top { grid-template-columns: 1fr; gap: 40px; }
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .footer-bottom p:last-child { text-align: center; }
+      .care-dondont { grid-template-columns: 1fr; }
+      .char-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+    }
+
+    .reveal { opacity: 0; }
+    .reveal.visible { opacity: 1; }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ──────────────────────── -->
+<nav>
+  <a class="nav-logo" href="#"><span>RATNA</span>VALI</a>
+  <ul class="nav-links">
+    <li><a href="#">Knowledge</a></li>
+    <li><a href="#" class="active">Pearl</a></li>
+    <li><a href="#">Navaratna</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <a class="nav-badge" href="#">CONSULT A JYOTISHI</a>
+</nav>
+
+<!-- ── HERO ────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-stars"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Gemstone of the Moon</p>
+    <h1>Pearl <em>Moti</em></h1>
+    <p class="hero-tagline">The Luminous Jewel of Mental Clarity and Emotional Balance</p>
+
+    <p class="hero-desc">Pearl is the most delicate and mystical of all Vedic gemstones — born from the depths of the ocean, refined within oyster shells through centuries of patient transformation. In Vedic astrology, Pearl resonates with the Moon, the celestial body governing the mind, emotions, and the subtle rhythms of consciousness. Wear this luminous gem to calm the mind, strengthen emotional equilibrium, and harmonize lunar energies within the body.</p>
+
+    <div class="hero-warning">
+      <svg class="hero-warning-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+        <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+      </svg>
+      <div class="hero-warning-text">
+        <strong>Important:</strong> Pearl is extremely delicate and absorbent. Consult a qualified Jyotishi before wearing. Wear only certified natural pearls with GIA/IGI certification.
+      </div>
+    </div>
+
+    <a href="#" class="hero-cta">
+      Explore Pearl Guide
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<!-- ── BENEFITS ────────────────────────── -->
+<section class="benefits">
+  <div class="benefits-inner">
+    <div class="reveal">
+      <p class="section-label">Vedic Properties</p>
+      <h2>Benefits of <em>Pearl</em></h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="benefit-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🌙</div>
+        <div class="benefit-title">Mental Clarity</div>
+        <p class="benefit-desc">Pearl strengthens the Moon's benevolent influence on the mind, dispelling confusion, anxiety, and overthinking. Enhances focus, memory, and decisiveness.</p>
+      </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">💫</div>
+        <div class="benefit-title">Emotional Balance</div>
+        <p class="benefit-desc">Calms turbulent emotions and promotes emotional stability. Pearl helps regulate mood swings, irritability, and emotional reactivity caused by Moon imbalance.</p>
+      </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">✨</div>
+        <div class="benefit-title">Intuition & Creativity</div>
+        <p class="benefit-desc">Awakens intuitive faculties and heightens creative expression. Pearl enhances the connection to the subconscious mind and artistic inspiration.</p>
+      </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🛡️</div>
+        <div class="benefit-title">Physical Wellness</div>
+        <p class="benefit-desc">Supports the nervous system, improves digestion, and promotes hormonal balance. Pearl is traditionally believed to strengthen the lymphatic system.</p>
+      </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🌊</div>
+        <div class="benefit-title">Relationships & Love</div>
+        <p class="benefit-desc">Pearl enhances compassion, empathy, and emotional connection in relationships. Promotes harmony and deeper understanding between loved ones.</p>
+      </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🌌</div>
+        <div class="benefit-title">Spiritual Growth</div>
+        <p class="benefit-desc">Facilitates meditation, introspection, and spiritual development. Pearl deepens the connection between conscious and subconscious realms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CHARACTERISTICS ───────────────── -->
+<section class="characteristics">
+  <div class="characteristics-inner">
+    <div class="reveal">
+      <p class="section-label">Gemstone Profile</p>
+      <h2>Pearl <em>Characteristics</em></h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="char-grid">
+      <div class="char-item reveal">
+        <p class="char-label">Ruling Planet</p>
+        <p class="char-value">Moon (Chandra)</p>
+      </div>
+      <div class="char-item reveal">
+        <p class="char-label">Zodiac Ascendants</p>
+        <p class="char-value">Cancer (Karka), Pisces (Meen)</p>
+      </div>
+      <div class="char-item reveal">
+        <p class="char-label">Associated Metal</p>
+        <p class="char-value">Silver (preferred), White Gold</p>
+      </div>
+      <div class="char-item reveal">
+        <p class="char-label">Auspicious Day</p>
+        <p class="char-value">Monday (Somvar), Shukla Paksha</p>
+      </div>
+      <div class="char-item reveal">
+        <p class="char-label">Finger Placement</p>
+        <p class="char-value">Little Finger (Kanishtha), Right Hand</p>
+      </div>
+      <div class="char-item reveal">
+        <p class="char-label">Carat Weight</p>
+        <p class="char-value">4-6 carats (minimum)</p>
+      </div>
+      <div class="char-item reveal">
+        <p class="char-label">Ideal Lustre</p>
+        <p class="char-value">Soft, luminous, iridescent glow</p>
+      </div>
+      <div class="char-item reveal">
+        <p class="char-label">Origin (Best)</p>
+        <p class="char-value">South Sea, Tahitian, Akoya</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CARE SECTION ────────────────────── -->
+<section class="care-section">
+  <div class="care-inner">
+    <div class="reveal">
+      <p class="section-label">Precious Care</p>
+      <h2>Caring for <em>Pearl</em></h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="care-tabs">
+      <button class="care-tab-btn active" onclick="showCareTab('cleaning')">Cleaning</button>
+      <button class="care-tab-btn" onclick="showCareTab('storage')">Storage</button>
+      <button class="care-tab-btn" onclick="showCareTab('damage')">Damage</button>
+      <button class="care-tab-btn" onclick="showCareTab('donts')">Do's & Don'ts</button>
+    </div>
+
+    <!-- Cleaning -->
+    <div class="care-panel active" id="tab-cleaning">
+      <div class="care-tip reveal">
+        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M9 18c0-4.97 4.03-9 9-9s9 4.03 9 9"/><path d="M18 27v-6"/>
+        </svg>
+        <div class="care-tip-body">
+          <p class="care-tip-title">Gentle Monthly Cleansing</p>
+          <p class="care-tip-text">Pearl is exceptionally delicate and absorbent — never use commercial jewelry cleaners, ultrasonic devices, or steam cleaners as they will permanently damage the nacre (mother-of-pearl coating). Instead, once per month, use only lukewarm distilled water and a soft, lint-free microfiber cloth. Wipe gently in circular motions and dry immediately. The safest approach: after each wear, simply wipe the pearl with a clean, dry, soft cloth to remove body oils and perspiration.</p>
+          <span class="care-tip-note">Never soak Pearl in water. Never use ultrasonic or steam cleaning. Risk of permanent nacre destruction.</span>
+        </div>
+      </div>
+
+      <div class="care-tip reveal">
+        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="18" cy="18" r="14"/><path d="M12 15h12v6H12z"/>
+        </svg>
+        <div class="care-tip-body">
+          <p class="care-tip-title">Milk or Honey Bath (Traditional)</p>
+          <p class="care-tip-text">In Vedic tradition, Pearl may be gently cleansed using organic whole milk or raw honey. Soak a soft cloth in milk or honey, wipe the pearl gently, and immediately rinse with barely damp distilled water, then dry. This traditional method is considered auspicious — milk is associated with lunar energy and gentleness, while honey is believed to restore the pearl's natural luminosity. Perform this cleansing on Mondays during Shukla Paksha for maximum auspiciousness.</p>
+          <span class="care-tip-note">Traditional method only. Use organic, unpasteurized milk or raw honey. Rinse immediately with distilled water.</span>
+        </div>
+      </div>
+
+      <div class="care-tip reveal">
+        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M12 24h12v-8H12z"/><path d="M18 12v4"/>
+        </svg>
+        <div class="care-tip-body">
+          <p class="care-tip-title">What to Never Use</p>
+          <p class="care-tip-text">Absolutely avoid: chlorine, saltwater, perfume, cosmetics, lotions, hairspray, alcohol, acetone, acidic cleaners, abrasive cloths, and any commercial jewelry cleaning solutions. Pearl's nacre is an organic calcium carbonate compound — acids and harsh chemicals dissolve it irreversibly. All these substances will dull the lustre, weaken the structure, and shorten the pearl's lifespan significantly.</p>
+          <span class="care-tip-note">Severity cannot be overstated: one exposure to harsh chemicals can permanently degrade a pearl.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Storage -->
+    <div class="care-panel" id="tab-storage">
+      <div class="care-tip reveal">
+        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <rect x="8" y="10" width="20" height="16" rx="2"/><path d="M14 16h8M14 22h4"/>
+        </svg>
+        <div class="care-tip-body">
+          <p class="care-tip-title">Dedicated Storage Pouch</p>
+          <p class="care-tip-text">Always store Pearl in a separate, dedicated silk or white velvet pouch — never combined with other gemstones, metals, or jewelry. Pearl is softer than diamonds and sapphires; storing it alongside harder stones will inevitably result in scratches and surface degradation. The pouch should be soft-lined, breathable, and kept in a cool, dry location away from direct sunlight, heat sources, and extreme temperature fluctuations.</p>
+          <span class="care-tip-note">Separate storage is non-negotiable. Pearl scratches easily — protect it from friction with harder materials.</span>
+        </div>
+      </div>
+
+      <div class="care-tip reveal">
+        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="18" cy="18" r="14"/><path d="M10 20h16M13 18h10"/>
+        </svg>
+        <div class="care-tip-body">
+          <p class="care-tip-title">Climate & Environmental Conditions</p>
+          <p class="care-tip-text">Pearl thrives in moderate humidity (45–55%) and stable temperature. Extremely dry air will cause the pearl to shrink, crack, and become brittle. Excessive moisture promotes nacre deterioration and mold growth. Avoid storing Pearl in safety deposit boxes (too dry) or bathrooms (too humid). Ideal storage is a drawer in a naturally climate-controlled bedroom — cool, dark, and moderately humid.</p>
+          <span class="care-tip-note">Humidity and temperature stability are critical. Pearl is a living organic gem that requires environmental respect.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Damage -->
+    <div class="care-panel" id="tab-damage">
+      <div class="care-tip reveal">
+        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M10 26h16"/><path d="M14 10l-2 12h12l-2-12z"/>
+        </svg>
+        <div class="care-tip-body">
+          <p class="care-tip-title">A Damaged or Dulled Pearl</p>
+          <p class="care-tip-text">If a Pearl becomes scratched, cracked, or develops a dull, chalky appearance, it signals significant lunar imbalance within the wearer's subtle body. A damaged or dulled pearl should be discontinued immediately and replaced with a fresh, natural certified pearl. In Vedic tradition, a worn or damaged pearl is believed to have absorbed negative planetary influences or emotional disturbances from the wearer. Do not continue wearing it for astrological purposes. Consult a Jyotishi for guidance on rituals before replacement. Perform a Moon worship (Chandra Puja) with fresh flowers, milk offerings, and the Chandra mantra to re-establish lunar harmony.</p>
+          <span class="care-tip-note">A damaged Pearl indicates significant lunar imbalance — discontinue use and perform Chandra Puja before replacement.</span>
+        </div>
+      </div>
+
+      <div class="care-tip reveal">
+        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="18" cy="18" r="14"/><path d="M12 18h12M18 12v12"/>
+        </svg>
+        <div class="care-tip-body">
+          <p class="care-tip-title">Removing Pearl Permanently</p>
+          <p class="care-tip-text">If a Jyotishi advises discontinuing the pearl, or if depression, emotional overwhelm, or sleep disturbances persist after wearing, removal must follow protocol. Remove the pearl on a Monday at sunrise. Immerse it briefly in a flowing river or natural water source — returning the Moon's energy to the ocean. Alternatively, bury it in white earth near a temple of Shiva or a sacred water source. Never casually discard or gift a worn pearl; the wearer's lunar imprint is considered strongly embedded in a worn stone.</p>
+          <span class="care-tip-note">Ritual removal respects the pearl's absorbed energies. Follow proper protocol to avoid karmic complications.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Do's & Don'ts -->
+    <div class="care-panel" id="tab-donts">
+      <div class="care-dondont reveal">
+        <div class="care-do">
+          <p class="care-list-title">✦ Do's</p>
+          <ul class="care-list">
+            <li>Consult a qualified Jyotishi before wearing for the first time</li>
+            <li>Wear on the little finger (Kanishtha) of the right hand in silver</li>
+            <li>Install on a Monday during Shukla Paksha at sunrise Moon hora</li>
+            <li>Apply perfumes, creams, and sunscreen before wearing the ring</li>
+            <li>Wipe gently with a soft, dry cloth after each wear</li>
+            <li>Cleanse monthly with distilled water and microfiber cloth only</li>
+            <li>Store in a dedicated white or cream silk pouch separately from all other gems</li>
+            <li>Perform monthly Moon meditation on Mondays with white flowers</li>
+            <li>Honour the stone each Monday with the Chandra mantra</li>
+            <li>Obtain GIA / IGI lab certification confirming natural pearl, untreated</li>
+            <li>Remove before swimming, gym, cooking, rain, or any chemical exposure</li>
+            <li>Schedule annual professional jeweller inspection and lustre assessment</li>
+          </ul>
+        </div>
+        <div class="care-dont">
+          <p class="care-list-title">✦ Don'ts</p>
+          <ul class="care-list">
+            <li>Never wear without astrological consultation first</li>
+            <li>Do not wear alongside Red Coral (Moonga) — Mars and Moon are enemies in some configurations</li>
+            <li>Do not wear alongside Ruby (Manik) without Jyotishi guidance</li>
+            <li>Never use ultrasonic or steam cleaning — will permanently destroy nacre</li>
+            <li>Never use soap, bleach, alcohol, acetone, or any chemical cleaner</li>
+            <li>Never soak or immerse in water for extended periods</li>
+            <li>Never wear while swimming — saltwater and chlorine destroy nacre</li>
+            <li>Never sleep wearing the ring — stress and friction risk</li>
+            <li>Do not expose to direct strong sunlight for extended periods — lustre fades</li>
+            <li>Never store with any harder gemstone — all will scratch pearl</li>
+            <li>Never continue wearing a scratched, cracked, or dulled pearl</li>
+            <li>Do not gift a worn pearl without proper ritual clearing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FACT TABLE ─────────────────────────────────────── -->
+<section class="table-section">
+  <div class="table-inner">
+    <div class="reveal">
+      <p class="section-label">Quick Reference</p>
+      <h2>Complete <em>Fact Sheet</em></h2>
+      <div class="divider"></div>
+    </div>
+    <table class="reveal">
+      <thead>
+        <tr><th>Property</th><th>Detail</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sanskrit Name</td><td>Moti / Mukta / Chandramani</td></tr>
+        <tr><td>Material Type</td><td>Organic (Calcium Carbonate — CaCO₃, nacre secreted by mollusks)</td></tr>
+        <tr><td>Formation</td><td>Formed when an irritant lodges inside an oyster or mussel; nacre is secreted layer-by-layer</td></tr>
+        <tr><td>Colour Agent</td><td>Aragonite (nacre) with trace minerals producing iridescence and lustre</td></tr>
+        <tr><td>Hardness (Mohs)</td><td>2.5 – 4.5 (extremely soft — softest of all Vedic gemstones)</td></tr>
+        <tr><td>Specific Gravity</td><td>2.60 – 2.85</td></tr>
+        <tr><td>Refractive Index</td><td>1.52 – 1.66</td></tr>
+        <tr><td>Crystal System</td><td>None (organic, amorphous)</td></tr>
+        <tr><td>Cleavage</td><td>None; fracture is conchoidal</td></tr>
+        <tr><td>Lustre</td><td>Characteristic pearlescent glow; soft, luminous, and iridescent</td></tr>
+        <tr><td>Ideal Colour</td><td>White, cream, soft silver with warm body tone — lustrous and glowing</td></tr>
+        <tr><td>Primary Origins</td><td>South Sea (Australia, Indonesia), Tahitian (Black pearls), Akoya (Japan), Freshwater (China)</td></tr>
+        <tr><td>Ruling Planet</td><td>Moon (Chandra Dev)</td></tr>
+        <tr><td>Zodiac Ascendants</td><td>Cancer (Karka) and Pisces (Meen) primary; also for emotional stability</td></tr>
+        <tr><td>Recommended Finger</td><td>Little finger (Kanishtha), right hand</td></tr>
+        <tr><td>Setting Metal</td><td>Silver (preferred), white gold, platinum</td></tr>
+        <tr><td>Auspicious Day</td><td>Monday (Somvar), Shukla Paksha, sunrise Moon hora</td></tr>
+        <tr><td>Mantra</td><td>Om Chandramase Namah (108 repetitions)</td></tr>
+        <tr><td>Beej Mantra</td><td>Om Shraam Shreem Shraum Sah Chandramase Namah</td></tr>
+        <tr><td>Incompatible Stones</td><td>Generally compatible with all stones, though caution with Red Coral (Moonga) in certain configurations</td></tr>
+        <tr><td>Treatment Status</td><td>Must be natural pearl — no bleaching, dyeing, or coating. GIA/IGI certification confirming natural pearl with only surface treatment is acceptable.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a class="nav-logo" href="#"><span>RATNA</span>VALI</a>
+      <p>A curated knowledge resource on Vedic gemstones, planetary stones, and the ancient science of Navaratna.</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Knowledge Centre</p>
+      <ul>
+        <li><a href="#">Yellow Sapphire (Pukhraj)</a></li>
+        <li><a href="#">Blue Sapphire (Neelam)</a></li>
+        <li><a href="#">Ruby (Manik)</a></li>
+        <li><a href="#">Emerald (Panna)</a></li>
+        <li><a href="#">Red Coral (Moonga)</a></li>
+        <li><a href="#">Pearl (Moti)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Explore</p>
+      <ul>
+        <li><a href="#">Navaratna Guide</a></li>
+        <li><a href="#">Astrology &amp; Gems</a></li>
+        <li><a href="#">Gemstone Grading</a></li>
+        <li><a href="#">Lab Certification</a></li>
+        <li><a href="#">About Ratnavali</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Ratnavali. For educational purposes only. Always consult a qualified Jyotishi before wearing Pearl.</p>
+    <p>Crafted with reverence in India &nbsp;·&nbsp; <a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Disclaimer</a></p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  function showCareTab(id) {
+    document.querySelectorAll('.care-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.care-tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    document.querySelectorAll('#tab-' + id + ' .reveal').forEach(el => {
+      el.classList.remove('visible');
+      setTimeout(() => observer.observe(el), 50);
+    });
+  }
+</script>
+</body>
+</html>

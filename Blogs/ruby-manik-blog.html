@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ruby (Manik) — Ratnavali Knowledge Centre</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --red:        #BF4A4A;
+      --red-light:  #DD7A7A;
+      --red-dim:    #7A2A2A;
+      --red-deep:   #581A1A;
+      --silver:     #E8D0D0;
+      --silver-dim: #A87A7A;
+      --cream:      #F5ECEC;
+      --deep:       #080404;
+      --dark:       #120808;
+      --dark-mid:   #200D0D;
+      --dark-card:  #180A0A;
+      --text-muted: #A06060;
+      --text-body:  #D0A8A8;
+      --border:     rgba(191,74,74,0.2);
+      --border-s:   rgba(232,208,208,0.1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--deep);
+      color: var(--text-body);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 60px;
+      background: rgba(8,4,4,0.93);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem; letter-spacing: 0.18em;
+      color: var(--red-light); text-decoration: none;
+    }
+    .nav-logo span { color: var(--cream); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-family: 'Raleway', sans-serif; font-size: 0.72rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--red-light); }
+    .nav-badge {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.12em; color: var(--cream);
+      background: var(--red-deep); padding: 6px 16px;
+      border: 1px solid var(--red); border-radius: 2px;
+    }
+
+    /* ── HERO ────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+      padding: 140px 60px 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 70% at 72% 50%, rgba(140,30,30,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 15% 75%, rgba(191,74,74,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 40% at 50% 10%, rgba(90,20,20,0.12) 0%, transparent 60%),
+        linear-gradient(150deg, #080404 0%, #0F0606 50%, #080404 100%);
+    }
+    .hero-grain {
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      opacity: 0.5; pointer-events: none;
+    }
+    .hero-stars {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        radial-gradient(1px 1px at 10% 20%, rgba(232,208,208,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 25% 60%, rgba(232,208,208,0.3) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 40% 15%, rgba(232,208,208,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 80%, rgba(232,208,208,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 75% 35%, rgba(232,208,208,0.3) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 85% 65%, rgba(232,208,208,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 92% 20%, rgba(232,208,208,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 5%  85%, rgba(232,208,208,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 45%, rgba(232,208,208,0.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 90%, rgba(232,208,208,0.35) 0%, transparent 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 580px;
+      animation: fadeUp 1.2s ease both;
+    }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem; letter-spacing: 0.35em;
+      color: var(--red-light); text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 40px; height: 1px; background: var(--red-dim);
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300; line-height: 1.08;
+      color: var(--cream); margin-bottom: 12px;
+    }
+    h1 em { font-style: italic; color: var(--red-light); display: block; }
+    .hero-tagline {
+      font-family: 'Cinzel', serif; font-size: 0.7rem;
+      letter-spacing: 0.3em; color: var(--red-dim);
+      text-transform: uppercase; margin-bottom: 28px;
+    }
+    .hero-desc {
+      font-size: 1rem; color: var(--text-body);
+      max-width: 440px; margin-bottom: 44px;
+      border-left: 2px solid var(--red-dim); padding-left: 20px;
+    }
+    .hero-warning {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: rgba(191,74,74,0.08);
+      border: 1px solid rgba(191,74,74,0.3);
+      padding: 16px 20px; margin-bottom: 36px;
+      max-width: 460px;
+    }
+    .hero-warning-icon { color: var(--red-light); flex-shrink: 0; margin-top: 2px; }
+    .hero-warning-text {
+      font-size: 0.78rem; line-height: 1.6;
+      color: var(--text-body);
+    }
+    .hero-warning-text strong { color: var(--red-light); font-weight: 500; }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: 'Cinzel', serif; font-size: 0.7rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--cream); background: var(--red-deep);
+      border: 1px solid var(--red);
+      padding: 14px 32px; text-decoration: none;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .hero-cta:hover { background: var(--red-dim); border-color: var(--red-light); }
+    .hero-cta svg { width: 14px; height: 14px; }
+
+    /* Hero gem */
+    .hero-gem {
+      position: absolute; right: 7%; top: 50%;
+      transform: translateY(-50%);
+      width: 440px; height: 440px;
+      animation: fadeUp 1.4s 0.3s ease both, float 7s ease-in-out infinite 1.7s;
+    }
+    .gem-glow {
+      position: absolute; inset: -80px;
+      background: radial-gradient(ellipse, rgba(180,40,40,0.22) 0%, transparent 70%);
+      border-radius: 50%; animation: pulse-glow 5s ease-in-out infinite;
+    }
+
+    /* Scroll hint */
+    .scroll-hint {
+      position: absolute; bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      font-family: 'Cinzel', serif; font-size: 0.55rem;
+      letter-spacing: 0.3em; color: var(--red-dim);
+      text-transform: uppercase;
+    }
+    .scroll-hint-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(180deg, var(--red-dim), transparent);
+      animation: scroll-drop 2s ease-in-out infinite;
+    }
+
+    /* ── SECTION COMMONS ─────────────────── */
+    section { padding: 100px 60px; }
+    .section-label {
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      letter-spacing: 0.35em; color: var(--red-light);
+      text-transform: uppercase; margin-bottom: 14px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .section-label::before {
+      content: ''; display: block;
+      width: 30px; height: 1px; background: var(--red-dim);
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 300; color: var(--cream);
+      line-height: 1.15; margin-bottom: 20px;
+    }
+    h2 em { font-style: italic; color: var(--red-light); }
+    .divider {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, var(--red), transparent);
+      margin-bottom: 40px;
+    }
+
+    /* ── CAUTION BANNER ──────────────────── */
+    .caution-banner {
+      background: linear-gradient(135deg, rgba(90,20,20,0.6), rgba(50,10,10,0.8));
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 40px 60px;
+    }
+    .caution-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; gap: 32px;
+    }
+    .caution-icon {
+      flex-shrink: 0; width: 56px; height: 56px; color: var(--red-light);
+    }
+    .caution-text h3 {
+      font-family: 'Cinzel', serif; font-size: 0.8rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 6px;
+    }
+    .caution-text p { font-size: 0.88rem; line-height: 1.7; }
+    .caution-text p strong { color: var(--red-light); }
+
+    /* ── ABOUT ───────────────────────────── */
+    .about-section { background: var(--dark); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start; max-width: 1100px; margin: 0 auto;
+    }
+    .about-prose p { margin-bottom: 20px; font-size: 0.95rem; }
+    .about-prose p:first-child { font-size: 1.1rem; color: var(--cream); }
+
+    .props-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+      border: 1px solid var(--border);
+    }
+    .prop-item {
+      padding: 22px 24px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .prop-item:nth-child(even) { border-right: none; }
+    .prop-item:last-child, .prop-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+    .prop-item:hover { background: rgba(191,74,74,0.05); }
+    .prop-label {
+      font-family: 'Cinzel', serif; font-size: 0.58rem;
+      letter-spacing: 0.25em; color: var(--red-light);
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .prop-value { font-size: 0.88rem; color: var(--cream); }
+
+    /* ── WARNING SECTION ─────────────────── */
+    .warn-section { background: var(--dark-mid); }
+    .warn-inner { max-width: 1100px; margin: 0 auto; }
+    .warn-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px;
+    }
+    .warn-card {
+      background: var(--dark-card); border: 1px solid var(--border);
+      padding: 32px; position: relative; overflow: hidden;
+      transition: border-color 0.4s, transform 0.3s;
+    }
+    .warn-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .warn-card:hover { border-color: rgba(191,74,74,0.5); transform: translateY(-4px); }
+    .warn-card:hover::before { opacity: 1; }
+    .warn-card-icon { width: 40px; height: 40px; color: var(--red-light); margin-bottom: 18px; }
+    .warn-card-title {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 12px;
+    }
+    .warn-card-text { font-size: 0.84rem; line-height: 1.7; }
+
+    /* ── BENEFITS ────────────────────────── */
+    .benefits-section { background: var(--deep); }
+    .benefits-inner { max-width: 1100px; margin: 0 auto; }
+    .benefits-header { text-align: center; margin-bottom: 60px; }
+    .benefits-header .section-label { justify-content: center; }
+    .benefits-header .section-label::before { display: none; }
+    .benefits-header .divider { margin: 0 auto; }
+    .benefits-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+    .benefit-card {
+      background: var(--dark-card); padding: 40px 32px;
+      border: 1px solid var(--border);
+      position: relative; overflow: hidden;
+      transition: border-color 0.4s, transform 0.3s;
+    }
+    .benefit-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--red-light), transparent);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .benefit-card:hover { border-color: rgba(191,74,74,0.4); transform: translateY(-4px); }
+    .benefit-card:hover::before { opacity: 1; }
+    .benefit-icon { width: 44px; height: 44px; margin-bottom: 20px; color: var(--red-light); }
+    .benefit-title {
+      font-family: 'Cinzel', serif; font-size: 0.8rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 12px;
+    }
+    .benefit-text { font-size: 0.85rem; line-height: 1.7; }
+
+    /* ── TYPES ───────────────────────────── */
+    .types-section { background: var(--dark); }
+    .types-inner { max-width: 1100px; margin: 0 auto; }
+    .types-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; margin-top: 60px; }
+    .type-card {
+      background: var(--dark-card); border: 1px solid var(--border);
+      padding: 32px 24px 28px; text-align: center;
+      transition: border-color 0.4s, transform 0.3s;
+    }
+    .type-card:hover { border-color: rgba(191,74,74,0.5); transform: translateY(-6px); }
+    .type-gem-wrap { width: 80px; height: 80px; margin: 0 auto 20px; }
+    .type-gem-wrap svg { width: 100%; height: 100%; }
+    .type-name {
+      font-family: 'Cinzel', serif; font-size: 0.72rem;
+      letter-spacing: 0.18em; color: var(--red-light);
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .type-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── ASTROLOGICAL ────────────────────── */
+    .astro-section { background: var(--dark-mid); position: relative; overflow: hidden; }
+    .astro-bg-decor {
+      position: absolute; right: -120px; top: 50%;
+      transform: translateY(-50%);
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(191,74,74,0.04) 0%, transparent 70%);
+      border: 1px solid rgba(191,74,74,0.08);
+    }
+    .astro-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: center;
+    }
+    .astro-visual { display: flex; justify-content: center; }
+    .planet-dial {
+      position: relative; width: 220px; height: 220px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .planet-dial-ring {
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(191,74,74,0.3);
+      animation: spin-slow 20s linear infinite;
+    }
+    .planet-dial-ring-2 {
+      position: absolute; inset: 20px;
+      border-radius: 50%;
+      border: 1px dashed rgba(191,74,74,0.15);
+      animation: spin-slow 30s linear infinite reverse;
+    }
+    .planet-dial-inner {
+      position: absolute; inset: 40px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(191,74,74,0.12) 0%, transparent 70%);
+      border: 1px solid rgba(191,74,74,0.2);
+    }
+    .planet-center {
+      position: relative; text-align: center; z-index: 2;
+    }
+    .planet-name {
+      font-family: 'Cinzel', serif; font-size: 2.8rem;
+      color: var(--red-light); line-height: 1;
+    }
+    .planet-sub {
+      font-family: 'Raleway', sans-serif; font-size: 0.65rem;
+      letter-spacing: 0.25em; color: var(--text-muted);
+      text-transform: uppercase; margin-top: 6px;
+    }
+    .astro-list { list-style: none; margin-top: 0; }
+    .astro-list li {
+      display: flex; gap: 24px; align-items: flex-start;
+      padding: 24px 0; border-bottom: 1px solid var(--border);
+    }
+    .astro-list li:first-child { padding-top: 0; }
+    .astro-num {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.2em; color: var(--red-dim);
+      flex-shrink: 0; margin-top: 4px;
+    }
+    .astro-item-title {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 8px;
+    }
+    .astro-item-text { font-size: 0.84rem; line-height: 1.7; }
+
+    /* ── IDENTIFY ────────────────────────── */
+    .identify-section { background: var(--deep); }
+    .identify-inner { max-width: 1100px; margin: 0 auto; }
+    .identify-steps {
+      display: grid; grid-template-columns: repeat(3,1fr); margin-top: 60px;
+      border: 1px solid var(--border);
+    }
+    .identify-step {
+      padding: 40px 32px;
+      border-right: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .identify-step:last-child { border-right: none; }
+    .identify-step:hover { background: rgba(191,74,74,0.04); }
+    .step-num {
+      font-family: 'Cinzel', serif; font-size: 2rem;
+      color: var(--red-deep); margin-bottom: 16px;
+    }
+    .step-title {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 12px;
+    }
+    .step-text { font-size: 0.84rem; line-height: 1.7; }
+
+    /* ── CARE ────────────────────────────── */
+    .care-section { background: var(--dark); }
+    .care-inner { max-width: 1100px; margin: 0 auto; }
+    .care-header { text-align: center; margin-bottom: 48px; }
+    .care-header .section-label { justify-content: center; }
+    .care-header .section-label::before { display: none; }
+    .care-header .divider { margin: 0 auto; }
+    .care-intro { max-width: 680px; margin: 0 auto; font-size: 0.9rem; }
+    .care-tabs {
+      display: flex; flex-wrap: wrap; gap: 2px;
+      margin-bottom: 48px; border: 1px solid var(--border);
+    }
+    .care-tab-btn {
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--text-muted); background: none;
+      border: none; padding: 14px 24px; cursor: pointer;
+      transition: color 0.3s, background 0.3s; flex: 1;
+    }
+    .care-tab-btn:hover { color: var(--red-light); background: rgba(191,74,74,0.05); }
+    .care-tab-btn.active { color: var(--cream); background: rgba(191,74,74,0.1); }
+    .care-panel { display: none; }
+    .care-panel.active { display: block; }
+    .care-tips { display: flex; flex-direction: column; gap: 24px; }
+    .care-tip {
+      display: flex; gap: 28px; align-items: flex-start;
+      background: var(--dark-card); border: 1px solid var(--border);
+      padding: 32px;
+    }
+    .care-tip-icon { flex-shrink: 0; width: 36px; height: 36px; color: var(--red-light); margin-top: 4px; }
+    .care-tip-title {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 10px;
+    }
+    .care-tip-text { font-size: 0.84rem; line-height: 1.75; }
+    .care-tip-note {
+      display: block; margin-top: 14px;
+      font-size: 0.75rem; color: var(--text-muted);
+      font-style: italic; border-left: 2px solid var(--red-dim); padding-left: 12px;
+    }
+    .care-season-grid {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 2px; margin-bottom: 24px;
+    }
+    .care-season-card {
+      background: var(--dark-card); border: 1px solid var(--border); padding: 32px;
+    }
+    .care-season-title {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 10px; display: flex; gap: 10px; align-items: center;
+    }
+    .care-season-text { font-size: 0.84rem; line-height: 1.7; }
+    .care-dondont { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .care-do, .care-dont {
+      background: var(--dark-card); border: 1px solid var(--border); padding: 32px;
+    }
+    .care-list-title {
+      font-family: 'Cinzel', serif; font-size: 0.72rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 20px;
+    }
+    .care-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .care-list li { font-size: 0.83rem; line-height: 1.5; display: flex; gap: 10px; align-items: flex-start; }
+    .care-list li::before { flex-shrink: 0; font-size: 0.7rem; margin-top: 3px; }
+    .care-do   .care-list li::before { content: '✓'; color: #6BBB70; }
+    .care-dont .care-list li::before { content: '✕'; color: #C8503C; }
+
+    /* ── FACT TABLE ──────────────────────── */
+    .table-section { background: var(--dark-mid); }
+    .table-inner { max-width: 900px; margin: 0 auto; }
+    table { width: 100%; border-collapse: collapse; margin-top: 48px; }
+    thead th {
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      letter-spacing: 0.25em; color: var(--red-light);
+      text-transform: uppercase; padding: 16px 24px;
+      border-bottom: 1px solid var(--red-dim); text-align: left;
+    }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background 0.2s; }
+    tbody tr:hover { background: rgba(191,74,74,0.05); }
+    tbody td { padding: 18px 24px; font-size: 0.88rem; vertical-align: top; }
+    tbody td:first-child { color: var(--text-muted); width: 30%; }
+    tbody td:last-child { color: var(--cream); }
+
+    /* ── FOOTER ──────────────────────────── */
+    footer {
+      background: var(--deep); border-top: 1px solid var(--border);
+      padding: 60px 60px 40px;
+    }
+    .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
+    .footer-brand .nav-logo { font-size: 1.3rem; display: inline-block; margin-bottom: 16px; }
+    .footer-brand p { font-size: 0.82rem; max-width: 280px; }
+    .footer-col-title {
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      letter-spacing: 0.25em; color: var(--red-light);
+      text-transform: uppercase; margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { font-size: 0.82rem; color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+    .footer-col ul li a:hover { color: var(--red-light); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 32px; border-top: 1px solid var(--border);
+      font-size: 0.72rem; color: var(--text-muted);
+    }
+    .footer-bottom a { color: var(--red-dim); text-decoration: none; }
+
+    /* ── ANIMATIONS ──────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(-50%) translateY(0px); }
+      50%      { transform: translateY(-50%) translateY(-18px); }
+    }
+    @keyframes pulse-glow {
+      0%,100% { opacity: 0.5; transform: scale(1); }
+      50%      { opacity: 1;   transform: scale(1.1); }
+    }
+    @keyframes scroll-drop {
+      0%   { opacity: 1; transform-origin: top; }
+      100% { opacity: 0; transform: scaleY(0); transform-origin: bottom; }
+    }
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* ── REVEAL ──────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ──────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links, .nav-badge { display: none; }
+      section { padding: 70px 24px; }
+      .hero { padding: 120px 24px 80px; }
+      .hero-gem { display: none; }
+      .about-grid, .astro-inner { grid-template-columns: 1fr; gap: 40px; }
+      .benefits-grid, .types-row, .identify-steps, .warn-grid { grid-template-columns: 1fr; }
+      .identify-step { border-right: none; border-bottom: 1px solid var(--border); }
+      .care-dondont, .care-season-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .caution-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────── -->
+<nav>
+  <a class="nav-logo" href="#"><span>RATNA</span>VALI</a>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#" class="active">Knowledge Centre</a></li>
+    <li><a href="#">Gem Library</a></li>
+    <li><a href="#">Astrology</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <span class="nav-badge">Gemstone Guide</span>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-stars"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">The Gemstone of the Sun</p>
+    <h1>Ruby<em>(Manik)</em></h1>
+    <p class="hero-tagline">Vitality · Sovereignty · Radiance</p>
+    <p class="hero-desc">
+      The king of gemstones in Vedic astrology. Ruby channels the Sun's royal energy — conferring power, confidence, and life force when suited, and arrogance or physical depletion when not.
+    </p>
+    <div class="hero-warning">
+      <svg class="hero-warning-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+      <p class="hero-warning-text"><strong>Astrological Note:</strong> Manik should be worn only after consultation with a qualified Jyotishi. The Sun governs the soul and ego; its stone can amplify both the highest and lowest qualities of the ascendant unless well-placed in the birth chart.</p>
+    </div>
+    <a href="#about" class="hero-cta">
+      Explore the Guide
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 8h10M9 4l4 4-4 4"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Ruby Gem SVG -->
+  <div class="hero-gem">
+    <div class="gem-glow"></div>
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="rGlow" cx="50%" cy="40%" r="55%">
+          <stop offset="0%" stop-color="#D06060" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#A02020" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="rFace" cx="38%" cy="30%" r="65%">
+          <stop offset="0%"   stop-color="#F8C0C0"/>
+          <stop offset="20%"  stop-color="#D86060"/>
+          <stop offset="55%"  stop-color="#A82828"/>
+          <stop offset="100%" stop-color="#400A0A"/>
+        </radialGradient>
+        <radialGradient id="rLeft" cx="15%" cy="50%" r="75%">
+          <stop offset="0%"   stop-color="#B03030"/>
+          <stop offset="100%" stop-color="#2A0808"/>
+        </radialGradient>
+        <radialGradient id="rRight" cx="85%" cy="50%" r="75%">
+          <stop offset="0%"   stop-color="#C04040"/>
+          <stop offset="100%" stop-color="#380C0C"/>
+        </radialGradient>
+        <radialGradient id="rBottom" cx="50%" cy="90%" r="70%">
+          <stop offset="0%"   stop-color="#801818"/>
+          <stop offset="100%" stop-color="#100404"/>
+        </radialGradient>
+        <filter id="rGem">
+          <feDropShadow dx="0" dy="14" stdDeviation="22" flood-color="#A01820" flood-opacity="0.6"/>
+        </filter>
+        <radialGradient id="rStar" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="white" stop-opacity="0.9"/>
+          <stop offset="40%"  stop-color="white" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="white" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- Ambient glow -->
+      <ellipse cx="200" cy="225" rx="155" ry="55" fill="url(#rGlow)" opacity="0.9"/>
+
+      <g filter="url(#rGem)" transform="translate(200,195)">
+        <!-- Top crown facets -->
+        <polygon points="0,-100 70,-52 70,52 0,100 -70,52 -70,-52"
+                 fill="url(#rFace)" opacity="0.97"/>
+        <!-- Left pavilion -->
+        <polygon points="-70,-52 -115,-22 -115,22 -70,52"
+                 fill="url(#rLeft)" opacity="0.92"/>
+        <!-- Right pavilion -->
+        <polygon points="70,-52 115,-22 115,22 70,52"
+                 fill="url(#rRight)" opacity="0.92"/>
+        <!-- Bottom culet -->
+        <polygon points="-70,52 -115,22 0,125 115,22 70,52"
+                 fill="url(#rBottom)" opacity="0.96"/>
+
+        <!-- Star asterism rays (6-ray star typical of finest rubies) -->
+        <line x1="0" y1="-80" x2="0" y2="80" stroke="url(#rStar)" stroke-width="1.8" opacity="0.4"/>
+        <line x1="-69" y1="-40" x2="69" y2="40" stroke="url(#rStar)" stroke-width="1.8" opacity="0.4" transform="rotate(60)"/>
+        <line x1="-69" y1="40" x2="69" y2="-40" stroke="url(#rStar)" stroke-width="1.8" opacity="0.4" transform="rotate(-60)"/>
+
+        <!-- Primary highlight -->
+        <ellipse cx="-22" cy="-42" rx="24" ry="9"
+                 fill="white" opacity="0.5" transform="rotate(-28,-22,-42)"/>
+        <ellipse cx="10" cy="-62" rx="11" ry="4"
+                 fill="white" opacity="0.3" transform="rotate(-18,10,-62)"/>
+        <!-- Secondary red flash -->
+        <ellipse cx="30" cy="10" rx="18" ry="6"
+                 fill="#F8A0A0" opacity="0.2" transform="rotate(15,30,10)"/>
+
+        <!-- Facet lines -->
+        <line x1="0" y1="-100" x2="70"  y2="-52" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
+        <line x1="0" y1="-100" x2="-70" y2="-52" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
+        <line x1="0" y1="-100" x2="0"   y2="100"  stroke="rgba(255,255,255,0.06)" stroke-width="0.6"/>
+        <line x1="-115" y1="0" x2="115" y2="0"    stroke="rgba(255,255,255,0.05)" stroke-width="0.6"/>
+        <line x1="-70" y1="-52" x2="-70" y2="52"  stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+        <line x1="70"  y1="-52" x2="70"  y2="52"  stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+      </g>
+
+      <!-- Sparkles -->
+      <g opacity="0.65">
+        <line x1="318" y1="75"  x2="318" y2="90"  stroke="#F8A0A0" stroke-width="1.5"/>
+        <line x1="310" y1="82"  x2="326" y2="82"  stroke="#F8A0A0" stroke-width="1.5"/>
+        <line x1="72"  y1="135" x2="72"  y2="148" stroke="#DD7A7A" stroke-width="1.2"/>
+        <line x1="65"  y1="141" x2="79"  y2="141" stroke="#DD7A7A" stroke-width="1.2"/>
+        <line x1="338" y1="265" x2="338" y2="275" stroke="#E890A0" stroke-width="1"/>
+        <line x1="333" y1="270" x2="343" y2="270" stroke="#E890A0" stroke-width="1"/>
+        <circle cx="290" cy="120" r="2" fill="#F8C0C0" opacity="0.6"/>
+        <circle cx="110" cy="270" r="1.5" fill="#F8C0C0" opacity="0.5"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-hint-line"></div>
+  </div>
+</section>
+
+<!-- ── CAUTION BANNER ────────────────────────────────── -->
+<div class="caution-banner">
+  <div class="caution-inner reveal">
+    <svg class="caution-icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4">
+      <path d="M28 6L4 48h48L28 6z"/><line x1="28" y1="22" x2="28" y2="34"/><circle cx="28" cy="41" r="1.5" fill="currentColor"/>
+    </svg>
+    <div class="caution-text">
+      <h3>Important Notice Before Reading</h3>
+      <p>Ruby (Manik) is the gemstone of the <strong>Sun — the ruler of the soul, authority, and vital life force</strong> in Vedic astrology. It amplifies confidence and leadership when the Sun is well-placed, and can aggravate ego, blood-related ailments, and conflicts when it is not. This guide is purely informational. Always consult a <strong>qualified Jyotishi</strong> before wearing Manik.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── ABOUT ─────────────────────────────────────────── -->
+<section class="about-section" id="about">
+  <div class="about-grid">
+    <div class="about-prose reveal">
+      <p class="section-label">About the Stone</p>
+      <h2>What is <em>Ruby?</em></h2>
+      <div class="divider"></div>
+      <p>
+        Ruby, known as Manik in Sanskrit, is the gemstone of the Sun in Vedic astrology. A variety of corundum coloured by chromium, its hues range from pale pinkish-red to the legendary "Pigeon's Blood" red of Burma — the most coveted and valuable ruby colour in the world.
+      </p>
+      <p>
+        Ranked 9 on the Mohs hardness scale, Manik is among the hardest of all gemstones. Its extraordinary lustre, intense red fire, and ability to fluoresce under ultraviolet light give it a living, inner glow that has captivated kings, emperors, and collectors across civilisations — from Mughal courts to medieval European crowns.
+      </p>
+      <p>
+        In Jyotish (Vedic astrology), Ruby is the gemstone of Surya — the Sun — the planet governing the soul, authority, government, health, and one's father. A strong Sun brings confidence, vitality, and recognition; a weak Sun invites self-doubt, poor health, and struggles with authority.
+      </p>
+    </div>
+    <div class="props-grid reveal">
+      <div class="prop-item">
+        <p class="prop-label">Mineral</p>
+        <p class="prop-value">Corundum (Al₂O₃)</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Planet</p>
+        <p class="prop-value">Sun (Surya Dev)</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Colour Range</p>
+        <p class="prop-value">Pink-Red → Blood Red → Pigeon's Blood</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Hardness</p>
+        <p class="prop-value">9.0 on Mohs Scale</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Refractive Index</p>
+        <p class="prop-value">1.762 – 1.778</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Element</p>
+        <p class="prop-value">Fire (Agni)</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Origins</p>
+        <p class="prop-value">Burma, Sri Lanka, Mozambique, Thailand</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Wearing Finger</p>
+        <p class="prop-value">Ring Finger, Right Hand</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SUN'S POWER ─────────────────────────────────── -->
+<section class="warn-section">
+  <div class="warn-inner">
+    <div class="reveal">
+      <p class="section-label">The Sun's Influence</p>
+      <h2>The Dual Nature <em>of Manik</em></h2>
+      <div class="divider"></div>
+      <p style="max-width:640px;font-size:0.95rem;">Unlike softer planetary stones, Ruby is the direct representative of the Sun — the most fundamental force in a horoscope. Its effects on the wearer can be profound and immediate, depending entirely on the Sun's placement and strength in the birth chart.</p>
+    </div>
+    <div class="warn-grid">
+      <div class="warn-card reveal">
+        <svg class="warn-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="20" cy="20" r="8"/><path d="M20 4v4M20 32v4M4 20h4M32 20h4M7.8 7.8l2.8 2.8M29.4 29.4l2.8 2.8M7.8 32.2l2.8-2.8M29.4 10.6l2.8-2.8"/>
+        </svg>
+        <p class="warn-card-title">When Beneficial</p>
+        <p class="warn-card-text">When the Sun is strong or the ascendant is Leo (Simha), Ruby can bring a surge in self-confidence, recognition from authority figures, improved career prospects, vitality, and the natural charisma of a born leader. It is often felt as warmth and clarity within days of wearing.</p>
+      </div>
+      <div class="warn-card reveal">
+        <svg class="warn-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M20 6L4 34h32L20 6z"/><line x1="20" y1="16" x2="20" y2="24"/><circle cx="20" cy="29" r="1.5" fill="currentColor"/>
+        </svg>
+        <p class="warn-card-title">When Inauspicious</p>
+        <p class="warn-card-text">If the Sun rules malefic houses or is debilitated in the chart, wearing Ruby may amplify ego conflicts, headaches, eye strain, blood pressure issues, and strained relationships with one's father or authority figures. The fire of the Sun, misdirected, burns rather than illuminates.</p>
+      </div>
+      <div class="warn-card reveal">
+        <svg class="warn-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="20" cy="20" r="16"/><path d="M20 10v10l6 4"/>
+        </svg>
+        <p class="warn-card-title">Observing the Stone</p>
+        <p class="warn-card-text">Unlike Neelam, Ruby traditionally does not require a formal 3-day trial period. However, sensitivity to any new planetary stone is wise. Observe your energy levels, mood, and relationships in the days following first wear. Heightened confidence is expected; aggression or fever is a warning sign.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BENEFITS ──────────────────────────────────────── -->
+<section class="benefits-section">
+  <div class="benefits-inner">
+    <div class="benefits-header reveal">
+      <p class="section-label">When Suited</p>
+      <h2>Believed <em>Benefits</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="24" cy="24" r="10"/><path d="M24 4v4M24 40v4M4 24h4M40 24h4M9.2 9.2l2.8 2.8M36 36l2.8 2.8M9.2 38.8l2.8-2.8M36 12l2.8-2.8"/>
+        </svg>
+        <p class="benefit-title">Leadership & Authority</p>
+        <p class="benefit-text">The Sun governs kings, leaders, and those in positions of power. Ruby is believed to enhance natural authority, command respect from subordinates, and attract recognition from government institutions and persons of influence.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M24 8c-8 0-14 7-14 16 0 6 3 11 8 14v4h12v-4c5-3 8-8 8-14 0-9-6-16-14-16z"/>
+        </svg>
+        <p class="benefit-title">Vitality & Health</p>
+        <p class="benefit-text">Surya governs the heart, spine, and overall vitality. A well-suited Ruby is associated with improved energy levels, better circulation, stronger immunity, and the physical stamina needed to sustain an ambitious life.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M8 28V14l16-8 16 8v14c0 10-16 18-16 18S8 38 8 28z"/>
+        </svg>
+        <p class="benefit-title">Protection & Confidence</p>
+        <p class="benefit-text">As the solar stone, Ruby is said to create a protective aura around the wearer — discouraging malicious intentions, jealousy, and psychic attacks. It replaces self-doubt with grounded inner conviction and radiates warmth.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="24" cy="20" r="10"/><path d="M8 42c0-8 7-14 16-14s16 6 16 14"/>
+        </svg>
+        <p class="benefit-title">Fame & Recognition</p>
+        <p class="benefit-text">The Sun rules public recognition and fame. Actors, politicians, public figures, and creative professionals have historically worn Ruby to strengthen their public persona and attract the spotlight that a strong solar influence bestows.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M24 6C15.2 8 8 15 8 24s7.2 16 16 16 16-7 16-16"/><path d="M32 8l8 8-8 8"/>
+        </svg>
+        <p class="benefit-title">Father & Ancestors</p>
+        <p class="benefit-text">In Jyotish, the Sun rules the father and the ancestral lineage. Ruby is traditionally prescribed when the relationship with one's father is strained, when paternal blessings are sought, or when the 9th and 10th houses need solar strengthening.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M10 38V24L24 10l14 14v14"/><path d="M18 38v-10h12v10"/>
+        </svg>
+        <p class="benefit-title">Career & Government</p>
+        <p class="benefit-text">Sun rules government service, administration, and all matters involving authority. Ruby is the traditional stone for civil servants, government officials, and those seeking promotion in hierarchical organisations or the public sector.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TYPES ─────────────────────────────────────────── -->
+<section class="types-section">
+  <div class="types-inner">
+    <div class="reveal">
+      <p class="section-label">Varieties</p>
+      <h2>Origins of <em>Manik</em></h2>
+      <div class="divider"></div>
+      <p style="max-width:580px;">Geographic origin defines the colour character, fluorescence, and astrological grading of Ruby. Burmese (Myanmar) rubies with the legendary Pigeon's Blood colour command the highest prices of any coloured gemstone on earth.</p>
+    </div>
+    <div class="types-row">
+      <div class="type-card reveal">
+        <div class="type-gem-wrap">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="rc1" cx="38%" cy="32%" r="62%">
+              <stop offset="0%"   stop-color="#F0B0B0"/>
+              <stop offset="40%"  stop-color="#C84848"/>
+              <stop offset="100%" stop-color="#600C0C"/>
+            </radialGradient></defs>
+            <ellipse cx="50" cy="50" rx="36" ry="28" fill="url(#rc1)" opacity="0.97"/>
+            <ellipse cx="40" cy="38" rx="12" ry="5" fill="white" opacity="0.4" transform="rotate(-30,40,38)"/>
+          </svg>
+        </div>
+        <p class="type-name">Burma</p>
+        <p class="type-desc">The legendary Pigeon's Blood red — a vivid, pure red with a slight blue overtone and intense natural fluorescence. Mogok valley rubies are the world's most prized. Unheated Burmese Manik commands extraordinary value and astrological potency.</p>
+      </div>
+      <div class="type-card reveal">
+        <div class="type-gem-wrap">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="rc2" cx="38%" cy="32%" r="62%">
+              <stop offset="0%"   stop-color="#E89090"/>
+              <stop offset="35%"  stop-color="#B83838"/>
+              <stop offset="100%" stop-color="#481010"/>
+            </radialGradient></defs>
+            <ellipse cx="50" cy="50" rx="36" ry="28" fill="url(#rc2)" opacity="0.97"/>
+            <ellipse cx="40" cy="38" rx="12" ry="5" fill="white" opacity="0.35" transform="rotate(-30,40,38)"/>
+          </svg>
+        </div>
+        <p class="type-name">Ceylon</p>
+        <p class="type-desc">Sri Lankan rubies tend toward pinkish-red, with excellent transparency and brilliance. Considered highly auspicious for astrological use. Unheated Ceylon Manik is among the most accessible premium options for Vedic purposes.</p>
+      </div>
+      <div class="type-card reveal">
+        <div class="type-gem-wrap">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="rc3" cx="38%" cy="32%" r="62%">
+              <stop offset="0%"   stop-color="#D07070"/>
+              <stop offset="35%"  stop-color="#A02020"/>
+              <stop offset="100%" stop-color="#360808"/>
+            </radialGradient></defs>
+            <ellipse cx="50" cy="50" rx="36" ry="28" fill="url(#rc3)" opacity="0.97"/>
+            <ellipse cx="40" cy="38" rx="12" ry="5" fill="white" opacity="0.3" transform="rotate(-30,40,38)"/>
+          </svg>
+        </div>
+        <p class="type-name">Mozambique</p>
+        <p class="type-desc">A relatively recent source producing vivid, saturated rubies that rival Burmese material in colour intensity. Mozambique rubies often have excellent clarity at competitive prices and are gaining acceptance among astrological gemologists.</p>
+      </div>
+      <div class="type-card reveal">
+        <div class="type-gem-wrap">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="rc4" cx="38%" cy="32%" r="62%">
+              <stop offset="0%"   stop-color="#C06060"/>
+              <stop offset="35%"  stop-color="#881010"/>
+              <stop offset="100%" stop-color="#280408"/>
+            </radialGradient></defs>
+            <ellipse cx="50" cy="50" rx="36" ry="28" fill="url(#rc4)" opacity="0.97"/>
+            <ellipse cx="40" cy="38" rx="12" ry="5" fill="white" opacity="0.25" transform="rotate(-30,40,38)"/>
+          </svg>
+        </div>
+        <p class="type-name">Thailand</p>
+        <p class="type-desc">Thai rubies tend toward darker, brownish-red tones with higher iron content. Heavily treated material from Thailand dominates the commercial market. Natural, unheated Thai rubies are rare; careful certification is essential for astrological use.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ASTROLOGICAL ───────────────────────────────────── -->
+<section class="astro-section">
+  <div class="astro-bg-decor"></div>
+  <div class="astro-inner">
+    <div class="astro-visual reveal">
+      <div class="planet-dial">
+        <div class="planet-dial-ring"></div>
+        <div class="planet-dial-ring-2"></div>
+        <div class="planet-dial-inner"></div>
+        <div class="planet-center">
+          <p class="planet-name">☀</p>
+          <p class="planet-name" style="font-size:1.4rem;margin-top:4px;">Sun</p>
+          <p class="planet-sub">Surya Dev</p>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="section-label">Vedic Astrology</p>
+      <h2>The Sun's <em>Gemstone</em></h2>
+      <div class="divider"></div>
+      <ul class="astro-list">
+        <li>
+          <span class="astro-num">01</span>
+          <div>
+            <p class="astro-item-title">Who Should Wear</p>
+            <p class="astro-item-text">Primarily those with Leo (Simha) ascendant, where the Sun rules the chart directly. Also prescribed for those in Sun Mahadasha or Antardasha, or when the Sun is placed in the 1st, 5th, 9th, or 10th house in strength. Aries and Scorpio ascendants may also benefit. A qualified Jyotishi must confirm suitability based on the full chart.</p>
+          </div>
+        </li>
+        <li>
+          <span class="astro-num">02</span>
+          <div>
+            <p class="astro-item-title">Auspicious Day & Time</p>
+            <p class="astro-item-text">Sunday (Ravivar) is the traditional day for installing Manik, ideally during Shukla Paksha (waxing moon) in the month of Uttara Phalguni nakshatra. The ring should be worn at sunrise, during the Sun's hora. Uttarayan (northward solar journey) months are considered especially auspicious.</p>
+          </div>
+        </li>
+        <li>
+          <span class="astro-num">03</span>
+          <div>
+            <p class="astro-item-title">Metal & Setting</p>
+            <p class="astro-item-text">Gold is the prescribed metal for Ruby — the Sun's own metal. Yellow gold is traditional; rose gold is an acceptable variation. The stone must be set open-backed to touch the skin directly. It is worn on the ring finger (Anamika) of the right hand. Minimum recommended weight is 3 carats for effective astrological benefit.</p>
+          </div>
+        </li>
+        <li>
+          <span class="astro-num">04</span>
+          <div>
+            <p class="astro-item-title">Incompatible Stones</p>
+            <p class="astro-item-text">Ruby should never be worn alongside Blue Sapphire (Neelam) — the Sun and Saturn are planetary enemies in Jyotish. Diamond (Heera), associated with Venus, is also traditionally avoided with Ruby. Hessonite (Gomed) and Cat's Eye (Lehsunia), stones of the lunar nodes, are also incompatible. Pearl, as the Moon's stone, is the most complementary companion gem.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── IDENTIFY ───────────────────────────────────────── -->
+<section class="identify-section">
+  <div class="identify-inner">
+    <div class="reveal">
+      <p class="section-label">Gemology</p>
+      <h2>How to <em>Identify</em> a Genuine Stone</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="identify-steps">
+      <div class="identify-step reveal">
+        <p class="step-num">01</p>
+        <p class="step-title">Fluorescence Test</p>
+        <p class="step-text">Natural rubies fluoresce strongly red under ultraviolet (UV) light due to chromium — this is one of the most distinguishing characteristics of a genuine ruby. Synthetic rubies also fluoresce, but glass imitations and red garnets do not. Burmese rubies show the strongest fluorescence of all origins.</p>
+      </div>
+      <div class="identify-step reveal">
+        <p class="step-num">02</p>
+        <p class="step-title">Heat Treatment Detection</p>
+        <p class="step-text">Over 95% of commercial rubies are heat-treated to dissolve silk inclusions and improve colour. For Vedic astrological use, unheated rubies are strongly preferred. Only a certified gemological laboratory — GIA, GRS, or Gübelin — can reliably confirm the absence of heat treatment through microscopic examination and spectroscopy.</p>
+      </div>
+      <div class="identify-step reveal">
+        <p class="step-num">03</p>
+        <p class="step-title">Natural Inclusions</p>
+        <p class="step-text">Under 10× magnification, natural rubies show characteristic rutile silk needles, fingerprint inclusions, and growth zoning. Star rubies display a six-rayed asterism from fine intersecting silk. Completely clean stones at low prices are almost certainly synthetic. Lead-glass filled rubies — a common fraud — show trapped gas bubbles and bluish flash.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CARE GUIDE ─────────────────────────────────────── -->
+<section class="care-section">
+  <div class="care-inner">
+    <div class="care-header reveal">
+      <p class="section-label">Maintenance</p>
+      <h2>Complete Care <em>Guide</em></h2>
+      <div class="divider"></div>
+      <p class="care-intro">Ruby is one of the hardest and most durable gemstones on earth, but specific care — both physical and energetic — is essential to preserve its brilliance and, in Vedic tradition, its potency as the solar stone. The Sun's gem deserves the reverence due to royalty.</p>
+    </div>
+
+    <div class="care-tabs reveal">
+      <button class="care-tab-btn active" onclick="showCareTab('daily')">Daily Care</button>
+      <button class="care-tab-btn" onclick="showCareTab('cleaning')">Deep Cleaning</button>
+      <button class="care-tab-btn" onclick="showCareTab('storage')">Storage</button>
+      <button class="care-tab-btn" onclick="showCareTab('seasonal')">Seasonal Guide</button>
+      <button class="care-tab-btn" onclick="showCareTab('vedic')">Vedic Rituals</button>
+      <button class="care-tab-btn" onclick="showCareTab('donts')">Do's &amp; Don'ts</button>
+    </div>
+
+    <!-- Daily Care -->
+    <div class="care-panel active" id="tab-daily">
+      <div class="care-tips">
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="18" cy="18" r="14"/><path d="M18 10v8l5 3"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Morning Protocol</p>
+            <p class="care-tip-text">Apply all perfume, moisturiser, sunscreen, and hand creams before placing your Manik ring on your finger. Chemical residues from these products accumulate on the stone's surface, dulling its signature fire and red brilliance. As the Sun's stone, Ruby thrives when honoured with conscious daily attention — a small ritual that aligns with the solar energy it carries.</p>
+            <span class="care-tip-note">Tradition: Ideally wear your Manik ring after morning prayers and after offering water to the Sun (Surya Arghya) for maximum alignment.</span>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M10 26c0-8 4-14 8-18 4 4 8 10 8 18a8 8 0 01-16 0z"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Evening Wipe Routine</p>
+            <p class="care-tip-text">Before storing each evening, wipe the ring gently with a soft, dry microfibre cloth. Remove accumulated skin oils, sweat, and fine dust — especially from beneath the stone where the open-back setting allows debris to collect. In Vedic tradition, this contact point between gem and skin is where the Sun's energy enters the body; keeping it clear ensures unobstructed energy transfer.</p>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="6" y="12" width="24" height="18" rx="2"/><path d="M12 12V9a6 6 0 0112 0v3"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Removal During Activities</p>
+            <p class="care-tip-text">Remove your Manik ring before the gym, swimming, cooking, gardening, and chemical-contact cleaning. Although corundum is extremely hard, sharp lateral impacts can chip the girdle edges, and gold settings can bend under heavy force, loosening prongs and risking loss of the stone. A lost or damaged Manik requires immediate attention from a Jyotishi.</p>
+            <span class="care-tip-note">Never sleep wearing the ring — prongs can deform against hard surfaces overnight.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deep Cleaning -->
+    <div class="care-panel" id="tab-cleaning">
+      <div class="care-tips">
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M10 26c0-8 4-14 8-18 4 4 8 10 8 18a8 8 0 01-16 0z"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Fortnightly Soap Wash</p>
+            <p class="care-tip-text">Fill a small bowl with lukewarm water and two drops of mild, pH-neutral dish soap. Soak the ring for 10–15 minutes. Use a soft-bristled brush — a baby toothbrush works perfectly — to clean gently around the prongs, beneath the stone, and along the band. Rinse under lukewarm running water with the drain plugged. Dry completely with a lint-free cloth and air for 30 minutes before storing. Sunday mornings are the auspicious choice for this cleaning, aligned with the Sun's day.</p>
+            <span class="care-tip-note">Frequency: Fortnightly for daily wear; monthly for occasional wear.</span>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="6" y="10" width="24" height="18" rx="2"/><path d="M12 10V7a6 6 0 0112 0v3"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Ultrasonic Cleaning</p>
+            <p class="care-tip-text">Safe only for clean, unheated, untreated natural rubies with no significant fractures. Lead-glass filled rubies — extremely common in the market — will be shattered immediately by ultrasonic vibration. Always verify your stone's treatment status via your GIA or GRS laboratory certificate before attempting any ultrasonic cleaning. When uncertain, warm soap and a brush is always safe.</p>
+            <span class="care-tip-note">Never use ultrasonic cleaning on a fracture-filled or clarity-enhanced ruby — it causes instant, irreversible damage.</span>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="18" cy="18" r="12"/><path d="M13 18h10M18 13v10"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">What to Strictly Avoid</p>
+            <p class="care-tip-text">Never use bleach, chlorine, ammonia, baking soda, toothpaste, or abrasive glass cleaners on your Manik. Gold settings react poorly to chlorine; prongs can weaken over time with repeated exposure. Hand sanitisers with high alcohol content damage the finish of gold settings and can attack fracture-fill treatments. Use only mild soap and water, always lukewarm and never boiling.</p>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M18 6l2 6h7l-5.5 4 2 6L18 18l-5.5 4 2-6L9 12h7z"/><circle cx="18" cy="28" r="2"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Annual Professional Service</p>
+            <p class="care-tip-text">Schedule a professional jeweller inspection every 12 months. The jeweller will check prong tightness, examine the stone for developing fractures, re-polish the gold setting, check solder joints, and reach areas inaccessible to a home brush. Annual servicing is particularly important for gold settings as they can develop hairline cracks at prong bases and solder points with daily wear.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Storage -->
+    <div class="care-panel" id="tab-storage">
+      <div class="care-tips">
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="4" y="10" width="28" height="22" rx="2"/><path d="M12 10V8a6 6 0 0112 0v2"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Individual Storage</p>
+            <p class="care-tip-text">Store your Manik ring in its own dedicated pouch — red or gold-coloured velvet is traditional and appropriate — or in a separate compartment of a jewellery box. Do not store with diamonds (which can scratch corundum surfaces at certain angles) or with Blue Sapphire — in Vedic tradition, the Sun and Saturn are planetary enemies and their stones should not cohabit the same space.</p>
+            <span class="care-tip-note">Tradition: Ruby should never be stored alongside Neelam (Blue Sapphire) or Hessonite (Gomed) — inimical planetary energies.</span>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M18 6l2 7h7l-6 4 2 7-5-4-5 4 2-7-6-4h7z"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Environment & Conditions</p>
+            <p class="care-tip-text">Store in a cool, dry, and dark environment. Unlike some gemstones, Ruby is generally stable in light, but prolonged direct sunlight will fade certain fracture-fill treatments over years. Avoid bathroom storage — steam and humidity accelerate tarnishing of gold settings and can loosen older prong work. A dedicated locked jewellery box in a bedroom is ideal for both security and energetic sanctity.</p>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M8 28V14l10-8 10 8v14"/><path d="M14 28v-8h8v8"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Travel Precautions</p>
+            <p class="care-tip-text">When travelling with your Manik, always use a padded hard-case jewellery organiser in carry-on luggage only. Cargo hold conditions are not suitable for fine gemstone rings. X-ray machines do not harm corundum. When visiting temples where jewellery must be removed, carry a small dedicated red pouch rather than placing the ring loose in a bag or pocket where it may be dropped or forgotten.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seasonal -->
+    <div class="care-panel" id="tab-seasonal">
+      <div class="care-season-grid reveal">
+        <div class="care-season-card">
+          <p class="care-season-title"><span>☀️</span> Summer</p>
+          <p class="care-season-text">Peak season for wearing Manik — the stone resonates with summer solar energy. However, increased perspiration means more frequent wiping is necessary. Remove before swimming in pools (chlorine) or the sea (salt). Sunscreen and sweat build-up on gold settings tarnishes the finish; clean more frequently in hot months.</p>
+        </div>
+        <div class="care-season-card">
+          <p class="care-season-title"><span>🌧️</span> Monsoon</p>
+          <p class="care-season-text">Highest risk season for tarnishing gold settings and loosening prongs due to constant moisture cycles. Always dry the ring completely before storing. Check monthly that the stone hasn't shifted in its setting after water exposure. Store with a small silica gel packet near (not touching) the ring to control box humidity.</p>
+        </div>
+        <div class="care-season-card">
+          <p class="care-season-title"><span>🍂</span> Post-Monsoon</p>
+          <p class="care-season-text">An ideal time for professional cleaning and inspection following the humid season. Have the jeweller check for any oxidation or tarnish build-up in crevices of the gold setting, re-polish as needed, and verify prong integrity after potential thermal cycles during the wet season. Consider re-consecration if the ring was stored for extended periods.</p>
+        </div>
+        <div class="care-season-card">
+          <p class="care-season-title"><span>❄️</span> Winter</p>
+          <p class="care-season-text">Cold causes fingers to contract — the ring may sit looser and risk slipping off. If it becomes notably loose, have it resized rather than wearing it on a different finger, which changes its astrological alignment. Dry indoor heating can stress older solder joints in gold settings over time. A light buff with a gold polishing cloth maintains lustre through winter.</p>
+        </div>
+      </div>
+      <div class="care-tip reveal" style="margin-top:20px;">
+        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="18" cy="18" r="8"/><path d="M18 4v4M18 28v4M4 18h4M28 18h4M7.8 7.8l2.8 2.8M25.4 25.4l2.8 2.8M7.8 28.2l2.8-2.8M25.4 10.6l2.8-2.8"/>
+        </svg>
+        <div class="care-tip-body">
+          <p class="care-tip-title">The Sun's Weekly Honouring</p>
+          <p class="care-tip-text">Every Sunday, as the Sun's day, is considered the ideal time for a brief wipe-clean of your Manik and a moment of intentional acknowledgement of its significance. The traditional practice of offering water to the rising sun (Surya Arghya) while wearing the ring, or holding it toward the morning light for a few moments, is considered a powerful way to energise the stone weekly — aligning the solar gem with its source.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vedic Rituals -->
+    <div class="care-panel" id="tab-vedic">
+      <div class="care-tips">
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M18 4C10 12 6 18 6 24a12 12 0 0024 0c0-6-4-12-12-20z"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Sunday Panchamrit Cleansing</p>
+            <p class="care-tip-text">On the first Sunday of each month during Shukla Paksha, place the ring in a clean copper or gold bowl. Pour over it in sequence: raw cow's milk, pure honey, ghee, curd, and clean water — the five Panchamrit substances. Let it rest for 15 minutes, then rinse and dry gently. While the stone rests, recite the Surya Beej Mantra — "Om Hraam Hreem Hraum Sah Suryaya Namah" — 108 times with red flowers offered before a Sun image. This is an energetic ritual; physical soap cleaning is separate.</p>
+            <span class="care-tip-note">Copper or gold vessel is associated with Surya; both are appropriate for this ritual.</span>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M12 28V16l6-10 6 10v12"/><path d="M9 28h18"/><circle cx="18" cy="16" r="2"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Re-consecration After Absence</p>
+            <p class="care-tip-text">If the ring has not been worn for more than 40 days — due to illness, travel, ritual impurity, or any other reason — it must be re-energised before resuming wear. Perform the Panchamrit cleansing on a Sunday morning. Hold the ring facing east toward the rising sun. Recite "Om Suryaya Namah" 108 times, visualising golden solar light filling the stone completely. Only then place it on the ring finger of the right hand. This re-establishes the solar connection that absence may have weakened.</p>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M18 6l2 7h7l-6 4 2 7-5-4-5 4 2-7-6-4h7z"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">If the Stone Cracks, Chips, or is Lost</p>
+            <p class="care-tip-text">A damaged or lost Manik is considered a significant event in Vedic tradition — interpreted as the stone having absorbed a major negative karmic or solar energy disturbance that would otherwise have befallen the wearer. Do not attempt to re-set a cracked stone for astrological use. Consult a Jyotishi immediately. Perform a Surya Shanti Puja and replace with a new certified, natural, unheated stone through a fresh consecration ceremony on a Sunday.</p>
+            <span class="care-tip-note">A cracked Manik is considered an important sign requiring ritual response — do not ignore or continue wearing it.</span>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="18" cy="18" r="14"/><path d="M12 18h12M18 12v12"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Removing Manik Permanently</p>
+            <p class="care-tip-text">If a Jyotishi advises discontinuing the stone, or if consistent adverse effects are observed, removal must follow protocol. Remove on a Sunday, ideally at sunrise. Immerse the ring briefly in flowing water or bury it in pure earth at the base of a pipal or banyan tree — traditional methods of returning solar energy to its source. Never casually discard or gift a Manik that has been worn; the wearer's solar imprint remains in the stone. A Jyotishi should advise on the appropriate closing ritual.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Do's & Don'ts -->
+    <div class="care-panel" id="tab-donts">
+      <div class="care-dondont reveal">
+        <div class="care-do">
+          <p class="care-list-title">✦ Do's</p>
+          <ul class="care-list">
+            <li>Consult a qualified Jyotishi before wearing for the first time</li>
+            <li>Wear on the ring finger (Anamika) of the right hand in gold</li>
+            <li>Install on a Sunday during Shukla Paksha at sunrise</li>
+            <li>Apply perfume and creams before putting the ring on</li>
+            <li>Clean fortnightly with lukewarm water and mild soap</li>
+            <li>Dry completely before storing each time</li>
+            <li>Store in a dedicated red or gold velvet pouch</li>
+            <li>Perform monthly Panchamrit cleansing on Sundays</li>
+            <li>Offer Surya Arghya while wearing the stone on Sundays</li>
+            <li>Obtain GIA / GRS lab certification confirming unheated status</li>
+            <li>Remove before swimming, gym, cooking, or manual labour</li>
+            <li>Schedule annual professional jeweller inspection</li>
+          </ul>
+        </div>
+        <div class="care-dont">
+          <p class="care-list-title">✦ Don'ts</p>
+          <ul class="care-list">
+            <li>Never wear without astrological consultation first</li>
+            <li>Do not wear alongside Blue Sapphire (Neelam) — planetary enemies</li>
+            <li>Never wear with Hessonite (Gomed) or Cat's Eye (Lehsunia)</li>
+            <li>Never use bleach, ammonia, chlorine, or abrasive cleaners</li>
+            <li>Do not use ultrasonic cleaners on fracture-filled or treated stones</li>
+            <li>Never sleep wearing the ring — prong damage risk</li>
+            <li>Do not store with Blue Sapphire or other Saturn/node stones</li>
+            <li>Never continue wearing a cracked or chipped Manik</li>
+            <li>Do not gift a worn Manik without ritual clearing</li>
+            <li>Never wear a heat-treated stone for astrological purposes</li>
+            <li>Do not wear perfume or chemicals after putting the ring on</li>
+            <li>Never purchase without a lab certificate for astrological use</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FACT TABLE ─────────────────────────────────────── -->
+<section class="table-section">
+  <div class="table-inner">
+    <div class="reveal">
+      <p class="section-label">Quick Reference</p>
+      <h2>Complete <em>Fact Sheet</em></h2>
+      <div class="divider"></div>
+    </div>
+    <table class="reveal">
+      <thead>
+        <tr><th>Property</th><th>Detail</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sanskrit Name</td><td>Manik / Māṇikya / Padmaraga</td></tr>
+        <tr><td>Mineral Species</td><td>Corundum (Aluminium Oxide — Al₂O₃)</td></tr>
+        <tr><td>Colour Agent</td><td>Chromium (Cr³⁺)</td></tr>
+        <tr><td>Hardness (Mohs)</td><td>9.0</td></tr>
+        <tr><td>Specific Gravity</td><td>3.97 – 4.05</td></tr>
+        <tr><td>Refractive Index</td><td>1.762 – 1.778 (birefringence 0.008)</td></tr>
+        <tr><td>Crystal System</td><td>Trigonal</td></tr>
+        <tr><td>Cleavage</td><td>None; conchoidal fracture</td></tr>
+        <tr><td>Lustre</td><td>Vitreous to adamantine; strong fluorescence</td></tr>
+        <tr><td>Ideal Colour</td><td>Pigeon's Blood — vivid red with slight blue overtone</td></tr>
+        <tr><td>Primary Origins</td><td>Burma (Mogok), Sri Lanka, Mozambique, Thailand</td></tr>
+        <tr><td>Ruling Planet</td><td>Sun (Surya Dev)</td></tr>
+        <tr><td>Zodiac Ascendants</td><td>Leo (Simha) primary; Aries and Scorpio secondary</td></tr>
+        <tr><td>Recommended Finger</td><td>Ring finger (Anamika), right hand</td></tr>
+        <tr><td>Setting Metal</td><td>Gold (yellow gold traditional; rose gold acceptable)</td></tr>
+        <tr><td>Auspicious Day</td><td>Sunday (Ravivar), Shukla Paksha, sunrise hora</td></tr>
+        <tr><td>Mantra</td><td>Om Suryaya Namah (108 repetitions)</td></tr>
+        <tr><td>Beej Mantra</td><td>Om Hraam Hreem Hraum Sah Suryaya Namah</td></tr>
+        <tr><td>Incompatible Stones</td><td>Blue Sapphire (Neelam), Diamond (Heera), Hessonite (Gomed), Cat's Eye (Lehsunia)</td></tr>
+        <tr><td>Treatment Status</td><td>Unheated, no fracture-fill or clarity enhancement — mandatory for astrological use</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a class="nav-logo" href="#"><span>RATNA</span>VALI</a>
+      <p>A curated knowledge resource on Vedic gemstones, planetary stones, and the ancient science of Navaratna.</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Knowledge Centre</p>
+      <ul>
+        <li><a href="#">Yellow Sapphire (Pukhraj)</a></li>
+        <li><a href="#">Blue Sapphire (Neelam)</a></li>
+        <li><a href="#">Ruby (Manik)</a></li>
+        <li><a href="#">Emerald (Panna)</a></li>
+        <li><a href="#">Diamond (Heera)</a></li>
+        <li><a href="#">Pearl (Moti)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Explore</p>
+      <ul>
+        <li><a href="#">Navaratna Guide</a></li>
+        <li><a href="#">Astrology &amp; Gems</a></li>
+        <li><a href="#">Gemstone Grading</a></li>
+        <li><a href="#">Lab Certification</a></li>
+        <li><a href="#">About Ratnavali</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Ratnavali. For educational purposes only. Always consult a qualified Jyotishi before wearing Ruby.</p>
+    <p>Crafted with reverence in India &nbsp;·&nbsp; <a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Disclaimer</a></p>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Care tab switcher
+  function showCareTab(id) {
+    document.querySelectorAll('.care-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.care-tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    document.querySelectorAll('#tab-' + id + ' .reveal').forEach(el => {
+      el.classList.remove('visible');
+      setTimeout(() => observer.observe(el), 50);
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Red Coral (Moonga) — Ratnavali Knowledge Centre</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --coral:        #C0280A;
+      --coral-light:  #E85030;
+      --coral-dim:    #8A1A06;
+      --coral-deep:   #500E03;
+      --silver:       #F5DDD8;
+      --silver-dim:   #9A5848;
+      --cream:        #FAF0EC;
+      --deep:         #0A0302;
+      --dark:         #110504;
+      --dark-mid:     #180806;
+      --dark-card:    #130504;
+      --text-muted:   #8A4838;
+      --text-body:    #C89088;
+      --border:       rgba(192,40,10,0.2);
+      --border-s:     rgba(245,221,216,0.1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--deep);
+      color: var(--text-body);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 60px;
+      background: rgba(10,3,2,0.93);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem; letter-spacing: 0.18em;
+      color: var(--coral-light); text-decoration: none;
+    }
+    .nav-logo span { color: var(--cream); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-family: 'Raleway', sans-serif; font-size: 0.72rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--coral-light); }
+    .nav-badge {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.12em; color: var(--cream);
+      background: var(--coral-deep); padding: 6px 16px;
+      border: 1px solid var(--coral); border-radius: 2px;
+    }
+
+    /* ── HERO ────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+      padding: 140px 60px 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 70% at 72% 50%, rgba(160,35,10,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 15% 75%, rgba(192,40,10,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 40% at 50% 10%, rgba(100,20,5,0.12) 0%, transparent 60%),
+        linear-gradient(150deg, #0A0302 0%, #160604 50%, #0A0302 100%);
+    }
+    .hero-grain {
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      opacity: 0.5; pointer-events: none;
+    }
+    .hero-stars {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        radial-gradient(1px 1px at 10% 20%, rgba(245,221,216,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 25% 60%, rgba(245,221,216,0.3) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 40% 15%, rgba(245,221,216,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 80%, rgba(245,221,216,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 75% 35%, rgba(245,221,216,0.3) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 85% 65%, rgba(245,221,216,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 92% 20%, rgba(245,221,216,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 5%  85%, rgba(245,221,216,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 45%, rgba(245,221,216,0.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 90%, rgba(245,221,216,0.35) 0%, transparent 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 580px;
+      animation: fadeUp 1.2s ease both;
+    }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem; letter-spacing: 0.35em;
+      color: var(--coral-light); text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 40px; height: 1px; background: var(--coral-dim);
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300; line-height: 1.08;
+      color: var(--cream); margin-bottom: 12px;
+    }
+    h1 em { font-style: italic; color: var(--coral-light); display: block; }
+    .hero-tagline {
+      font-family: 'Cinzel', serif; font-size: 0.7rem;
+      letter-spacing: 0.3em; color: var(--coral-dim);
+      text-transform: uppercase; margin-bottom: 28px;
+    }
+    .hero-desc {
+      font-size: 1rem; color: var(--text-body);
+      max-width: 440px; margin-bottom: 44px;
+      border-left: 2px solid var(--coral-dim); padding-left: 20px;
+    }
+    .hero-warning {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: rgba(192,40,10,0.08);
+      border: 1px solid rgba(192,40,10,0.3);
+      padding: 16px 20px; margin-bottom: 36px;
+      max-width: 460px;
+    }
+    .hero-warning-icon { color: var(--coral-light); flex-shrink: 0; margin-top: 2px; }
+    .hero-warning-text { font-size: 0.78rem; line-height: 1.6; color: var(--text-body); }
+    .hero-warning-text strong { color: var(--coral-light); font-weight: 500; }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: 'Cinzel', serif; font-size: 0.7rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--cream); background: var(--coral-deep);
+      border: 1px solid var(--coral);
+      padding: 14px 32px; text-decoration: none;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .hero-cta:hover { background: var(--coral-dim); border-color: var(--coral-light); }
+    .hero-cta svg { width: 14px; height: 14px; }
+
+    /* Hero gem */
+    .hero-gem {
+      position: absolute; right: 7%; top: 50%;
+      transform: translateY(-50%);
+      width: 440px; height: 440px;
+      animation: fadeUp 1.4s 0.3s ease both, float 7s ease-in-out infinite 1.7s;
+    }
+    .gem-glow {
+      position: absolute; inset: -80px;
+      background: radial-gradient(ellipse, rgba(192,40,10,0.22) 0%, transparent 70%);
+      border-radius: 50%; animation: pulse-glow 5s ease-in-out infinite;
+    }
+
+    /* Scroll hint */
+    .scroll-hint {
+      position: absolute; bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      font-family: 'Cinzel', serif; font-size: 0.55rem;
+      letter-spacing: 0.3em; color: var(--coral-dim);
+      text-transform: uppercase;
+    }
+    .scroll-hint-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(180deg, var(--coral-dim), transparent);
+      animation: scroll-drop 2s ease-in-out infinite;
+    }
+
+    /* ── SECTION COMMONS ─────────────────── */
+    section { padding: 100px 60px; }
+    .section-label {
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      letter-spacing: 0.35em; color: var(--coral-light);
+      text-transform: uppercase; margin-bottom: 14px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .section-label::before {
+      content: ''; display: block;
+      width: 30px; height: 1px; background: var(--coral-dim);
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 300; color: var(--cream);
+      line-height: 1.15; margin-bottom: 20px;
+    }
+    h2 em { font-style: italic; color: var(--coral-light); }
+    .divider {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, var(--coral), transparent);
+      margin-bottom: 40px;
+    }
+
+    /* ── CAUTION BANNER ──────────────────── */
+    .caution-banner {
+      background: linear-gradient(135deg, rgba(130,25,8,0.6), rgba(70,12,4,0.8));
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 40px 60px;
+    }
+    .caution-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; gap: 32px;
+    }
+    .caution-icon { flex-shrink: 0; width: 56px; height: 56px; color: var(--coral-light); }
+    .caution-text h3 {
+      font-family: 'Cinzel', serif; font-size: 0.8rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 6px;
+    }
+    .caution-text p { font-size: 0.88rem; line-height: 1.7; }
+    .caution-text p strong { color: var(--coral-light); }
+
+    /* ── ABOUT ───────────────────────────── */
+    .about-section { background: var(--dark); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start; max-width: 1100px; margin: 0 auto;
+    }
+    .about-prose p { margin-bottom: 20px; font-size: 0.95rem; }
+    .about-prose p:first-child { font-size: 1.1rem; color: var(--cream); }
+
+    .props-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+      border: 1px solid var(--border);
+    }
+    .prop-item {
+      padding: 22px 24px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .prop-item:nth-child(even) { border-right: none; }
+    .prop-item:last-child, .prop-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+    .prop-item:hover { background: rgba(192,40,10,0.05); }
+    .prop-label {
+      font-family: 'Cinzel', serif; font-size: 0.58rem;
+      letter-spacing: 0.25em; color: var(--coral-light);
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .prop-value { font-size: 0.88rem; color: var(--cream); }
+
+    /* ── WARNING SECTION ─────────────────── */
+    .warn-section { background: var(--dark-mid); }
+    .warn-inner { max-width: 1100px; margin: 0 auto; }
+    .warn-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px;
+    }
+    .warn-card {
+      background: var(--dark-card); border: 1px solid var(--border);
+      padding: 32px; position: relative; overflow: hidden;
+      transition: border-color 0.4s, transform 0.3s;
+    }
+    .warn-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--coral), transparent);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .warn-card:hover { border-color: rgba(192,40,10,0.5); transform: translateY(-4px); }
+    .warn-card:hover::before { opacity: 1; }
+    .warn-card-icon { width: 40px; height: 40px; color: var(--coral-light); margin-bottom: 18px; }
+    .warn-card-title {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 12px;
+    }
+    .warn-card-text { font-size: 0.84rem; line-height: 1.7; }
+
+    /* ── BENEFITS ────────────────────────── */
+    .benefits-section { background: var(--deep); }
+    .benefits-inner { max-width: 1100px; margin: 0 auto; }
+    .benefits-header { text-align: center; margin-bottom: 60px; }
+    .benefits-header .section-label { justify-content: center; }
+    .benefits-header .section-label::before { display: none; }
+    .benefits-header .divider { margin: 0 auto; }
+    .benefits-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+    .benefit-card {
+      background: var(--dark-card); padding: 40px 32px;
+      border: 1px solid var(--border);
+      position: relative; overflow: hidden;
+      transition: border-color 0.4s, transform 0.3s;
+    }
+    .benefit-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--coral-light), transparent);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .benefit-card:hover { border-color: rgba(192,40,10,0.4); transform: translateY(-4px); }
+    .benefit-card:hover::before { opacity: 1; }
+    .benefit-icon { width: 44px; height: 44px; margin-bottom: 20px; color: var(--coral-light); }
+    .benefit-title {
+      font-family: 'Cinzel', serif; font-size: 0.8rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 12px;
+    }
+    .benefit-text { font-size: 0.85rem; line-height: 1.7; }
+
+    /* ── TYPES ───────────────────────────── */
+    .types-section { background: var(--dark); }
+    .types-inner { max-width: 1100px; margin: 0 auto; }
+    .types-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; margin-top: 60px; }
+    .type-card {
+      background: var(--dark-card); border: 1px solid var(--border);
+      padding: 32px 24px 28px; text-align: center;
+      transition: border-color 0.4s, transform 0.3s;
+    }
+    .type-card:hover { border-color: rgba(192,40,10,0.5); transform: translateY(-6px); }
+    .type-gem-wrap { width: 80px; height: 80px; margin: 0 auto 20px; }
+    .type-gem-wrap svg { width: 100%; height: 100%; }
+    .type-name {
+      font-family: 'Cinzel', serif; font-size: 0.72rem;
+      letter-spacing: 0.18em; color: var(--coral-light);
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .type-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── ASTROLOGICAL ────────────────────── */
+    .astro-section { background: var(--dark-mid); position: relative; overflow: hidden; }
+    .astro-bg-decor {
+      position: absolute; right: -120px; top: 50%;
+      transform: translateY(-50%);
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(192,40,10,0.04) 0%, transparent 70%);
+      border: 1px solid rgba(192,40,10,0.08);
+    }
+    .astro-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: center;
+    }
+    .astro-visual { display: flex; justify-content: center; }
+    .planet-dial {
+      position: relative; width: 220px; height: 220px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .planet-dial-ring {
+      position: absolute; inset: 0; border-radius: 50%;
+      border: 1px solid rgba(192,40,10,0.3);
+      animation: spin-slow 20s linear infinite;
+    }
+    .planet-dial-ring-2 {
+      position: absolute; inset: 20px; border-radius: 50%;
+      border: 1px dashed rgba(192,40,10,0.15);
+      animation: spin-slow 30s linear infinite reverse;
+    }
+    .planet-dial-inner {
+      position: absolute; inset: 40px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(192,40,10,0.12) 0%, transparent 70%);
+      border: 1px solid rgba(192,40,10,0.2);
+    }
+    .planet-center { position: relative; text-align: center; z-index: 2; }
+    .planet-name { font-family: 'Cinzel', serif; font-size: 2.8rem; color: var(--coral-light); line-height: 1; }
+    .planet-sub {
+      font-family: 'Raleway', sans-serif; font-size: 0.65rem;
+      letter-spacing: 0.25em; color: var(--text-muted);
+      text-transform: uppercase; margin-top: 6px;
+    }
+    .astro-list { list-style: none; margin-top: 0; }
+    .astro-list li {
+      display: flex; gap: 24px; align-items: flex-start;
+      padding: 24px 0; border-bottom: 1px solid var(--border);
+    }
+    .astro-list li:first-child { padding-top: 0; }
+    .astro-num {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.2em; color: var(--coral-dim);
+      flex-shrink: 0; margin-top: 4px;
+    }
+    .astro-item-title {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 8px;
+    }
+    .astro-item-text { font-size: 0.84rem; line-height: 1.7; }
+
+    /* ── IDENTIFY ────────────────────────── */
+    .identify-section { background: var(--deep); }
+    .identify-inner { max-width: 1100px; margin: 0 auto; }
+    .identify-steps {
+      display: grid; grid-template-columns: repeat(3,1fr); margin-top: 60px;
+      border: 1px solid var(--border);
+    }
+    .identify-step {
+      padding: 40px 32px; border-right: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .identify-step:last-child { border-right: none; }
+    .identify-step:hover { background: rgba(192,40,10,0.04); }
+    .step-num {
+      font-family: 'Cinzel', serif; font-size: 2rem;
+      color: var(--coral-deep); margin-bottom: 16px;
+    }
+    .step-title {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 12px;
+    }
+    .step-text { font-size: 0.84rem; line-height: 1.7; }
+
+    /* ── CARE ────────────────────────────── */
+    .care-section { background: var(--dark); }
+    .care-inner { max-width: 1100px; margin: 0 auto; }
+    .care-header { text-align: center; margin-bottom: 48px; }
+    .care-header .section-label { justify-content: center; }
+    .care-header .section-label::before { display: none; }
+    .care-header .divider { margin: 0 auto; }
+    .care-intro { max-width: 680px; margin: 0 auto; font-size: 0.9rem; }
+    .care-tabs {
+      display: flex; flex-wrap: wrap; gap: 2px;
+      margin-bottom: 48px; border: 1px solid var(--border);
+    }
+    .care-tab-btn {
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--text-muted); background: none;
+      border: none; padding: 14px 24px; cursor: pointer;
+      transition: color 0.3s, background 0.3s; flex: 1;
+    }
+    .care-tab-btn:hover { color: var(--coral-light); background: rgba(192,40,10,0.05); }
+    .care-tab-btn.active { color: var(--cream); background: rgba(192,40,10,0.1); }
+    .care-panel { display: none; }
+    .care-panel.active { display: block; }
+    .care-tips { display: flex; flex-direction: column; gap: 24px; }
+    .care-tip {
+      display: flex; gap: 28px; align-items: flex-start;
+      background: var(--dark-card); border: 1px solid var(--border);
+      padding: 32px;
+    }
+    .care-tip-icon { flex-shrink: 0; width: 36px; height: 36px; color: var(--coral-light); margin-top: 4px; }
+    .care-tip-title {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 10px;
+    }
+    .care-tip-text { font-size: 0.84rem; line-height: 1.75; }
+    .care-tip-note {
+      display: block; margin-top: 14px;
+      font-size: 0.75rem; color: var(--text-muted);
+      font-style: italic; border-left: 2px solid var(--coral-dim); padding-left: 12px;
+    }
+    .care-season-grid {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 2px; margin-bottom: 24px;
+    }
+    .care-season-card {
+      background: var(--dark-card); border: 1px solid var(--border); padding: 32px;
+    }
+    .care-season-title {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 10px; display: flex; gap: 10px; align-items: center;
+    }
+    .care-season-text { font-size: 0.84rem; line-height: 1.7; }
+    .care-dondont { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .care-do, .care-dont {
+      background: var(--dark-card); border: 1px solid var(--border); padding: 32px;
+    }
+    .care-list-title {
+      font-family: 'Cinzel', serif; font-size: 0.72rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 20px;
+    }
+    .care-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .care-list li { font-size: 0.83rem; line-height: 1.5; display: flex; gap: 10px; align-items: flex-start; }
+    .care-list li::before { flex-shrink: 0; font-size: 0.7rem; margin-top: 3px; }
+    .care-do   .care-list li::before { content: '✓'; color: #D06050; }
+    .care-dont .care-list li::before { content: '✕'; color: #C8503C; }
+
+    /* ── FACT TABLE ──────────────────────── */
+    .table-section { background: var(--dark-mid); }
+    .table-inner { max-width: 900px; margin: 0 auto; }
+    table { width: 100%; border-collapse: collapse; margin-top: 48px; }
+    thead th {
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      letter-spacing: 0.25em; color: var(--coral-light);
+      text-transform: uppercase; padding: 16px 24px;
+      border-bottom: 1px solid var(--coral-dim); text-align: left;
+    }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background 0.2s; }
+    tbody tr:hover { background: rgba(192,40,10,0.05); }
+    tbody td { padding: 18px 24px; font-size: 0.88rem; vertical-align: top; }
+    tbody td:first-child { color: var(--text-muted); width: 30%; }
+    tbody td:last-child { color: var(--cream); }
+
+    /* ── FOOTER ──────────────────────────── */
+    footer {
+      background: var(--deep); border-top: 1px solid var(--border);
+      padding: 60px 60px 40px;
+    }
+    .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
+    .footer-brand .nav-logo { font-size: 1.3rem; display: inline-block; margin-bottom: 16px; }
+    .footer-brand p { font-size: 0.82rem; max-width: 280px; }
+    .footer-col-title {
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      letter-spacing: 0.25em; color: var(--coral-light);
+      text-transform: uppercase; margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { font-size: 0.82rem; color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+    .footer-col ul li a:hover { color: var(--coral-light); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 32px; border-top: 1px solid var(--border);
+      font-size: 0.72rem; color: var(--text-muted);
+    }
+    .footer-bottom a { color: var(--coral-dim); text-decoration: none; }
+
+    /* ── ANIMATIONS ──────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(-50%) translateY(0px); }
+      50%      { transform: translateY(-50%) translateY(-18px); }
+    }
+    @keyframes pulse-glow {
+      0%,100% { opacity: 0.5; transform: scale(1); }
+      50%      { opacity: 1;   transform: scale(1.1); }
+    }
+    @keyframes scroll-drop {
+      0%   { opacity: 1; transform-origin: top; }
+      100% { opacity: 0; transform: scaleY(0); transform-origin: bottom; }
+    }
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* ── REVEAL ──────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ──────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links, .nav-badge { display: none; }
+      section { padding: 70px 24px; }
+      .hero { padding: 120px 24px 80px; }
+      .hero-gem { display: none; }
+      .about-grid, .astro-inner { grid-template-columns: 1fr; gap: 40px; }
+      .benefits-grid, .types-row, .identify-steps, .warn-grid { grid-template-columns: 1fr; }
+      .identify-step { border-right: none; border-bottom: 1px solid var(--border); }
+      .care-dondont, .care-season-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .caution-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────── -->
+<nav>
+  <a class="nav-logo" href="#"><span>RATNA</span>VALI</a>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#" class="active">Knowledge Centre</a></li>
+    <li><a href="#">Gem Library</a></li>
+    <li><a href="#">Astrology</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <span class="nav-badge">Gemstone Guide</span>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-stars"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">The Gemstone of Mars</p>
+    <h1>Red Coral<em>(Moonga)</em></h1>
+    <p class="hero-tagline">Courage · Vitality · Martial Strength</p>
+    <p class="hero-desc">
+      The gemstone of Mars — lord of courage, physical energy, ambition, and conflict. Moonga ignites determination and fortifies the blood when Mars is strong, and stokes aggression, accidents, and inflammatory disorders when it is not.
+    </p>
+    <div class="hero-warning">
+      <svg class="hero-warning-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+      <p class="hero-warning-text"><strong>Astrological Note:</strong> Moonga should only be worn after consultation with a qualified Jyotishi. Mars is a fierce, aggressive planet — this stone can dramatically amplify both courage and conflict depending on chart placement. Those with Mangal Dosha require particular care before wearing Red Coral.</p>
+    </div>
+    <a href="#about" class="hero-cta">
+      Explore the Guide
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 8h10M9 4l4 4-4 4"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Red Coral Branch SVG — organic, not faceted -->
+  <div class="hero-gem">
+    <div class="gem-glow"></div>
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="cGlow" cx="50%" cy="40%" r="55%">
+          <stop offset="0%" stop-color="#D04020" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#800000" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="cBody" cx="30%" cy="25%" r="70%">
+          <stop offset="0%"   stop-color="#F08060"/>
+          <stop offset="25%"  stop-color="#C83820"/>
+          <stop offset="65%"  stop-color="#8A1808"/>
+          <stop offset="100%" stop-color="#2E0602"/>
+        </radialGradient>
+        <radialGradient id="cBranch" cx="25%" cy="30%" r="75%">
+          <stop offset="0%"   stop-color="#E06040"/>
+          <stop offset="40%"  stop-color="#B02810"/>
+          <stop offset="100%" stop-color="#3A0A04"/>
+        </radialGradient>
+        <radialGradient id="cTwig" cx="30%" cy="25%" r="70%">
+          <stop offset="0%"   stop-color="#D05030"/>
+          <stop offset="50%"  stop-color="#A02010"/>
+          <stop offset="100%" stop-color="#300804"/>
+        </radialGradient>
+        <filter id="cShadow">
+          <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#7A0A04" flood-opacity="0.7"/>
+        </filter>
+        <linearGradient id="cSheen" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%"   stop-color="white" stop-opacity="0.22"/>
+          <stop offset="50%"  stop-color="white" stop-opacity="0.05"/>
+          <stop offset="100%" stop-color="white" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Ambient glow beneath -->
+      <ellipse cx="200" cy="320" rx="110" ry="30" fill="url(#cGlow)" opacity="0.8"/>
+
+      <g filter="url(#cShadow)">
+        <!-- Main trunk — slightly curved, organic -->
+        <path d="M200,340 C198,310 195,280 197,250 C199,220 200,190 198,160 C196,130 195,105 197,82"
+              fill="none" stroke="url(#cBody)" stroke-width="18" stroke-linecap="round"/>
+        <!-- Trunk surface highlight -->
+        <path d="M200,340 C198,310 195,280 197,250 C199,220 200,190 198,160 C196,130 195,105 197,82"
+              fill="none" stroke="url(#cSheen)" stroke-width="8" stroke-linecap="round"/>
+
+        <!-- Left major branch -->
+        <path d="M198,220 C185,210 168,196 150,182 C132,168 116,155 100,140"
+              fill="none" stroke="url(#cBranch)" stroke-width="13" stroke-linecap="round"/>
+        <path d="M198,220 C185,210 168,196 150,182 C132,168 116,155 100,140"
+              fill="none" stroke="url(#cSheen)" stroke-width="5" stroke-linecap="round"/>
+
+        <!-- Right major branch -->
+        <path d="M198,175 C212,165 228,152 245,138 C262,124 278,112 296,102"
+              fill="none" stroke="url(#cBranch)" stroke-width="12" stroke-linecap="round"/>
+        <path d="M198,175 C212,165 228,152 245,138 C262,124 278,112 296,102"
+              fill="none" stroke="url(#cSheen)" stroke-width="5" stroke-linecap="round"/>
+
+        <!-- Left secondary branch from main trunk -->
+        <path d="M197,265 C182,255 164,245 146,232 C128,219 114,208 98,195"
+              fill="none" stroke="url(#cTwig)" stroke-width="9" stroke-linecap="round"/>
+
+        <!-- Right secondary branch from main trunk -->
+        <path d="M198,148 C215,136 232,120 250,108"
+              fill="none" stroke="url(#cTwig)" stroke-width="9" stroke-linecap="round"/>
+
+        <!-- Left upper twig from left major -->
+        <path d="M130,162 C118,148 108,132 96,116"
+              fill="none" stroke="url(#cTwig)" stroke-width="7" stroke-linecap="round"/>
+
+        <!-- Right twig from right major -->
+        <path d="M260,124 C272,110 282,94 292,80"
+              fill="none" stroke="url(#cTwig)" stroke-width="7" stroke-linecap="round"/>
+
+        <!-- Small left sub-twig -->
+        <path d="M150,182 C140,170 132,156 126,140"
+              fill="none" stroke="url(#cTwig)" stroke-width="5" stroke-linecap="round"/>
+
+        <!-- Top tip of trunk -->
+        <path d="M197,82 C192,68 188,54 184,42"
+              fill="none" stroke="url(#cTwig)" stroke-width="8" stroke-linecap="round"/>
+        <path d="M197,82 C205,70 210,56 215,44"
+              fill="none" stroke="url(#cTwig)" stroke-width="6" stroke-linecap="round"/>
+
+        <!-- Organic knot nodes along trunk — typical of coral -->
+        <circle cx="198" cy="220" r="9" fill="#D04020" opacity="0.9"/>
+        <circle cx="198" cy="175" r="8" fill="#C03018" opacity="0.9"/>
+        <circle cx="197" cy="265" r="7" fill="#B82810" opacity="0.85"/>
+        <circle cx="197" cy="82"  r="7" fill="#C03018" opacity="0.85"/>
+        <circle cx="198" cy="148" r="6" fill="#B02010" opacity="0.8"/>
+
+        <!-- Surface texture dots — coral's characteristic pitted surface -->
+        <circle cx="200" cy="310" r="2.5" fill="rgba(255,160,120,0.3)"/>
+        <circle cx="196" cy="290" r="2"   fill="rgba(255,140,100,0.25)"/>
+        <circle cx="201" cy="270" r="2"   fill="rgba(255,140,100,0.25)"/>
+        <circle cx="195" cy="250" r="2.5" fill="rgba(255,160,120,0.3)"/>
+        <circle cx="199" cy="230" r="2"   fill="rgba(255,140,100,0.2)"/>
+        <circle cx="197" cy="200" r="2"   fill="rgba(255,140,100,0.2)"/>
+        <circle cx="145" cy="170" r="2"   fill="rgba(255,140,100,0.2)"/>
+        <circle cx="118" cy="150" r="1.8" fill="rgba(255,140,100,0.2)"/>
+        <circle cx="255" cy="130" r="2"   fill="rgba(255,140,100,0.2)"/>
+        <circle cx="278" cy="112" r="1.8" fill="rgba(255,140,100,0.2)"/>
+      </g>
+
+      <!-- Sparkles -->
+      <g opacity="0.55">
+        <line x1="316" y1="68"  x2="316" y2="82"  stroke="#F08060" stroke-width="1.5"/>
+        <line x1="308" y1="75"  x2="324" y2="75"  stroke="#F08060" stroke-width="1.5"/>
+        <line x1="72"  y1="122" x2="72"  y2="135" stroke="#D06040" stroke-width="1.2"/>
+        <line x1="65"  y1="128" x2="79"  y2="128" stroke="#D06040" stroke-width="1.2"/>
+        <line x1="338" y1="258" x2="338" y2="268" stroke="#E07050" stroke-width="1"/>
+        <line x1="333" y1="263" x2="343" y2="263" stroke="#E07050" stroke-width="1"/>
+        <circle cx="290" cy="80"  r="2"   fill="#F8A090" opacity="0.6"/>
+        <circle cx="85"  cy="270" r="1.5" fill="#F8A090" opacity="0.5"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-hint-line"></div>
+  </div>
+</section>
+
+<!-- ── CAUTION BANNER ────────────────────────────────── -->
+<div class="caution-banner">
+  <div class="caution-inner reveal">
+    <svg class="caution-icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4">
+      <path d="M28 6L4 48h48L28 6z"/><line x1="28" y1="22" x2="28" y2="34"/><circle cx="28" cy="41" r="1.5" fill="currentColor"/>
+    </svg>
+    <div class="caution-text">
+      <h3>Important Notice Before Reading</h3>
+      <p>Red Coral (Moonga) is the gemstone of Mars — the planet governing <strong>courage, blood, ambition, conflict, and physical vitality</strong>. Mars is a fierce and direct planet, and Moonga can rapidly intensify both its positive and destructive qualities depending on the chart. This is not a stone to wear casually. This guide is purely informational. Always consult a <strong>qualified Jyotishi</strong> before wearing Moonga.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── ABOUT ─────────────────────────────────────────── -->
+<section class="about-section" id="about">
+  <div class="about-grid">
+    <div class="about-prose reveal">
+      <p class="section-label">About the Stone</p>
+      <h2>What is <em>Red Coral?</em></h2>
+      <div class="divider"></div>
+      <p>
+        Red Coral, known as Moonga or Praval in Sanskrit, is the gemstone of Mars in Vedic astrology. Unlike every other Jyotish ratna, Moonga is not a mineral — it is an organic gemstone, formed from the calcium carbonate skeletons of marine coral polyps (Corallium rubrum and related species) harvested from deep ocean beds, primarily in the Mediterranean Sea and the coast of Japan.
+      </p>
+      <p>
+        Its colour ranges from pale salmon-pink to deep ox-blood red, with the most auspicious astrological colour being a vivid, uniform blood-red or deep vermillion — described in Sanskrit texts as the colour of a ripe pomegranate or the lotus flower. Unlike crystalline gemstones, Moonga has no cleavage planes, no crystal structure, and no internal facets — only organic, fibrous texture and a waxy lustre.
+      </p>
+      <p>
+        In Jyotish, Moonga is the stone of Mangal — Mars — the planet of vitality, blood, bone marrow, courage, property, and war. A strong Mars brings physical vigour, decisive leadership, and determination; a weak or afflicted Mars brings cowardice, anaemia, accidents, disputes over land, and inflammatory conditions.
+      </p>
+    </div>
+    <div class="props-grid reveal">
+      <div class="prop-item">
+        <p class="prop-label">Material</p>
+        <p class="prop-value">Organic (Calcium Carbonate — CaCO₃)</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Planet</p>
+        <p class="prop-value">Mars (Mangal Dev)</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Colour Range</p>
+        <p class="prop-value">Pale Salmon → Vermillion → Deep Ox-Blood Red</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Hardness</p>
+        <p class="prop-value">3.0 – 4.0 on Mohs Scale</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Refractive Index</p>
+        <p class="prop-value">1.486 – 1.658</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Element</p>
+        <p class="prop-value">Fire (Agni)</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Origins</p>
+        <p class="prop-value">Mediterranean Sea, Japan, Taiwan, Australia</p>
+      </div>
+      <div class="prop-item">
+        <p class="prop-label">Wearing Finger</p>
+        <p class="prop-value">Ring Finger, Right Hand</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MARS'S POWER ─────────────────────────────────── -->
+<section class="warn-section">
+  <div class="warn-inner">
+    <div class="reveal">
+      <p class="section-label">Mars's Influence</p>
+      <h2>The Nature <em>of Moonga</em></h2>
+      <div class="divider"></div>
+      <p style="max-width:640px;font-size:0.95rem;">Mars is among the most direct and powerful of planets — a natural malefic that, unlike Saturn, acts swiftly and without subtlety. Moonga reflects this quality: its effects are among the fastest-manifesting of all planetary stones, felt within days of installation. Careful chart assessment is not optional — it is essential.</p>
+    </div>
+    <div class="warn-grid">
+      <div class="warn-card reveal">
+        <svg class="warn-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="20" cy="14" r="8"/><path d="M20 22v10M14 28h12"/>
+        </svg>
+        <p class="warn-card-title">When Beneficial</p>
+        <p class="warn-card-text">When Mars rules or occupies strong positions — especially for Aries (Mesha) and Scorpio (Vrishchika) ascendants, and those in Mars Mahadasha — Moonga builds physical stamina, sharpens resolve, eliminates hesitation, accelerates recovery from illness, and powerfully supports careers in defence, surgery, engineering, athletics, and real estate.</p>
+      </div>
+      <div class="warn-card reveal">
+        <svg class="warn-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M20 6L4 34h32L20 6z"/><line x1="20" y1="16" x2="20" y2="24"/><circle cx="20" cy="29" r="1.5" fill="currentColor"/>
+        </svg>
+        <p class="warn-card-title">When Inauspicious</p>
+        <p class="warn-card-text">When Mars rules malefic houses or is debilitated or combust, Moonga can amplify aggression, impulsivity, accidents, blood disorders, surgical complications, property disputes, and relationship conflict. Those with Mangal Dosha (Mars in the 1st, 2nd, 4th, 7th, 8th, or 12th house) must take particular care before wearing this stone.</p>
+      </div>
+      <div class="warn-card reveal">
+        <svg class="warn-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="20" cy="20" r="16"/><path d="M20 10v10l6 4"/>
+        </svg>
+        <p class="warn-card-title">Observing Compatibility</p>
+        <p class="warn-card-text">Traditional guidance advises wearing the stone at night on the right ring finger for 3–7 days before permanent installation. Observe energy levels, sleep, temperament, and any physical reactions. Increased vigour, confidence, and clarity of resolve indicate compatibility. Unusual irritability, aggression, or restlessness is a sign to remove immediately and consult a Jyotishi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BENEFITS ──────────────────────────────────────── -->
+<section class="benefits-section">
+  <div class="benefits-inner">
+    <div class="benefits-header reveal">
+      <p class="section-label">When Suited</p>
+      <h2>Believed <em>Benefits</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M24 8c-8 0-14 7-14 16 0 6 3 11 8 14v4h12v-4c5-3 8-8 8-14 0-9-6-16-14-16z"/>
+        </svg>
+        <p class="benefit-title">Physical Vitality & Blood</p>
+        <p class="benefit-text">Mars governs the blood, bone marrow, and muscular system. Moonga is traditionally prescribed for those experiencing anaemia, low energy, poor recovery after illness, and general physical weakness — conditions attributed in Vedic medicine to a weak or debilitated Mars affecting the body's vital fire.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M24 8l4 12h12l-10 7 4 12L24 32l-10 7 4-12L8 20h12z"/>
+        </svg>
+        <p class="benefit-title">Courage & Decisiveness</p>
+        <p class="benefit-text">The planet of the warrior, Mars rules courage, decisiveness, and the ability to act without fear. Moonga is worn by those facing prolonged indecision, excessive timidity, or inability to assert themselves — conditions attributed to a weak Mangal. The stone is said to kindle the inner warrior and overcome inertia.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M8 12h32M8 20h24M8 28h28M8 36h20"/>
+        </svg>
+        <p class="benefit-title">Property & Legal Matters</p>
+        <p class="benefit-text">Mars rules land, property, immovable assets, and legal disputes in Jyotish. Moonga is recommended for those facing prolonged property disputes, litigation, or challenges acquiring immovable assets. A strong Mars, aided by its stone, is believed to resolve such matters in the wearer's favour with speed and force.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M10 38V24L24 10l14 14v14"/><path d="M18 38v-10h12v10"/>
+        </svg>
+        <p class="benefit-title">Mangal Dosha Mitigation</p>
+        <p class="benefit-text">Mangal Dosha — Mars placed in the 1st, 2nd, 4th, 7th, 8th, or 12th house — is a significant astrological condition affecting marriage, partnerships, and general wellbeing. When a qualified Jyotishi prescribes Moonga as a remedial measure for Mangal Dosha, it is believed to channel Mars's intense energy constructively rather than destructively.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="24" cy="20" r="10"/><path d="M8 42c0-8 7-14 16-14s16 6 16 14"/>
+        </svg>
+        <p class="benefit-title">Career in Martial Fields</p>
+        <p class="benefit-text">Mars rules the military, police, fire services, surgery, engineering, athletics, and competitive sport. Moonga is particularly favoured by those in these professions or aspiring to enter them — the stone is said to sharpen reflexes, sustain stamina under pressure, and attract opportunities aligned with Mars's active, disciplined domain.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M8 32c4-16 28-16 32 0"/><circle cx="16" cy="20" r="4"/><circle cx="32" cy="20" r="4"/>
+        </svg>
+        <p class="benefit-title">Marital Harmony</p>
+        <p class="benefit-text">Mars rules the vitality and drive within relationships. A weakened or malefic Mars can create conflict, passivity, or disconnection in marriage. Moonga prescribed by a Jyotishi for eligible charts is believed to restore the fiery, protective quality Mars brings to partnership — particularly valuable during Mars Mahadasha or Antardasha periods.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TYPES ─────────────────────────────────────────── -->
+<section class="types-section">
+  <div class="types-inner">
+    <div class="reveal">
+      <p class="section-label">Varieties</p>
+      <h2>Origins of <em>Moonga</em></h2>
+      <div class="divider"></div>
+      <p style="max-width:580px;">Geographic origin significantly influences the colour, surface quality, and astrological potency of Red Coral. Mediterranean Corallium rubrum — particularly from Italy and the Sardinian coast — remains the unchallenged benchmark for the finest astrological Moonga.</p>
+    </div>
+    <div class="types-row">
+      <div class="type-card reveal">
+        <div class="type-gem-wrap">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="cc1" cx="30%" cy="28%" r="65%">
+              <stop offset="0%"   stop-color="#F08060"/>
+              <stop offset="40%"  stop-color="#C03020"/>
+              <stop offset="100%" stop-color="#380808"/>
+            </radialGradient></defs>
+            <!-- Coral branch mini -->
+            <path d="M50,85 C49,72 48,60 49,48 C50,36 50,26 49,16" fill="none" stroke="url(#cc1)" stroke-width="7" stroke-linecap="round"/>
+            <path d="M49,55 C42,48 34,42 26,34" fill="none" stroke="url(#cc1)" stroke-width="5" stroke-linecap="round"/>
+            <path d="M49,40 C57,33 65,26 73,20" fill="none" stroke="url(#cc1)" stroke-width="4.5" stroke-linecap="round"/>
+            <circle cx="49" cy="55" r="4" fill="#D04020" opacity="0.9"/>
+            <circle cx="49" cy="40" r="3.5" fill="#C03018" opacity="0.85"/>
+          </svg>
+        </div>
+        <p class="type-name">Mediterranean</p>
+        <p class="type-desc">The undisputed world benchmark — Corallium rubrum from Italy, Sardinia, and the Sicilian coast. Vivid blood-red to deep ox-blood colour, fine even grain, high lustre, and compact structure with minimal porosity. Italian Moonga commands the highest premium and is considered the most potent for astrological use by Jyotishis worldwide.</p>
+      </div>
+      <div class="type-card reveal">
+        <div class="type-gem-wrap">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="cc2" cx="30%" cy="28%" r="65%">
+              <stop offset="0%"   stop-color="#E87060"/>
+              <stop offset="40%"  stop-color="#B02818"/>
+              <stop offset="100%" stop-color="#2E0808"/>
+            </radialGradient></defs>
+            <path d="M50,85 C49,72 48,60 49,48 C50,36 50,26 49,16" fill="none" stroke="url(#cc2)" stroke-width="7" stroke-linecap="round"/>
+            <path d="M49,55 C42,48 34,42 26,34" fill="none" stroke="url(#cc2)" stroke-width="5" stroke-linecap="round"/>
+            <path d="M49,40 C57,33 65,26 73,20" fill="none" stroke="url(#cc2)" stroke-width="4.5" stroke-linecap="round"/>
+            <circle cx="49" cy="55" r="4" fill="#C03018" opacity="0.9"/>
+            <circle cx="49" cy="40" r="3.5" fill="#B02810" opacity="0.85"/>
+          </svg>
+        </div>
+        <p class="type-name">Japan</p>
+        <p class="type-desc">Japanese Corallium japonicum produces rich deep-red to ox-blood coral with excellent density and compact grain. Widely accepted for astrological use and often more accessible than Mediterranean material. Top-quality Japanese Moonga with uniform deep red colour and no visible white patches is considered highly suitable by most Jyotishis.</p>
+      </div>
+      <div class="type-card reveal">
+        <div class="type-gem-wrap">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="cc3" cx="30%" cy="28%" r="65%">
+              <stop offset="0%"   stop-color="#E09080"/>
+              <stop offset="40%"  stop-color="#A83020"/>
+              <stop offset="100%" stop-color="#2A0806"/>
+            </radialGradient></defs>
+            <path d="M50,85 C49,72 48,60 49,48 C50,36 50,26 49,16" fill="none" stroke="url(#cc3)" stroke-width="7" stroke-linecap="round"/>
+            <path d="M49,55 C42,48 34,42 26,34" fill="none" stroke="url(#cc3)" stroke-width="5" stroke-linecap="round"/>
+            <path d="M49,40 C57,33 65,26 73,20" fill="none" stroke="url(#cc3)" stroke-width="4.5" stroke-linecap="round"/>
+            <circle cx="49" cy="55" r="4" fill="#B82818" opacity="0.9"/>
+            <circle cx="49" cy="40" r="3.5" fill="#A82010" opacity="0.85"/>
+          </svg>
+        </div>
+        <p class="type-name">Taiwan</p>
+        <p class="type-desc">Taiwanese coral — primarily Corallium elatius — ranges from pale salmon-pink to medium red. While the paler pink varieties are used in jewellery, for astrological purposes only the deeper red specimens meeting the colour standard for Moonga are acceptable. Requires careful grading; pink or light orange coral is not considered astrologically equivalent to red Moonga.</p>
+      </div>
+      <div class="type-card reveal">
+        <div class="type-gem-wrap">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="cc4" cx="30%" cy="28%" r="65%">
+              <stop offset="0%"   stop-color="#D87060"/>
+              <stop offset="40%"  stop-color="#982010"/>
+              <stop offset="100%" stop-color="#220604"/>
+            </radialGradient></defs>
+            <path d="M50,85 C49,72 48,60 49,48 C50,36 50,26 49,16" fill="none" stroke="url(#cc4)" stroke-width="7" stroke-linecap="round"/>
+            <path d="M49,55 C42,48 34,42 26,34" fill="none" stroke="url(#cc4)" stroke-width="5" stroke-linecap="round"/>
+            <path d="M49,40 C57,33 65,26 73,20" fill="none" stroke="url(#cc4)" stroke-width="4.5" stroke-linecap="round"/>
+            <circle cx="49" cy="55" r="4" fill="#A82010" opacity="0.9"/>
+            <circle cx="49" cy="40" r="3.5" fill="#981808" opacity="0.85"/>
+          </svg>
+        </div>
+        <p class="type-name">Australia</p>
+        <p class="type-desc">Australian deep-sea coral provides a more commercially available option with varying colour ranges. For astrological use, only uniformly red Australian coral without significant porosity or white centres is acceptable. Certification from a reputable gemological laboratory confirming natural, untreated red coral is essential for any source.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ASTROLOGICAL ───────────────────────────────────── -->
+<section class="astro-section">
+  <div class="astro-bg-decor"></div>
+  <div class="astro-inner">
+    <div class="astro-visual reveal">
+      <div class="planet-dial">
+        <div class="planet-dial-ring"></div>
+        <div class="planet-dial-ring-2"></div>
+        <div class="planet-dial-inner"></div>
+        <div class="planet-center">
+          <p class="planet-name">♂</p>
+          <p class="planet-name" style="font-size:1.4rem;margin-top:4px;">Mars</p>
+          <p class="planet-sub">Mangal Dev</p>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="section-label">Vedic Astrology</p>
+      <h2>Mars's <em>Gemstone</em></h2>
+      <div class="divider"></div>
+      <ul class="astro-list">
+        <li>
+          <span class="astro-num">01</span>
+          <div>
+            <p class="astro-item-title">Who Should Wear</p>
+            <p class="astro-item-text">Primarily those with Aries (Mesha) or Scorpio (Vrishchika) ascendants, where Mars rules the chart directly. Also prescribed during Mars Mahadasha or Antardasha, and when Mars is placed in the 1st, 3rd, 5th, 9th, 10th, or 11th house in strength. Cancer (Kataka) and Leo (Simha) ascendants may also benefit when Mars rules friendly houses. Moonga is also prescribed as a remedial stone for Mangal Dosha when the Jyotishi deems it appropriate for the specific chart configuration.</p>
+          </div>
+        </li>
+        <li>
+          <span class="astro-num">02</span>
+          <div>
+            <p class="astro-item-title">Auspicious Day & Time</p>
+            <p class="astro-item-text">Tuesday (Mangalvar) is Mars's day — the only appropriate choice for installing Moonga. The ring should be worn during Shukla Paksha (waxing moon) at sunrise, during Mars's hora. The month of Chaitra (March–April), when the Sun transits Aries — Mars's own sign — and the nakshatras Mrigashira, Chitra, and Dhanishtha — all ruled by Mars — are especially auspicious moments for first installation.</p>
+          </div>
+        </li>
+        <li>
+          <span class="astro-num">03</span>
+          <div>
+            <p class="astro-item-title">Metal & Setting</p>
+            <p class="astro-item-text">Gold is the traditional and preferred metal for Moonga — Mars and the Sun (ruler of gold) share a friendly relationship in Jyotish. Some traditions also accept copper, which is Mars's own metal. The stone must touch the skin through an open-backed setting. Moonga is worn on the ring finger (Anamika) of the right hand. Minimum recommended weight for astrological benefit is 5–6 carats, with deeper red stones of uniform colour preferred over larger pale specimens.</p>
+          </div>
+        </li>
+        <li>
+          <span class="astro-num">04</span>
+          <div>
+            <p class="astro-item-title">Incompatible Stones</p>
+            <p class="astro-item-text">Moonga must never be combined with Emerald (Panna) — Mercury and Mars are enemies. Blue Sapphire (Neelam) and Hessonite (Gomedha) are generally incompatible with Moonga as Saturn and Rahu conflict with Mars. Diamond (Heera) requires careful consideration — Venus and Mars can clash. Ruby (Manik), Yellow Sapphire (Pukhraj), and Pearl (Moti) are generally considered compatible with Moonga, as the Sun, Jupiter, and the Moon share friendly relations with Mars.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── IDENTIFY ───────────────────────────────────────── -->
+<section class="identify-section">
+  <div class="identify-inner">
+    <div class="reveal">
+      <p class="section-label">Gemology</p>
+      <h2>How to <em>Identify</em> a Genuine Stone</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="identify-steps">
+      <div class="identify-step reveal">
+        <p class="step-num">01</p>
+        <p class="step-title">The Organic Texture Test</p>
+        <p class="step-text">Genuine Corallium rubrum has a distinct organic, fibrous internal structure visible under magnification — concentric growth rings, fine parallel striations along the branch axis, and a characteristically waxy (not vitreous) lustre. Glass and plastic imitations appear perfectly uniform and glassy. Dyed coral or compressed coral powder often shows uneven colour distribution or visible grain boundaries under magnification.</p>
+      </div>
+      <div class="identify-step reveal">
+        <p class="step-num">02</p>
+        <p class="step-title">Colour Standards for Moonga</p>
+        <p class="step-text">Astrological Moonga must display a vivid, uniform blood-red to deep ox-blood red colour throughout the entire stone — no white centres, pale patches, or uneven saturation. Pink coral (used in fashion jewellery) is not acceptable as Moonga. Orange-red is borderline; the ideal colour is described in Sanskrit texts as "sindoor" (vermillion) or deeper. A stone with any significant white or pale core is considered astrologically inferior regardless of size.</p>
+      </div>
+      <div class="identify-step reveal">
+        <p class="step-num">03</p>
+        <p class="step-title">Treatment & Certification</p>
+        <p class="step-text">Red coral is frequently dyed, bleached, stabilised, or reconstructed from coral powder — all unacceptable for astrological use. Natural, untreated Corallium rubrum or Corallium japonicum with no colour enhancement is the only acceptable material. A GIA, IGI, or AGL laboratory report confirming "natural red coral, no indications of treatment" is essential. Beware of unreasonably low-priced "Italian coral" — genuine untreated Mediterranean Moonga is expensive and increasingly rare.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CARE GUIDE ─────────────────────────────────────── -->
+<section class="care-section">
+  <div class="care-inner">
+    <div class="care-header reveal">
+      <p class="section-label">Maintenance</p>
+      <h2>Complete Care <em>Guide</em></h2>
+      <div class="divider"></div>
+      <p class="care-intro">Red Coral is the softest and most delicate of all Vedic planetary stones — at only 3 to 4 on the Mohs scale, it scratches easily and is chemically sensitive in ways that crystalline gems are not. Moonga demands the most careful physical handling of any Navaratna stone, and its organic nature means conventional gemstone care rules do not apply.</p>
+    </div>
+
+    <div class="care-tabs reveal">
+      <button class="care-tab-btn active" onclick="showCareTab('daily')">Daily Care</button>
+      <button class="care-tab-btn" onclick="showCareTab('cleaning')">Deep Cleaning</button>
+      <button class="care-tab-btn" onclick="showCareTab('storage')">Storage</button>
+      <button class="care-tab-btn" onclick="showCareTab('seasonal')">Seasonal Guide</button>
+      <button class="care-tab-btn" onclick="showCareTab('vedic')">Vedic Rituals</button>
+      <button class="care-tab-btn" onclick="showCareTab('donts')">Do's &amp; Don'ts</button>
+    </div>
+
+    <!-- Daily Care -->
+    <div class="care-panel active" id="tab-daily">
+      <div class="care-tips">
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="18" cy="18" r="14"/><path d="M18 10v8l5 3"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Morning Protocol</p>
+            <p class="care-tip-text">Always apply perfume, moisturiser, sunscreen, hairspray, and hand creams before placing your Moonga ring on your finger. Coral is calcium carbonate — the same mineral as chalk and limestone — and is chemically dissolved by any acidic substance, including perfumes, alcohol-based products, and even perspiration over time. This is not merely a care recommendation; it is the single most important rule for preserving an organic gem stone.</p>
+            <span class="care-tip-note">Tradition: Wear Moonga after Tuesday morning prayers, ideally after reciting the Mangal mantra at sunrise, for greatest alignment with Mars's energy.</span>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M10 26c0-8 4-14 8-18 4 4 8 10 8 18a8 8 0 01-16 0z"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Evening Wipe Routine</p>
+            <p class="care-tip-text">Before storing each evening, wipe gently with a soft, barely damp cloth — then immediately with a dry soft cloth. Remove perspiration and skin oils promptly; the natural acids in sweat will gradually etch and dull coral's waxy surface and erode its colour over months if not removed daily. The contact point beneath the stone — where Mars's energy transfers to the body in Vedic tradition — must be kept clean and unobstructed for the stone to function astrologically.</p>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="6" y="12" width="24" height="18" rx="2"/><path d="M12 12V9a6 6 0 0112 0v3"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Removal During Activities</p>
+            <p class="care-tip-text">Red Coral must be removed before swimming (chlorinated or salt water both dissolve coral), cooking (acidic foods, steam, heat), gym and sport (sweat and impact), cleaning with any household chemicals, and any activity involving hard surfaces or impact. At Mohs 3–4, coral scratches against almost every everyday material. A single careless impact against a hard edge can chip or crack the stone permanently. Mars governs warriors — but protect the stone as you would armour.</p>
+            <span class="care-tip-note">Never wear Moonga while swimming — chlorine and saltwater dissolve coral rapidly. Even brief exposure causes irreversible surface damage.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deep Cleaning -->
+    <div class="care-panel" id="tab-cleaning">
+      <div class="care-tips">
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M10 26c0-8 4-14 8-18 4 4 8 10 8 18a8 8 0 01-16 0z"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Fortnightly Gentle Wipe</p>
+            <p class="care-tip-text">Do not soak Moonga in water. The correct method for periodic cleaning is a barely dampened soft cloth — cotton or microfibre — wiped gently across the surface, followed immediately by a dry wipe. No soaking, no immersion, no running water directly on the stone. If residue has built up around the setting, use a dry, very soft artist's brush to remove it from the metal only — never scrub the coral surface itself. Tuesday mornings align with Mars's energy for this gentle care ritual.</p>
+            <span class="care-tip-note">Never soak or immerse Moonga in water — even plain water weakens the surface of coral over time. Damp wipe only.</span>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="6" y="10" width="24" height="18" rx="2"/><path d="M12 10V7a6 6 0 0112 0v3"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Ultrasonic & Steam — Strictly Prohibited</p>
+            <p class="care-tip-text">Ultrasonic cleaning and steam cleaning are absolutely forbidden for Red Coral. Ultrasonic vibrations shatter organic gem materials; steam forces hot moisture into the porous calcium carbonate structure, accelerating surface erosion and colour loss. There is no exception to this rule for any coral, regardless of quality or setting type. Coral is more vulnerable to these methods than any other Vedic gemstone.</p>
+            <span class="care-tip-note">Ultrasonic and steam cleaning will permanently destroy Red Coral. Never use under any circumstances.</span>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="18" cy="18" r="12"/><path d="M13 18h10M18 13v10"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">What to Strictly Avoid</p>
+            <p class="care-tip-text">Never use any chemical cleaner on coral — not mild soap, not baking soda, not alcohol wipes, not ammonia, not lemon juice, not any household cleaner of any kind. All acids — including mild ones — dissolve calcium carbonate directly. Even pH-neutral soaps can damage coral's surface over time. The only acceptable cleaning agents for Red Coral are a barely damp soft cloth and, when needed, a very small amount of pure mineral oil applied sparingly to restore surface lustre.</p>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M18 6l2 6h7l-5.5 4 2 6L18 18l-5.5 4 2-6L9 12h7z"/><circle cx="18" cy="28" r="2"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Mineral Oil Conditioning</p>
+            <p class="care-tip-text">Over time and with regular wear, coral's surface can become dull and slightly chalky — a sign that the natural moisture in the organic material is depleting. A very small amount of pure food-grade mineral oil or pharmaceutical-grade paraffin oil, applied with a soft cotton cloth and buffed gently, can restore the characteristic waxy lustre. This conditioning is acceptable for astrological use — unlike emerald oil, coral conditioning does not affect its Jyotish potency. Perform annually or when surface dullness is noticed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Storage -->
+    <div class="care-panel" id="tab-storage">
+      <div class="care-tips">
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="4" y="10" width="28" height="22" rx="2"/><path d="M12 10V8a6 6 0 0112 0v2"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Individual Storage</p>
+            <p class="care-tip-text">Store your Moonga ring in its own dedicated soft pouch — deep red or crimson velvet is traditional and appropriate. Never store alongside any harder gemstone — diamond, corundum (ruby, sapphire), or even quartz will scratch coral at the slightest contact. Do not store with Emerald (Panna) — Mars and Mercury are enemies. Never store alongside Blue Sapphire (Neelam) or Hessonite (Gomedha). A dedicated compartment lined with the softest available fabric is essential for coral's physical survival.</p>
+            <span class="care-tip-note">Tradition: Moonga must never share a pouch or compartment with Panna (Emerald) or Neelam (Blue Sapphire) — planetary enemies in Vedic gemology.</span>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M18 6l2 7h7l-6 4 2 7-5-4-5 4 2-7-6-4h7z"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Environment & Conditions</p>
+            <p class="care-tip-text">Store in a cool, moderately humid, and completely dark environment. Coral is an organic material that can dry out in extremely arid conditions, causing the surface to become chalky and crack over years. Avoid direct sunlight storage — UV light fades coral's red colour irreversibly over time. Unlike mineral gems, coral benefits from a small degree of ambient humidity. A cushioned, lined jewellery box away from windows, heating vents, and air conditioners is ideal.</p>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M8 28V14l10-8 10 8v14"/><path d="M14 28v-8h8v8"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Travel Precautions</p>
+            <p class="care-tip-text">When travelling with Moonga, use a thickly padded, soft-lined hard-case jewellery organiser in carry-on luggage only. The cargo hold's extreme temperature swings and low humidity are particularly damaging to organic gems. X-ray machines do not harm coral. At beaches or pools, remove the ring and store it in its pouch before any water contact — even brief saltwater or chlorinated water exposure causes rapid, irreversible surface damage to Red Coral.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seasonal -->
+    <div class="care-panel" id="tab-seasonal">
+      <div class="care-season-grid reveal">
+        <div class="care-season-card">
+          <p class="care-season-title"><span>☀️</span> Summer</p>
+          <p class="care-season-text">The most challenging season for Red Coral. Heat accelerates perspiration — which etches the surface — and UV exposure fades colour. Wipe the stone after every wearing session without exception. Avoid wearing outdoors in direct intense sunlight for extended periods. The combination of heat, sweat, and sun is the primary cause of premature coral deterioration in tropical climates. Mineral oil conditioning is particularly beneficial at the end of a hot season.</p>
+        </div>
+        <div class="care-season-card">
+          <p class="care-season-title"><span>🌧️</span> Monsoon</p>
+          <p class="care-season-text">Remove Moonga before going out in rain — rainwater, despite appearing clean, contains dissolved carbon dioxide that makes it mildly acidic and damaging to coral over repeated exposure. The ambient humidity of the monsoon season is beneficial for coral storage conditions, but the stone should never be exposed to direct water contact. Check the setting monthly for any loosening from repeated thermal and humidity cycles.</p>
+        </div>
+        <div class="care-season-card">
+          <p class="care-season-title"><span>🍂</span> Post-Monsoon</p>
+          <p class="care-season-text">Ideal time for annual professional inspection after the harshest seasonal conditions. Have the jeweller check prong integrity, assess the coral surface for etching or dulling, apply mineral oil conditioning if needed, and verify that the stone's colour has not shifted. A brief re-energising ritual on a Tuesday in the post-monsoon period is considered auspicious for Moonga.</p>
+        </div>
+        <div class="care-season-card">
+          <p class="care-season-title"><span>❄️</span> Winter</p>
+          <p class="care-season-text">Dry winter air and indoor heating can cause coral to slowly dehydrate and become chalky over several seasons. Keep the storage environment slightly humidified if possible, and apply a light mineral oil conditioning treatment if the surface appears dull or dry. Cold temperatures do not harm coral directly, but thermal shock from moving rapidly between extreme cold and indoor heat should be avoided.</p>
+        </div>
+      </div>
+      <div class="care-tip reveal" style="margin-top:20px;">
+        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="18" cy="14" r="8"/><path d="M18 22v10M12 28h12"/>
+        </svg>
+        <div class="care-tip-body">
+          <p class="care-tip-title">Mars's Weekly Honouring</p>
+          <p class="care-tip-text">Every Tuesday — Mangalvar, Mars's day — is the ideal moment for a gentle wipe-clean and brief ritual acknowledgement of the stone's planetary significance. Lighting a red candle or diya near the ring, or holding the coral toward the morning sun while reciting the Mangal mantra, is considered an effective weekly practice for maintaining Mars's energy and ensuring the stone remains vigorous in its astrological work. Mars rewards consistency and discipline in this practice.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vedic Rituals -->
+    <div class="care-panel" id="tab-vedic">
+      <div class="care-tips">
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M18 4C10 12 6 18 6 24a12 12 0 0024 0c0-6-4-12-12-20z"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Tuesday Panchamrit Cleansing</p>
+            <p class="care-tip-text">On the first Tuesday of each month during Shukla Paksha, perform a modified Panchamrit for coral. Unlike crystalline stones, Moonga must NOT be immersed — instead, pour each Panchamrit substance (raw cow's milk, pure honey, ghee, curd, clean water) over the stone briefly — no more than 30 seconds total exposure — while holding it over a bowl. Wipe dry immediately after each substance. This modified protocol honours the ritual without damaging the organic material. While performing the ritual, recite the Mangal Beej Mantra — "Om Kraam Kreem Kraum Sah Bhaumaya Namah" — 108 times. Offer red flowers to a Mars image if available.</p>
+            <span class="care-tip-note">Modified Panchamrit only — brief pour-over, never immersion. Wipe dry immediately after each substance to protect the coral's surface.</span>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M12 28V16l6-10 6 10v12"/><path d="M9 28h18"/><circle cx="18" cy="16" r="2"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Re-consecration After Absence</p>
+            <p class="care-tip-text">If the ring has not been worn for more than 40 days, it must be re-energised before resuming wear. Perform the brief modified Panchamrit cleansing on a Tuesday morning. Hold the stone facing south — Mars's direction — at sunrise. Visualise a vivid blood-red light filling the stone completely. Recite "Om Mangalaya Namah" 108 times. Then place it on the ring finger of the right hand. Mars governs action; this ritual reactivates the stone's martial energy and reestablishes the link between the wearer and Mangal Dev.</p>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M18 6l2 7h7l-6 4 2 7-5-4-5 4 2-7-6-4h7z"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">If the Stone Cracks, Chips, or is Lost</p>
+            <p class="care-tip-text">A damaged or lost Moonga is considered among the most significant events in Vedic gem tradition — Red Coral is believed to absorb harm directed at the physical body, blood, or vital energy of the wearer. A cracked stone may indicate that Mars absorbed a physical or martial event on the wearer's behalf. Do not continue wearing a cracked or chipped Moonga for astrological purposes. Consult a Jyotishi immediately. Perform a Mangal Shanti Puja and Hanuman Puja, and replace with a new certified natural stone through a fresh Tuesday consecration ceremony.</p>
+            <span class="care-tip-note">A damaged Moonga is a significant event — perform Mangal Shanti Puja before replacing and do not discard the damaged stone without guidance.</span>
+          </div>
+        </div>
+        <div class="care-tip reveal">
+          <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="18" cy="18" r="14"/><path d="M12 18h12M18 12v12"/>
+          </svg>
+          <div class="care-tip-body">
+            <p class="care-tip-title">Removing Moonga Permanently</p>
+            <p class="care-tip-text">If a Jyotishi advises discontinuing the stone, or if consistent aggression, accidents, or inflammatory health events are observed after wearing, removal must follow a protocol. Remove on a Tuesday at sunrise. Immerse the ring briefly in a flowing river or natural water source — traditional methods of returning Mars's energy to the earth. Alternatively, bury it in red earth near a temple of Hanuman — the deity associated with Mars's highest qualities. Never casually discard or gift a worn Moonga; the wearer's Martian imprint is considered strongly embedded in a worn stone.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Do's & Don'ts -->
+    <div class="care-panel" id="tab-donts">
+      <div class="care-dondont reveal">
+        <div class="care-do">
+          <p class="care-list-title">✦ Do's</p>
+          <ul class="care-list">
+            <li>Consult a qualified Jyotishi before wearing for the first time</li>
+            <li>Wear on the ring finger (Anamika) of the right hand in gold or copper</li>
+            <li>Install on a Tuesday during Shukla Paksha at sunrise Mars hora</li>
+            <li>Apply all perfumes, creams, and sunscreen before wearing the ring</li>
+            <li>Wipe gently with a barely damp cloth, then dry immediately after each wear</li>
+            <li>Condition annually with a small amount of pure mineral oil when surface dulls</li>
+            <li>Store in a dedicated red or crimson velvet pouch separately from all other gems</li>
+            <li>Perform monthly modified Panchamrit cleansing on Tuesdays</li>
+            <li>Honour the stone each Tuesday with the Mangal mantra</li>
+            <li>Obtain GIA / IGI lab certification confirming natural coral, untreated</li>
+            <li>Remove before swimming, gym, cooking, rain, or any chemical exposure</li>
+            <li>Schedule annual professional jeweller inspection and surface assessment</li>
+          </ul>
+        </div>
+        <div class="care-dont">
+          <p class="care-list-title">✦ Don'ts</p>
+          <ul class="care-list">
+            <li>Never wear without astrological consultation first</li>
+            <li>Do not wear alongside Emerald (Panna) — Mars and Mercury are enemies</li>
+            <li>Do not wear alongside Blue Sapphire (Neelam) or Hessonite (Gomedha)</li>
+            <li>Never use ultrasonic or steam cleaning — will permanently destroy coral</li>
+            <li>Never use soap, bleach, alcohol, acid, ammonia, or any chemical cleaner</li>
+            <li>Never soak or immerse in water for any reason</li>
+            <li>Never wear while swimming — chlorine and salt water dissolve coral</li>
+            <li>Never sleep wearing the ring — scratch and impact risk</li>
+            <li>Do not expose to direct strong sunlight for extended periods — colour fades</li>
+            <li>Never store with any harder gemstone — all will scratch coral</li>
+            <li>Never continue wearing a cracked or chipped Moonga</li>
+            <li>Do not gift a worn Moonga without proper ritual clearing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FACT TABLE ─────────────────────────────────────── -->
+<section class="table-section">
+  <div class="table-inner">
+    <div class="reveal">
+      <p class="section-label">Quick Reference</p>
+      <h2>Complete <em>Fact Sheet</em></h2>
+      <div class="divider"></div>
+    </div>
+    <table class="reveal">
+      <thead>
+        <tr><th>Property</th><th>Detail</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sanskrit Name</td><td>Moonga / Praval / Vidrum / Angarak Mani</td></tr>
+        <tr><td>Material Type</td><td>Organic (Calcium Carbonate — CaCO₃, skeletal secretion of marine coral polyps)</td></tr>
+        <tr><td>Species</td><td>Corallium rubrum (Mediterranean), Corallium japonicum (Japan)</td></tr>
+        <tr><td>Colour Agent</td><td>Carotenoid pigments within the organic matrix</td></tr>
+        <tr><td>Hardness (Mohs)</td><td>3.0 – 4.0 (softest of all Vedic gemstones)</td></tr>
+        <tr><td>Specific Gravity</td><td>2.60 – 2.70</td></tr>
+        <tr><td>Refractive Index</td><td>1.486 – 1.658</td></tr>
+        <tr><td>Crystal System</td><td>None (organic, amorphous to microcrystalline)</td></tr>
+        <tr><td>Cleavage</td><td>None; conchoidal to uneven fracture</td></tr>
+        <tr><td>Lustre</td><td>Waxy to dull; polishes to a characteristic matte-gloss</td></tr>
+        <tr><td>Ideal Colour</td><td>Vivid blood-red to deep ox-blood — "sindoor" or pomegranate red (traditional benchmark)</td></tr>
+        <tr><td>Primary Origins</td><td>Mediterranean Sea (Italy, Sardinia), Japan, Taiwan, Australia</td></tr>
+        <tr><td>Ruling Planet</td><td>Mars (Mangal Dev)</td></tr>
+        <tr><td>Zodiac Ascendants</td><td>Aries (Mesha) and Scorpio (Vrishchika) primary; also for Mangal Dosha mitigation</td></tr>
+        <tr><td>Recommended Finger</td><td>Ring finger (Anamika), right hand</td></tr>
+        <tr><td>Setting Metal</td><td>Gold (yellow gold traditional); copper also accepted</td></tr>
+        <tr><td>Auspicious Day</td><td>Tuesday (Mangalvar), Shukla Paksha, sunrise Mars hora</td></tr>
+        <tr><td>Mantra</td><td>Om Mangalaya Namah (108 repetitions)</td></tr>
+        <tr><td>Beej Mantra</td><td>Om Kraam Kreem Kraum Sah Bhaumaya Namah</td></tr>
+        <tr><td>Incompatible Stones</td><td>Emerald (Panna), Blue Sapphire (Neelam), Hessonite (Gomedha), Diamond (Heera — use caution)</td></tr>
+        <tr><td>Treatment Status</td><td>Must be completely untreated — no dyeing, bleaching, stabilisation, or reconstruction. GIA/IGI certification confirming natural coral with no treatment is mandatory for astrological use.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a class="nav-logo" href="#"><span>RATNA</span>VALI</a>
+      <p>A curated knowledge resource on Vedic gemstones, planetary stones, and the ancient science of Navaratna.</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Knowledge Centre</p>
+      <ul>
+        <li><a href="#">Yellow Sapphire (Pukhraj)</a></li>
+        <li><a href="#">Blue Sapphire (Neelam)</a></li>
+        <li><a href="#">Ruby (Manik)</a></li>
+        <li><a href="#">Emerald (Panna)</a></li>
+        <li><a href="#">Red Coral (Moonga)</a></li>
+        <li><a href="#">Pearl (Moti)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Explore</p>
+      <ul>
+        <li><a href="#">Navaratna Guide</a></li>
+        <li><a href="#">Astrology &amp; Gems</a></li>
+        <li><a href="#">Gemstone Grading</a></li>
+        <li><a href="#">Lab Certification</a></li>
+        <li><a href="#">About Ratnavali</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Ratnavali. For educational purposes only. Always consult a qualified Jyotishi before wearing Red Coral.</p>
+    <p>Crafted with reverence in India &nbsp;·&nbsp; <a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Disclaimer</a></p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  function showCareTab(id) {
+    document.querySelectorAll('.care-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.care-tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    document.querySelectorAll('#tab-' + id + ' .reveal').forEach(el => {
+      el.classList.remove('visible');
+      setTimeout(() => observer.observe(el), 50);
+    });
+  }
+</script>
+</body>
+</html>

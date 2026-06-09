@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diamond (Heera) — Ratnavali Knowledge Centre</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --dia:         #C8D8E8;
+      --dia-light:   #E4EEF8;
+      --dia-dim:     #8AAAC4;
+      --dia-deep:    #3A5A7A;
+      --prism:       #D0E8FF;
+      --prism-dim:   #7090B0;
+      --cream:       #FEFDFB;
+      --deep:        #090C10;
+      --dark:        #0F1418;
+      --dark-mid:    #151C24;
+      --dark-card:   #111820;
+      --text-muted:  #6A7A8A;
+      --text-body:   #98A8B8;
+      --border:      rgba(200,216,232,0.14);
+      --border-s:    rgba(228,238,248,0.09);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--deep);
+      color: var(--text-body);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 60px;
+      background: rgba(9,12,16,0.93);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem; letter-spacing: 0.18em;
+      color: var(--dia-light); text-decoration: none;
+    }
+    .nav-logo span { color: var(--cream); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-family: 'Raleway', sans-serif; font-size: 0.72rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--dia-light); }
+    .nav-badge {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.12em; color: var(--cream);
+      background: var(--dia-deep); padding: 6px 16px;
+      border: 1px solid var(--dia); border-radius: 2px;
+    }
+
+    /* ── HERO ────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+      padding: 140px 60px 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 70% at 72% 50%, rgba(200,216,232,0.10) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 15% 75%, rgba(100,160,220,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 40% at 50% 10%, rgba(228,238,248,0.08) 0%, transparent 60%),
+        linear-gradient(150deg, #090C10 0%, #111C28 50%, #090C10 100%);
+    }
+    .hero-grain {
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      opacity: 0.5; pointer-events: none;
+    }
+    .hero-stars {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        radial-gradient(1px 1px at 10% 20%, rgba(200,216,232,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 25% 60%, rgba(228,238,248,0.4) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 40% 15%, rgba(200,216,232,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 80%, rgba(138,170,196,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 75% 35%, rgba(228,238,248,0.35) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 85% 65%, rgba(200,216,232,0.55) 0%, transparent 100%),
+        radial-gradient(1px 1px at 92% 20%, rgba(138,170,196,0.45) 0%, transparent 100%),
+        radial-gradient(1px 1px at 5%  85%, rgba(228,238,248,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 45%, rgba(200,216,232,0.28) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 90%, rgba(138,170,196,0.38) 0%, transparent 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 580px;
+      animation: fadeUp 1.2s ease both;
+    }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem; letter-spacing: 0.35em;
+      color: var(--dia-light); text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 40px; height: 1px; background: var(--dia-dim);
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300; line-height: 1.08;
+      color: var(--cream); margin-bottom: 12px;
+    }
+    h1 em { font-style: italic; color: var(--dia-light); display: block; }
+    .hero-tagline {
+      font-family: 'Cinzel', serif; font-size: 0.7rem;
+      letter-spacing: 0.3em; color: var(--dia-dim);
+      text-transform: uppercase; margin-bottom: 28px;
+    }
+    .hero-desc {
+      font-size: 1rem; color: var(--text-body);
+      max-width: 440px; margin-bottom: 44px;
+      border-left: 2px solid var(--dia-dim); padding-left: 20px;
+    }
+    .hero-warning {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: rgba(200,216,232,0.05);
+      border: 1px solid rgba(200,216,232,0.18);
+      padding: 16px 20px; margin-bottom: 36px;
+      max-width: 460px;
+    }
+    .hero-warning-icon { color: var(--dia-light); flex-shrink: 0; margin-top: 2px; }
+    .hero-warning-text { font-size: 0.78rem; line-height: 1.6; color: var(--text-body); }
+    .hero-warning-text strong { color: var(--dia-light); font-weight: 500; }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: 'Cinzel', serif; font-size: 0.7rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--cream); background: var(--dia-deep);
+      border: 1px solid var(--dia);
+      padding: 14px 32px; text-decoration: none;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .hero-cta:hover { background: var(--dia-dim); border-color: var(--dia-light); }
+    .hero-cta svg { width: 14px; height: 14px; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── BENEFITS ────────────────────────── */
+    .benefits {
+      position: relative; padding: 140px 60px;
+      background: linear-gradient(180deg, rgba(9,12,16,0.4) 0%, rgba(17,24,32,0.6) 100%);
+    }
+    .benefits-inner { max-width: 1000px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.2em; color: var(--dia-dim);
+      text-transform: uppercase; margin-bottom: 16px;
+      display: inline-block;
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 300; line-height: 1.1; margin-bottom: 8px;
+    }
+    h2 em { font-style: italic; color: var(--dia-light); }
+    .divider {
+      width: 60px; height: 2px;
+      background: linear-gradient(90deg, var(--dia-dim), transparent);
+      margin: 28px 0 48px;
+    }
+    .benefit-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 36px; margin-top: 40px;
+    }
+    .benefit-card {
+      background: rgba(17,24,32,0.6);
+      border: 1px solid var(--border);
+      padding: 36px; border-radius: 8px;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+      opacity: 0; transform: translateY(30px);
+    }
+    .benefit-card.visible {
+      opacity: 1; transform: translateY(0);
+    }
+    .benefit-card:hover {
+      background: rgba(21,28,36,0.8);
+      border-color: var(--border-s);
+      transform: translateY(-12px);
+    }
+    .benefit-icon {
+      width: 56px; height: 56px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(200,216,232,0.07);
+      border: 1px solid var(--border-s);
+      border-radius: 6px;
+      color: var(--dia-light);
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+    .benefit-title {
+      font-family: 'Cinzel', serif; font-size: 1rem;
+      letter-spacing: 0.08em; color: var(--cream);
+      margin-bottom: 12px; text-transform: uppercase;
+    }
+    .benefit-desc {
+      font-size: 0.88rem; line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    /* ── CHARACTERISTICS ───────────────── */
+    .characteristics {
+      position: relative; padding: 140px 60px;
+    }
+    .characteristics-inner { max-width: 1200px; margin: 0 auto; }
+    .char-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px; margin-top: 40px;
+    }
+    .char-item {
+      background: rgba(17,24,32,0.6);
+      border: 1px solid var(--border);
+      padding: 24px; border-radius: 6px;
+      opacity: 0; transform: translateY(20px);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+    .char-item.visible { opacity: 1; transform: translateY(0); }
+    .char-item:hover {
+      background: rgba(21,28,36,0.8);
+      border-color: var(--border-s);
+    }
+    .char-label {
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      letter-spacing: 0.15em; color: var(--dia-dim);
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .char-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; color: var(--cream); line-height: 1.4;
+    }
+
+    /* ── CARE SECTION ─────────────────────── */
+    .care-section {
+      position: relative; padding: 140px 60px;
+      background: linear-gradient(180deg, rgba(9,12,16,0.4) 0%, rgba(17,24,32,0.6) 100%);
+    }
+    .care-inner { max-width: 1000px; margin: 0 auto; }
+    .care-tabs {
+      display: flex; gap: 16px; margin: 40px 0; border-bottom: 1px solid var(--border);
+    }
+    .care-tab-btn {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--text-muted); background: none; border: none;
+      padding: 16px 24px; border-bottom: 2px solid transparent;
+      cursor: pointer; transition: all 0.3s;
+    }
+    .care-tab-btn:hover { color: var(--dia-light); }
+    .care-tab-btn.active {
+      color: var(--dia-light);
+      border-bottom-color: var(--dia-light);
+    }
+    .care-panel {
+      display: none; opacity: 0; animation: fadeUp 0.6s ease;
+    }
+    .care-panel.active { display: block; opacity: 1; }
+    .care-tip {
+      background: rgba(17,24,32,0.6);
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 32px; margin-bottom: 24px;
+      display: flex; gap: 24px;
+      opacity: 0; transform: translateY(20px);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+    .care-tip.visible { opacity: 1; transform: translateY(0); }
+    .care-tip-icon {
+      width: 36px; height: 36px;
+      color: var(--dia-light); flex-shrink: 0;
+    }
+    .care-tip-body { flex: 1; }
+    .care-tip-title {
+      font-family: 'Cinzel', serif; font-size: 0.85rem;
+      letter-spacing: 0.1em; color: var(--cream);
+      text-transform: uppercase; margin-bottom: 12px;
+    }
+    .care-tip-text {
+      font-size: 0.88rem; line-height: 1.7; color: var(--text-body);
+      margin-bottom: 12px;
+    }
+    .care-tip-note {
+      font-size: 0.78rem; color: var(--text-muted);
+      display: block; margin-top: 12px; padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .care-dondont {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 36px;
+    }
+    .care-do, .care-dont { padding: 32px; background: rgba(17,24,32,0.6);
+      border: 1px solid var(--border); border-radius: 8px;
+    }
+    .care-list-title {
+      font-family: 'Cinzel', serif; font-size: 0.8rem;
+      letter-spacing: 0.15em; color: var(--cream);
+      text-transform: uppercase; margin-bottom: 20px;
+    }
+    .care-list { list-style: none; }
+    .care-list li {
+      font-size: 0.85rem; line-height: 1.8;
+      color: var(--text-body); margin-bottom: 12px;
+      padding-left: 20px; position: relative;
+    }
+    .care-list li::before {
+      content: '–'; position: absolute; left: 0;
+      color: var(--dia-dim);
+    }
+
+    /* ── TABLE SECTION ────────────────────── */
+    .table-section {
+      position: relative; padding: 140px 60px;
+    }
+    .table-inner { max-width: 1200px; margin: 0 auto; }
+    table {
+      width: 100%; margin-top: 40px;
+      border-collapse: collapse;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    table.visible { opacity: 1; }
+    thead {
+      background: rgba(17,24,32,0.8);
+      border-bottom: 2px solid var(--border);
+    }
+    th {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--dia-light); padding: 20px; text-align: left;
+    }
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:hover { background: rgba(17,24,32,0.4); }
+    td {
+      padding: 18px 20px; font-size: 0.88rem;
+      color: var(--text-body); line-height: 1.6;
+    }
+    td:first-child {
+      font-family: 'Cinzel', serif; font-size: 0.78rem;
+      letter-spacing: 0.08em; color: var(--cream);
+      text-transform: uppercase; font-weight: 500;
+    }
+
+    /* ── FOOTER ──────────────────────────── */
+    footer {
+      background: rgba(5,7,10,0.8);
+      border-top: 1px solid var(--border);
+      padding: 60px; color: var(--text-muted);
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px; max-width: 1200px; margin: 0 auto;
+      margin-bottom: 60px; padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.7; margin-top: 16px; }
+    .footer-col-title {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.12em; color: var(--cream);
+      text-transform: uppercase; margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 12px; }
+    .footer-col a {
+      font-size: 0.85rem; color: var(--text-muted);
+      text-decoration: none; transition: color 0.3s;
+    }
+    .footer-col a:hover { color: var(--dia-light); }
+    .footer-bottom {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.78rem;
+    }
+    .footer-bottom p:last-child { text-align: right; }
+    .footer-bottom a { color: var(--text-muted); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--dia-light); }
+
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      .hero { padding: 120px 20px 60px; }
+      .benefits, .characteristics, .care-section, .table-section { padding: 80px 20px; }
+      .footer-top { grid-template-columns: 1fr; gap: 40px; }
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .footer-bottom p:last-child { text-align: center; }
+      .care-dondont { grid-template-columns: 1fr; }
+      .char-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+    }
+
+    .reveal { opacity: 0; }
+    .reveal.visible { opacity: 1; }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ──────────────────────── -->
+<nav>
+  <a class="nav-logo" href="#"><span>RATNA</span>VALI</a>
+  <ul class="nav-links">
+    <li><a href="#">Knowledge</a></li>
+    <li><a href="#" class="active">Diamond</a></li>
+    <li><a href="#">Navaratna</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <a class="nav-badge" href="#">CONSULT A JYOTISHI</a>
+</nav>
+
+<!-- ── HERO ────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-stars"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Gemstone of Venus</p>
+    <h1>Diamond <em>Heera</em></h1>
+    <p class="hero-tagline">The Supreme Stone of Luxury, Love &amp; Venusian Grace</p>
+
+    <p class="hero-desc">Diamond is the hardest and most luminous of all gemstones — forged deep within the earth over billions of years under immense heat and pressure, then ascending through volcanic pipes to be worn by kings and conquerors. In Vedic astrology, Diamond resonates with Venus (Shukra), the planet governing beauty, luxury, love, art, sensuality, and material prosperity. Wear this blazing gem to invite Venusian abundance, strengthen relationships, enhance creativity, and align with the highest pleasures that earthly life can offer.</p>
+
+    <div class="hero-warning">
+      <svg class="hero-warning-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+        <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+      </svg>
+      <div class="hero-warning-text">
+        <strong>Important:</strong> Diamond is among the most potent Vedic gems and must only be worn after thorough astrological consultation. Venus rules desires and attachment — an afflicted Shukra can intensify imbalances. Wear only certified natural diamonds with GIA/IGI certification confirming no treatment.
+      </div>
+    </div>
+
+    <a href="#" class="hero-cta">
+      Explore Diamond Guide
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<!-- ── BENEFITS ────────────────────────── -->
+<section class="benefits">
+  <div class="benefits-inner">
+    <div class="reveal">
+      <p class="section-label">Vedic Properties</p>
+      <h2>Benefits of <em>Diamond</em></h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="benefit-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">💎</div>
+        <div class="benefit-title">Wealth &amp; Prosperity</div>
+        <p class="benefit-desc">Diamond amplifies Venus's power to attract material abundance, luxury, and financial growth. It is traditionally associated with long-lasting prosperity, business success, and a life of comfort.</p>
+      </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">💫</div>
+        <div class="benefit-title">Love &amp; Relationships</div>
+        <p class="benefit-desc">Strengthens bonds of love, deepens romantic attraction, and promotes harmony in partnerships. Diamond enhances Venus's grace in all relationships — romantic, familial, and social.</p>
+      </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">✨</div>
+        <div class="benefit-title">Artistic Brilliance</div>
+        <p class="benefit-desc">Awakens aesthetic sensibility, creative genius, and artistic expression. Diamond is the gem of poets, musicians, designers, and all who seek to channel beauty into form.</p>
+      </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🌟</div>
+        <div class="benefit-title">Charisma &amp; Presence</div>
+        <p class="benefit-desc">Enhances personal magnetism, charm, and social grace. Diamond heightens the wearer's natural radiance, making them compelling and luminous in any gathering.</p>
+      </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🕊️</div>
+        <div class="benefit-title">Inner Clarity</div>
+        <p class="benefit-desc">Just as a diamond refracts light into its purest spectrum, it is said to bring inner clarity, resolve confusion, and illuminate the truth of one's desires and path.</p>
+      </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🌿</div>
+        <div class="benefit-title">Vitality &amp; Longevity</div>
+        <p class="benefit-desc">Traditionally believed to support reproductive health, hormonal balance, and overall vitality. Diamond is said to fortify the body's subtle energy channels governed by Venus.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CHARACTERISTICS ───────────────── -->
+<section class="characteristics">
+  <div class="characteristics-inner">
+    <div class="reveal">
+      <p class="section-label">Gemstone Profile</p>
+      <h2>Diamond <em>Characteristics</em></h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="char-grid">
+      <div class="char-item reveal">
+        <p class="char-label">Ruling Planet</p>
+        <p class="char-value">Venus (Shukra)</p>
+      </div>
+      <div class="char-item reveal">
+        <p class="char-label">Zodiac Ascendants</p>
+        <p class="char-value">Taurus (Vrishabha), Libra (Tula)</p>
+      </div>
+      <div class="char-item reveal">
+        <p class="char-label">Associated Metal</p>
+        <p class="char-value">Platinum (preferred), White Gold, Silver</p>
+      </div>
+      <div class="char-item reveal">
+        <p class="char-label">Auspicious Day</p>
+        <p class="char-value">Friday (Shukravar), Shukla Paksha, sunrise</p>
+      </div>
+      <div class="char-item reveal">
+        <p class="char-label">Finger Placement</p>
+        <p class="char-value">Middle Finger (Madhyama), Right Hand</p>
+      </div>
+      <div class="char-item reveal">
+        <p class="char-label">Carat Weight</p>
+        <p class="char-value">0.30 carats minimum (sizable, eye-clean)</p>
+      </div>
+      <div class="char-item reveal">
+        <p class="char-label">Ideal Quality</p>
+        <p class="char-value">Colourless (D–G), eye-clean, no treatments</p>
+      </div>
+      <div class="char-item reveal">
+        <p class="char-label">Origin (Best)</p>
+        <p class="char-value">South Africa, Botswana, Russia, India (Golconda)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CARE SECTION ────────────────────── -->
+<section class="care-section">
+  <div class="care-inner">
+    <div class="reveal">
+      <p class="section-label">Precious Care</p>
+      <h2>Caring for <em>Diamond</em></h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="care-tabs">
+      <button class="care-tab-btn active" onclick="showCareTab('cleaning')">Cleaning</button>
+      <button class="care-tab-btn" onclick="showCareTab('storage')">Storage</button>
+      <button class="care-tab-btn" onclick="showCareTab('damage')">Damage</button>
+      <button class="care-tab-btn" onclick="showCareTab('donts')">Do's &amp; Don'ts</button>
+    </div>
+
+    <!-- Cleaning -->
+    <div class="care-panel active" id="tab-cleaning">
+      <div class="care-tip reveal">
+        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M9 18c0-4.97 4.03-9 9-9s9 4.03 9 9"/><path d="M18 27v-6"/>
+        </svg>
+        <div class="care-tip-body">
+          <p class="care-tip-title">Regular Physical Cleaning</p>
+          <p class="care-tip-text">Diamond is the hardest natural substance on earth (Mohs 10) and is chemically inert — making it one of the more forgiving gems to clean physically. Soak the ring in a bowl of warm water with a few drops of mild dish soap for 20–30 minutes to loosen body oils and residue. Gently scrub around the facets and under the setting with a soft-bristle toothbrush, rinse under running water, and pat dry with a lint-free cloth. Perform this cleaning every two to three weeks for stones worn daily. Professional ultrasonic cleaning is safe for diamonds, but only with a secure, undamaged setting — always confirm with your jeweller first.</p>
+          <span class="care-tip-note">Body oils are the primary enemy of diamond's brilliance. Regular cleaning preserves the fire and scintillation that define a fine stone.</span>
+        </div>
+      </div>
+
+      <div class="care-tip reveal">
+        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="18" cy="18" r="14"/><path d="M12 15h12v6H12z"/>
+        </svg>
+        <div class="care-tip-body">
+          <p class="care-tip-title">Energetic Cleansing (Traditional)</p>
+          <p class="care-tip-text">In Vedic tradition, Diamond is energetically cleansed and re-activated through specific rituals aligned with Venus. Place the stone in raw cow's milk overnight on a Thursday or Friday — milk is considered purifying and Venusian in nature. Remove, rinse with clean water, and dry thoroughly. Alternatively, expose the diamond to the light of the full moon overnight, placing it on a white cloth with fresh white flowers. Recite the Shukra mantra 108 times while holding the stone. This monthly renewal restores the gem's planetary resonance and strengthens the wearer's connection to Venus's grace.</p>
+          <span class="care-tip-note">Energetic renewal is as vital as physical care. A diamond in active astrological use accumulates planetary and personal energies continuously.</span>
+        </div>
+      </div>
+
+      <div class="care-tip reveal">
+        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M12 24h12v-8H12z"/><path d="M18 12v4"/>
+        </svg>
+        <div class="care-tip-body">
+          <p class="care-tip-title">What to Never Use</p>
+          <p class="care-tip-text">While diamond's surface is extraordinarily hard, chlorine bleach and other harsh chemicals can damage the metal setting — platinum and gold are both vulnerable to repeated chemical exposure. Avoid chlorine pools, household bleach, acetone, and strong solvents. Hairspray and perfume leave residue that dulls surface brilliance. Never use abrasive cleaning powders or rough cloths on the setting metalwork. Though diamond cannot be scratched by other gems, its setting can be distorted by impact — avoid wearing during heavy physical activity, moving furniture, or contact sports.</p>
+          <span class="care-tip-note">The diamond itself is indestructible under normal conditions, but its setting and the stone's edges require thoughtful protection.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Storage -->
+    <div class="care-panel" id="tab-storage">
+      <div class="care-tip reveal">
+        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <rect x="8" y="10" width="20" height="16" rx="2"/><path d="M14 16h8M14 22h4"/>
+        </svg>
+        <div class="care-tip-body">
+          <p class="care-tip-title">Dedicated Storage Pouch</p>
+          <p class="care-tip-text">Store Diamond in a separate, dedicated white or pale silk pouch, or in its own lined compartment in a jewellery box. Diamond at Mohs 10 is harder than every other gemstone — if stored carelessly alongside rubies, sapphires, emeralds, or any softer stone, it will scratch them. Conversely, two diamonds stored together can chip and abrade each other along their crystallographic planes. Individual storage is not optional — each diamond deserves its own space. For Vedic astrological use, many practitioners recommend white or ivory silk to honour Venus's association with purity, light, and refinement.</p>
+          <span class="care-tip-note">Individual storage is mandatory. Diamond will damage every other gem it contacts — including other diamonds.</span>
+        </div>
+      </div>
+
+      <div class="care-tip reveal">
+        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="18" cy="18" r="14"/><path d="M10 20h16M13 18h10"/>
+        </svg>
+        <div class="care-tip-body">
+          <p class="care-tip-title">Climate &amp; Environmental Conditions</p>
+          <p class="care-tip-text">Diamond is chemically inert and the most thermally stable of all gemstones — it tolerates humidity, temperature variation, and most environmental conditions with ease. However, certain treated diamonds (HPHT-treated or fracture-filled stones) can be affected by heat and chemicals. This is why certification of a natural, untreated stone is essential for astrological use. Store in a clean, dry environment, away from loose chemicals or abrasive materials. The setting metal — platinum or gold — is more environmentally sensitive than the diamond itself, so stable, moderate conditions preserve the jewellery's overall integrity.</p>
+          <span class="care-tip-note">Certification of natural, untreated status is critical. Treated diamonds behave differently and may be unsuitable for astrological purposes.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Damage -->
+    <div class="care-panel" id="tab-damage">
+      <div class="care-tip reveal">
+        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M10 26h16"/><path d="M14 10l-2 12h12l-2-12z"/>
+        </svg>
+        <div class="care-tip-body">
+          <p class="care-tip-title">A Chipped, Cracked, or Clouded Diamond</p>
+          <p class="care-tip-text">Though diamond is the hardest substance on earth, it is not immune to cleavage fracture — a sharp impact along the crystallographic grain can chip or split even a large, flawless stone. A chipped or internally fractured diamond should be discontinued immediately for astrological use. In Vedic tradition, a damaged diamond is regarded with utmost seriousness — it is believed to have intercepted a major blow of fate or absorbed significant negative Venusian energy on the wearer's behalf. A dull, oily-looking diamond that does not regain its fire after thorough cleaning may have undergone micro-fracturing. Consult a Jyotishi and a gemologist before replacing. Perform Shukra Puja with white flowers, kheer, and Venus mantra recitation before wearing a new stone.</p>
+          <span class="care-tip-note">A damaged diamond signals significant Shukra activity — discontinue use, consult a Jyotishi, and perform Shukra Puja before replacement.</span>
+        </div>
+      </div>
+
+      <div class="care-tip reveal">
+        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="18" cy="18" r="14"/><path d="M12 18h12M18 12v12"/>
+        </svg>
+        <div class="care-tip-body">
+          <p class="care-tip-title">Removing Diamond Permanently</p>
+          <p class="care-tip-text">If a Jyotishi advises discontinuing the diamond, or if excess indulgence, emotional attachment, relationship turbulence, or financial recklessness intensifies after wearing, removal must follow protocol. Remove the ring on a Friday at sunrise. Cleanse the stone in raw milk, then running water. Wrap the diamond in white silk and place it at the base of a tulsi or jasmine plant — both sacred to Venus — or offer it at a Shukra shrine or Lakshmi temple. Never casually discard or gift a worn diamond; the stone is deeply imbued with the wearer's Venusian imprint, and improper transfer can carry relational or financial karmic consequences.</p>
+          <span class="care-tip-note">Ritual removal respects the diamond's absorbed Venus energies. Follow proper protocol to close the planetary connection honourably.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Do's & Don'ts -->
+    <div class="care-panel" id="tab-donts">
+      <div class="care-dondont reveal">
+        <div class="care-do">
+          <p class="care-list-title">✦ Do's</p>
+          <ul class="care-list">
+            <li>Consult a qualified Jyotishi before wearing — Venus governs desires and its affliction can amplify imbalances</li>
+            <li>Wear on the middle finger (Madhyama) of the right hand in platinum or white gold</li>
+            <li>Install on a Friday during Shukla Paksha at sunrise Venus hora</li>
+            <li>Apply perfumes, creams, and sunscreen before wearing the ring</li>
+            <li>Wipe gently with a soft, lint-free cloth after each wear</li>
+            <li>Cleanse every 2–3 weeks with warm water, mild soap, and a soft brush</li>
+            <li>Store in a dedicated white silk or velvet pouch, separate from all other gems</li>
+            <li>Perform monthly Venus worship on Fridays with white flowers and kheer</li>
+            <li>Honour the stone with the Shukra mantra each Friday</li>
+            <li>Obtain GIA / IGI lab certification confirming natural diamond, no treatment</li>
+            <li>Remove before swimming, gym, heavy labour, or chemical exposure</li>
+            <li>Schedule annual professional jeweller inspection and prong tightening</li>
+          </ul>
+        </div>
+        <div class="care-dont">
+          <p class="care-list-title">✦ Don'ts</p>
+          <ul class="care-list">
+            <li>Never wear without astrological consultation first — Venus rules the most seductive and binding energies</li>
+            <li>Do not wear alongside Blue Sapphire (Neelam) without Jyotishi guidance in certain configurations</li>
+            <li>Do not wear alongside Ruby (Manik) — Sun and Venus can conflict in sensitive charts</li>
+            <li>Never wear a treated, fracture-filled, or HPHT-processed diamond for astrological purposes</li>
+            <li>Never use chlorine bleach, acetone, or harsh chemical cleaners near the setting</li>
+            <li>Never wear while swimming — chlorine damages gold and platinum settings over time</li>
+            <li>Never wear during heavy physical activity — impact can chip or cleave a diamond</li>
+            <li>Never sleep wearing the ring — prong stress and surface abrasion risk</li>
+            <li>Do not store with any other gemstone — diamond scratches all</li>
+            <li>Never continue wearing a chipped, cracked, or internally fractured diamond</li>
+            <li>Do not gift a worn diamond without proper ritual clearing and gemologist inspection</li>
+            <li>Do not purchase a diamond without a certified lab report from GIA or IGI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FACT TABLE ─────────────────────────────────────── -->
+<section class="table-section">
+  <div class="table-inner">
+    <div class="reveal">
+      <p class="section-label">Quick Reference</p>
+      <h2>Complete <em>Fact Sheet</em></h2>
+      <div class="divider"></div>
+    </div>
+    <table class="reveal">
+      <thead>
+        <tr><th>Property</th><th>Detail</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sanskrit Name</td><td>Heera / Vajra / Hiraka</td></tr>
+        <tr><td>Mineral Species</td><td>Diamond (pure Carbon — C, cubic crystal structure)</td></tr>
+        <tr><td>Formation</td><td>Formed 150–200 km below the earth's surface under extreme pressure and heat; transported to surface via kimberlite and lamproite volcanic pipes</td></tr>
+        <tr><td>Colour Range</td><td>Colourless (preferred Vedic), yellow, brown, fancy colours (blue, pink, red — extremely rare)</td></tr>
+        <tr><td>Hardness (Mohs)</td><td>10 (hardest natural substance known — the absolute maximum)</td></tr>
+        <tr><td>Specific Gravity</td><td>3.50 – 3.53</td></tr>
+        <tr><td>Refractive Index</td><td>2.417 (exceptionally high — source of brilliant fire and scintillation)</td></tr>
+        <tr><td>Crystal System</td><td>Cubic (isometric)</td></tr>
+        <tr><td>Cleavage</td><td>Perfect octahedral in four directions — susceptible to fracture on impact despite hardness</td></tr>
+        <tr><td>Lustre</td><td>Adamantine — the strongest, most brilliant lustre of all gemstones</td></tr>
+        <tr><td>Ideal Quality</td><td>Colourless (D–G), VS2 or better clarity, eye-clean, natural and untreated</td></tr>
+        <tr><td>Primary Origins</td><td>Botswana, Russia, South Africa, Canada, India (historic Golconda), Australia</td></tr>
+        <tr><td>Ruling Planet</td><td>Venus (Shukra)</td></tr>
+        <tr><td>Zodiac Ascendants</td><td>Taurus (Vrishabha) and Libra (Tula) primary; also beneficial in Shukra Mahadasha</td></tr>
+        <tr><td>Recommended Finger</td><td>Middle finger (Madhyama), right hand</td></tr>
+        <tr><td>Setting Metal</td><td>Platinum (preferred), white gold, silver</td></tr>
+        <tr><td>Auspicious Day</td><td>Friday (Shukravar), Shukla Paksha, sunrise Venus hora</td></tr>
+        <tr><td>Mantra</td><td>Om Shukraya Namah (108 repetitions)</td></tr>
+        <tr><td>Beej Mantra</td><td>Om Draam Dreem Draum Sah Shukraya Namah</td></tr>
+        <tr><td>Incompatible Stones</td><td>Caution with Ruby (Manik) in certain charts; always confirm Sun–Venus compatibility with Jyotishi</td></tr>
+        <tr><td>Treatment Status</td><td>Must be natural, untreated diamond — no fracture filling, HPHT treatment, or coating. GIA/IGI certification confirming natural, untreated status is mandatory for astrological use.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a class="nav-logo" href="#"><span>RATNA</span>VALI</a>
+      <p>A curated knowledge resource on Vedic gemstones, planetary stones, and the ancient science of Navaratna.</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Knowledge Centre</p>
+      <ul>
+        <li><a href="#">Yellow Sapphire (Pukhraj)</a></li>
+        <li><a href="#">Blue Sapphire (Neelam)</a></li>
+        <li><a href="#">Ruby (Manik)</a></li>
+        <li><a href="#">Emerald (Panna)</a></li>
+        <li><a href="#">Red Coral (Moonga)</a></li>
+        <li><a href="#">Diamond (Heera)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Explore</p>
+      <ul>
+        <li><a href="#">Navaratna Guide</a></li>
+        <li><a href="#">Astrology &amp; Gems</a></li>
+        <li><a href="#">Gemstone Grading</a></li>
+        <li><a href="#">Lab Certification</a></li>
+        <li><a href="#">About Ratnavali</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Ratnavali. For educational purposes only. Always consult a qualified Jyotishi before wearing Diamond.</p>
+    <p>Crafted with reverence in India &nbsp;·&nbsp; <a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Disclaimer</a></p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  function showCareTab(id) {
+    document.querySelectorAll('.care-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.care-tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    document.querySelectorAll('#tab-' + id + ' .reveal').forEach(el => {
+      el.classList.remove('visible');
+      setTimeout(() => observer.observe(el), 50);
+    });
+  }
+</script>
+</body>
+</html>

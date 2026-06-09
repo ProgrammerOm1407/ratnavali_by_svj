@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yellow Sapphire (Pukhraj) — Ratnavali Knowledge Centre</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <style>
+         :root {
+            --gold: #C9A84C;
+            --gold-light: #E8C97A;
+            --gold-dim: #8A6A2A;
+            --cream: #F5EDD8;
+            --deep: #0A0804;
+            --dark: #100E09;
+            --dark-mid: #1A1610;
+            --dark-card: #161209;
+            --text-muted: #9A8860;
+            --text-body: #D4C4A0;
+            --border: rgba(201, 168, 76, 0.2);
+        }
+        
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: var(--deep);
+            color: var(--text-body);
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        /* ── NAV ─────────────────────────────── */
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 60px;
+            background: rgba(10, 8, 4, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.15rem;
+            letter-spacing: 0.18em;
+            color: var(--gold);
+            text-decoration: none;
+        }
+        
+        .nav-logo span {
+            color: var(--cream);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        
+        .nav-badge {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            color: var(--deep);
+            background: var(--gold);
+            padding: 6px 16px;
+            border-radius: 2px;
+        }
+        /* ── HERO ────────────────────────────── */
+        
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding: 140px 60px 80px;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 60% 70% at 75% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201, 168, 76, 0.04) 0%, transparent 60%), linear-gradient(135deg, #0A0804 0%, #130F08 50%, #0D0A05 100%);
+        }
+        
+        .hero-grain {
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        .hero-decor-line {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 560px;
+            animation: fadeUp 1.2s ease both;
+        }
+        
+        .hero-eyebrow {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.35em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--gold-dim);
+        }
+        
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 300;
+            line-height: 1.08;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+        
+        h1 em {
+            font-style: italic;
+            color: var(--gold-light);
+            display: block;
+        }
+        
+        .hero-tagline {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            color: var(--gold-dim);
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+        
+        .hero-desc {
+            font-size: 1rem;
+            color: var(--text-body);
+            max-width: 440px;
+            margin-bottom: 44px;
+            border-left: 2px solid var(--gold-dim);
+            padding-left: 20px;
+        }
+        
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--deep);
+            background: var(--gold);
+            padding: 14px 32px;
+            text-decoration: none;
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        .hero-cta:hover {
+            background: var(--gold-light);
+        }
+        
+        .hero-cta svg {
+            width: 14px;
+            height: 14px;
+        }
+        
+        .hero-gem {
+            position: absolute;
+            right: 8%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 420px;
+            height: 420px;
+            animation: fadeUp 1.4s 0.3s ease both, float 6s ease-in-out infinite 1.7s;
+        }
+        
+        .hero-gem svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .gem-glow {
+            position: absolute;
+            inset: -60px;
+            background: radial-gradient(ellipse, rgba(201, 168, 76, 0.18) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse-glow 4s ease-in-out infinite;
+        }
+        /* ── SCROLL INDICATOR ─────────────────── */
+        
+        .scroll-hint {
+            position: absolute;
+            bottom: 36px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            letter-spacing: 0.3em;
+            color: var(--gold-dim);
+            text-transform: uppercase;
+        }
+        
+        .scroll-hint-line {
+            width: 1px;
+            height: 48px;
+            background: linear-gradient(180deg, var(--gold-dim), transparent);
+            animation: scroll-drop 2s ease-in-out infinite;
+        }
+        /* ── SECTION COMMONS ─────────────────── */
+        
+        section {
+            padding: 100px 60px;
+        }
+        
+        .section-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.35em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 1px;
+            background: var(--gold-dim);
+        }
+        
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            font-weight: 300;
+            color: var(--cream);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+        
+        h2 em {
+            font-style: italic;
+            color: var(--gold-light);
+        }
+        
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+            margin-bottom: 40px;
+        }
+        /* ── ABOUT GRID ───────────────────────── */
+        
+        .about-section {
+            background: var(--dark);
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .about-prose p {
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .about-prose p:first-child {
+            font-size: 1.1rem;
+            color: var(--cream);
+        }
+        
+        .props-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border: 1px solid var(--border);
+        }
+        
+        .prop-item {
+            padding: 22px 24px;
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            transition: background 0.3s;
+        }
+        
+        .prop-item:nth-child(even) {
+            border-right: none;
+        }
+        
+        .prop-item:last-child,
+        .prop-item:nth-last-child(2):nth-child(odd) {
+            border-bottom: none;
+        }
+        
+        .prop-item:hover {
+            background: rgba(201, 168, 76, 0.04);
+        }
+        
+        .prop-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.58rem;
+            letter-spacing: 0.25em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        
+        .prop-value {
+            font-size: 0.88rem;
+            color: var(--cream);
+        }
+        /* ── BENEFITS STRIP ─────────────────── */
+        
+        .benefits-section {
+            background: linear-gradient(180deg, var(--dark) 0%, var(--dark-mid) 100%);
+        }
+        
+        .benefits-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .benefits-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .benefits-header .section-label {
+            justify-content: center;
+        }
+        
+        .benefits-header .section-label::before {
+            display: none;
+        }
+        
+        .benefits-header .divider {
+            margin: 0 auto 0;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+        
+        .benefit-card {
+            background: var(--dark-card);
+            padding: 40px 32px;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.4s, transform 0.3s;
+        }
+        
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        
+        .benefit-card:hover {
+            border-color: rgba(201, 168, 76, 0.4);
+            transform: translateY(-4px);
+        }
+        
+        .benefit-card:hover::before {
+            opacity: 1;
+        }
+        
+        .benefit-icon {
+            width: 44px;
+            height: 44px;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+        
+        .benefit-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+        
+        .benefit-text {
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+        /* ── TYPES ───────────────────────────── */
+        
+        .types-section {
+            background: var(--deep);
+        }
+        
+        .types-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .types-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+        
+        .type-card {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            padding: 32px 24px 28px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.4s, transform 0.3s;
+        }
+        
+        .type-card:hover {
+            border-color: rgba(201, 168, 76, 0.5);
+            transform: translateY(-6px);
+        }
+        
+        .type-gem-wrap {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+        
+        .type-gem-wrap svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .type-name {
+            font-family: 'Cinzel', serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        
+        .type-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        /* ── ASTROLOGICAL ────────────────────── */
+        
+        .astro-section {
+            background: var(--dark-mid);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .astro-bg-decor {
+            position: absolute;
+            right: -120px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 500px;
+            height: 500px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+        
+        .astro-bg-decor::before {
+            content: '';
+            position: absolute;
+            inset: 40px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+        }
+        
+        .astro-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .astro-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .planet-dial {
+            position: relative;
+            width: 320px;
+            height: 320px;
+        }
+        
+        .planet-dial-ring {
+            position: absolute;
+            inset: 0;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            animation: spin-slow 30s linear infinite;
+        }
+        
+        .planet-dial-ring::before {
+            content: '♃';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+            color: var(--gold);
+            animation: spin-slow 30s linear infinite reverse;
+        }
+        
+        .planet-dial-inner {
+            position: absolute;
+            inset: 30px;
+            border: 1px solid rgba(201, 168, 76, 0.1);
+            border-radius: 50%;
+        }
+        
+        .planet-center {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .planet-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--gold-light);
+            line-height: 1;
+        }
+        
+        .planet-sub {
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            color: var(--gold-dim);
+            text-transform: uppercase;
+            margin-top: 6px;
+        }
+        
+        .astro-list {
+            list-style: none;
+        }
+        
+        .astro-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .astro-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .astro-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: var(--gold-dim);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 28px;
+        }
+        
+        .astro-item-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            color: var(--cream);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        
+        .astro-item-text {
+            font-size: 0.83rem;
+        }
+        /* ── HOW TO IDENTIFY ─────────────────── */
+        
+        .identify-section {
+            background: var(--deep);
+        }
+        
+        .identify-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .identify-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-top: 60px;
+            border: 1px solid var(--border);
+        }
+        
+        .identify-step {
+            padding: 40px 32px;
+            border-right: 1px solid var(--border);
+            position: relative;
+        }
+        
+        .identify-step:last-child {
+            border-right: none;
+        }
+        
+        .step-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            color: rgba(201, 168, 76, 0.12);
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+        
+        .step-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        
+        .step-text {
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+        /* ── CARE GUIDE ───────────────────────── */
+        
+        .care-section {
+            background: var(--dark);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .care-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .care-header {
+            margin-bottom: 56px;
+        }
+        
+        .care-header p.care-intro {
+            font-size: 0.96rem;
+            max-width: 620px;
+            border-left: 2px solid var(--gold-dim);
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+        /* Tabbed navigation */
+        
+        .care-tabs {
+            display: flex;
+            gap: 0;
+            border: 1px solid var(--border);
+            margin-bottom: 32px;
+            overflow-x: auto;
+        }
+        
+        .care-tab-btn {
+            font-family: 'Cinzel', serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--border);
+            padding: 16px 24px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        .care-tab-btn:last-child {
+            border-right: none;
+        }
+        
+        .care-tab-btn:hover {
+            color: var(--gold);
+            background: rgba(201, 168, 76, 0.04);
+        }
+        
+        .care-tab-btn.active {
+            color: var(--deep);
+            background: var(--gold);
+        }
+        /* Tab panels */
+        
+        .care-panel {
+            display: none;
+        }
+        
+        .care-panel.active {
+            display: block;
+        }
+        
+        .care-tips {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .care-tip {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            padding: 28px 32px;
+            transition: border-color 0.3s;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+        
+        .care-tip:hover {
+            border-color: rgba(201, 168, 76, 0.4);
+        }
+        
+        .care-tip-icon {
+            width: 36px;
+            height: 36px;
+            color: var(--gold);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .care-tip-body {}
+        
+        .care-tip-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            color: var(--cream);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        
+        .care-tip-text {
+            font-size: 0.84rem;
+            line-height: 1.7;
+        }
+        
+        .care-tip-note {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.75rem;
+            color: var(--gold-dim);
+            border-left: 2px solid var(--gold-dim);
+            padding-left: 10px;
+            font-style: italic;
+        }
+        /* Season grid for seasonal care */
+        
+        .care-season-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .care-season-card {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            padding: 24px;
+            transition: border-color 0.3s;
+        }
+        
+        .care-season-card:hover {
+            border-color: rgba(201, 168, 76, 0.4);
+        }
+        
+        .care-season-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .care-season-title span {
+            font-size: 1.1rem;
+        }
+        
+        .care-season-text {
+            font-size: 0.82rem;
+            line-height: 1.65;
+        }
+        /* Do/Don't list */
+        
+        .care-dondont {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        
+        .care-do,
+        .care-dont {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            padding: 28px;
+        }
+        
+        .care-do {
+            border-top: 2px solid rgba(120, 180, 80, 0.5);
+        }
+        
+        .care-dont {
+            border-top: 2px solid rgba(200, 80, 60, 0.5);
+        }
+        
+        .care-list-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        
+        .care-do .care-list-title {
+            color: #8ABB60;
+        }
+        
+        .care-dont .care-list-title {
+            color: #C8503C;
+        }
+        
+        .care-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .care-list li {
+            font-size: 0.83rem;
+            line-height: 1.5;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        
+        .care-list li::before {
+            flex-shrink: 0;
+            font-size: 0.7rem;
+            margin-top: 3px;
+        }
+        
+        .care-do .care-list li::before {
+            content: '✓';
+            color: #8ABB60;
+        }
+        
+        .care-dont .care-list li::before {
+            content: '✕';
+            color: #C8503C;
+        }
+        /* ── FACT TABLE ───────────────────────── */
+        
+        .table-section {
+            background: var(--dark-mid);
+        }
+        
+        .table-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 48px;
+        }
+        
+        thead th {
+            font-family: 'Cinzel', serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.25em;
+            color: var(--gold);
+            text-transform: uppercase;
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--gold-dim);
+            text-align: left;
+        }
+        
+        tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+        
+        tbody tr:hover {
+            background: rgba(201, 168, 76, 0.04);
+        }
+        
+        tbody td {
+            padding: 18px 24px;
+            font-size: 0.88rem;
+            vertical-align: top;
+        }
+        
+        tbody td:first-child {
+            color: var(--text-muted);
+            width: 30%;
+        }
+        
+        tbody td:last-child {
+            color: var(--cream);
+        }
+        /* ── FOOTER ───────────────────────────── */
+        
+        footer {
+            background: var(--deep);
+            border-top: 1px solid var(--border);
+            padding: 60px 60px 40px;
+        }
+        
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 48px;
+        }
+        
+        .footer-brand .nav-logo {
+            font-size: 1.3rem;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+        
+        .footer-brand p {
+            font-size: 0.82rem;
+            max-width: 280px;
+        }
+        
+        .footer-col-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.25em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--gold);
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+        
+        .footer-bottom a {
+            color: var(--gold-dim);
+            text-decoration: none;
+        }
+        /* ── ANIMATIONS ───────────────────────── */
+        
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(-50%) translateY(0px);
+            }
+            50% {
+                transform: translateY(-50%) translateY(-18px);
+            }
+        }
+        
+        @keyframes pulse-glow {
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.08);
+            }
+        }
+        
+        @keyframes scroll-drop {
+            0% {
+                opacity: 1;
+                transform: scaleY(1);
+                transform-origin: top;
+            }
+            100% {
+                opacity: 0;
+                transform: scaleY(0);
+                transform-origin: bottom;
+            }
+        }
+        
+        @keyframes spin-slow {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        /* ── FADE-IN ON SCROLL ─────────────────── */
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+        /* ── RESPONSIVE ───────────────────────── */
+        
+        @media (max-width: 900px) {
+            nav {
+                padding: 16px 24px;
+            }
+            .nav-links,
+            .nav-badge {
+                display: none;
+            }
+            section {
+                padding: 70px 24px;
+            }
+            .hero {
+                padding: 120px 24px 80px;
+            }
+            .hero-gem {
+                display: none;
+            }
+            .about-grid,
+            .astro-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .care-dondont,
+            .care-season-grid {
+                grid-template-columns: 1fr;
+            }
+            .benefits-grid,
+            .types-row,
+            .identify-steps {
+                grid-template-columns: 1fr;
+            }
+            .benefit-card,
+            .identify-step {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── NAV ──────────────────────────────────────────── -->
+    <nav>
+        <a class="nav-logo" href="#"><span>RATNA</span>VALI</a>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#" class="active">Knowledge Centre</a></li>
+            <li><a href="#">Gem Library</a></li>
+            <li><a href="#">Astrology</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+        <span class="nav-badge">Gemstone Guide</span>
+    </nav>
+
+    <!-- ── HERO ─────────────────────────────────────────── -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-grain"></div>
+        <div class="hero-decor-line"></div>
+
+        <div class="hero-content">
+            <p class="hero-eyebrow">The Gemstone of Jupiter</p>
+            <h1>Yellow Sapphire<em>(Pukhraj)</em></h1>
+            <p class="hero-tagline">Wisdom · Prosperity · Grace</p>
+            <p class="hero-desc">
+                A stone of divine radiance, Yellow Sapphire carries the blessings of Jupiter — the planet of wisdom, wealth, and benevolence. Revered across centuries of Vedic tradition.
+            </p>
+            <a href="#about" class="hero-cta">
+      Explore the Guide
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 8h10M9 4l4 4-4 4"/>
+      </svg>
+    </a>
+        </div>
+
+        <!-- Gem SVG Illustration -->
+        <div class="hero-gem">
+            <div class="gem-glow"></div>
+            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="gGlow" cx="50%" cy="40%" r="55%">
+          <stop offset="0%" stop-color="#F0D060" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="gFace" cx="42%" cy="35%" r="60%">
+          <stop offset="0%"   stop-color="#FFF0A0"/>
+          <stop offset="30%"  stop-color="#F0C84A"/>
+          <stop offset="60%"  stop-color="#C9A030"/>
+          <stop offset="100%" stop-color="#7A5C18"/>
+        </radialGradient>
+        <radialGradient id="gLeft" cx="20%" cy="50%" r="70%">
+          <stop offset="0%"   stop-color="#E8B830"/>
+          <stop offset="100%" stop-color="#5A4010"/>
+        </radialGradient>
+        <radialGradient id="gRight" cx="80%" cy="50%" r="70%">
+          <stop offset="0%"   stop-color="#F5D060"/>
+          <stop offset="100%" stop-color="#806020"/>
+        </radialGradient>
+        <radialGradient id="gBottom" cx="50%" cy="90%" r="70%">
+          <stop offset="0%"   stop-color="#C09020"/>
+          <stop offset="100%" stop-color="#3A2808"/>
+        </radialGradient>
+        <filter id="fShadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="18" result="blur"/>
+          <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+        </filter>
+        <filter id="fGem">
+          <feDropShadow dx="0" dy="12" stdDeviation="20" flood-color="#C9A030" flood-opacity="0.5"/>
+        </filter>
+      </defs>
+
+      <!-- Ambient glow -->
+      <ellipse cx="200" cy="220" rx="160" ry="60" fill="url(#gGlow)" opacity="0.8"/>
+
+      <g filter="url(#fGem)" transform="translate(200,190)">
+        <!-- Main gem shape - oval cut -->
+        <!-- Table (top face) -->
+        <polygon points="0,-95 65,-48 65,48 0,95 -65,48 -65,-48"
+                 fill="url(#gFace)" opacity="0.97"/>
+        <!-- Left facet -->
+        <polygon points="-65,-48 -110,-20 -110,20 -65,48"
+                 fill="url(#gLeft)" opacity="0.9"/>
+        <!-- Right facet -->
+        <polygon points="65,-48 110,-20 110,20 65,48"
+                 fill="url(#gRight)" opacity="0.9"/>
+        <!-- Bottom -->
+        <polygon points="-65,48 -110,20 0,120 110,20 65,48"
+                 fill="url(#gBottom)" opacity="0.95"/>
+        <!-- Highlight streak -->
+        <ellipse cx="-18" cy="-38" rx="22" ry="8"
+                 fill="white" opacity="0.45" transform="rotate(-30,-18,-38)"/>
+        <ellipse cx="8" cy="-55" rx="10" ry="4"
+                 fill="white" opacity="0.3" transform="rotate(-20,8,-55)"/>
+        <!-- Facet lines -->
+        <line x1="0" y1="-95" x2="65" y2="-48" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
+        <line x1="0" y1="-95" x2="-65" y2="-48" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
+        <line x1="0" y1="-95" x2="0" y2="95"    stroke="rgba(255,255,255,0.08)" stroke-width="0.6"/>
+        <line x1="-110" y1="0" x2="110" y2="0"  stroke="rgba(255,255,255,0.06)" stroke-width="0.6"/>
+        <line x1="-65" y1="-48" x2="-65" y2="48" stroke="rgba(0,0,0,0.12)" stroke-width="0.5"/>
+        <line x1="65" y1="-48" x2="65" y2="48"  stroke="rgba(0,0,0,0.12)" stroke-width="0.5"/>
+      </g>
+
+      <!-- Sparkles -->
+      <g opacity="0.7">
+        <line x1="320" y1="80"  x2="320" y2="96"  stroke="#F5D060" stroke-width="1.5"/>
+        <line x1="312" y1="88"  x2="328" y2="88"  stroke="#F5D060" stroke-width="1.5"/>
+        <line x1="75"  y1="140" x2="75"  y2="152" stroke="#C9A84C" stroke-width="1.2"/>
+        <line x1="69"  y1="146" x2="81"  y2="146" stroke="#C9A84C" stroke-width="1.2"/>
+        <line x1="340" y1="270" x2="340" y2="280" stroke="#E8C040" stroke-width="1"/>
+        <line x1="335" y1="275" x2="345" y2="275" stroke="#E8C040" stroke-width="1"/>
+      </g>
+    </svg>
+        </div>
+
+        <div class="scroll-hint">
+            <span>Scroll</span>
+            <div class="scroll-hint-line"></div>
+        </div>
+    </section>
+
+    <!-- ── ABOUT ─────────────────────────────────────────── -->
+    <section class="about-section" id="about">
+        <div class="about-grid">
+            <div class="about-prose reveal">
+                <p class="section-label">About the Stone</p>
+                <h2>What is <em>Yellow Sapphire?</em></h2>
+                <div class="divider"></div>
+                <p>
+                    Yellow Sapphire, known as Pukhraj in Sanskrit, is one of the most auspicious gemstones in Vedic astrology. A variety of corundum coloured by trace amounts of iron, it ranks 9 on the Mohs hardness scale — second only to diamond.
+                </p>
+                <p>
+                    Its golden luminosity ranges from pale lemon to deep amber. Ancient texts describe it as a vessel of Jupiter's divine energy, capable of channelling wisdom, abundance, and spiritual clarity to those who wear it.
+                </p>
+                <p>
+                    Used in sacred contexts across India, Sri Lanka, and Southeast Asia for millennia, Pukhraj remains among the most revered planetary gemstones in Jyotish (Vedic astrology) tradition.
+                </p>
+            </div>
+
+            <div class="props-grid reveal">
+                <div class="prop-item">
+                    <p class="prop-label">Mineral</p>
+                    <p class="prop-value">Corundum (Al₂O₃)</p>
+                </div>
+                <div class="prop-item">
+                    <p class="prop-label">Planet</p>
+                    <p class="prop-value">Jupiter (Brihaspati)</p>
+                </div>
+                <div class="prop-item">
+                    <p class="prop-label">Color Range</p>
+                    <p class="prop-value">Light Lemon → Deep Gold</p>
+                </div>
+                <div class="prop-item">
+                    <p class="prop-label">Hardness</p>
+                    <p class="prop-value">9.0 on Mohs Scale</p>
+                </div>
+                <div class="prop-item">
+                    <p class="prop-label">Refractive Index</p>
+                    <p class="prop-value">1.762 – 1.770</p>
+                </div>
+                <div class="prop-item">
+                    <p class="prop-label">Element</p>
+                    <p class="prop-value">Ether (Akasha)</p>
+                </div>
+                <div class="prop-item">
+                    <p class="prop-label">Origins</p>
+                    <p class="prop-value">Sri Lanka, Burma, Madagascar, Thailand</p>
+                </div>
+                <div class="prop-item">
+                    <p class="prop-label">Wearing Finger</p>
+                    <p class="prop-value">Index Finger, Right Hand</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── BENEFITS ──────────────────────────────────────── -->
+    <section class="benefits-section">
+        <div class="benefits-inner">
+            <div class="benefits-header reveal">
+                <p class="section-label">Why Pukhraj</p>
+                <h2>Believed <em>Benefits</em></h2>
+                <div class="divider"></div>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card reveal">
+                    <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="24" cy="24" r="18"/>
+          <path d="M24 12v12l8 4"/>
+        </svg>
+                    <p class="benefit-title">Wisdom & Clarity</p>
+                    <p class="benefit-text">Associated with Jupiter's expansive intellect, Pukhraj is said to sharpen discernment, improve decision-making, and bring mental clarity in complex situations.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M24 6l4 12h12l-10 7 4 12L24 30l-10 7 4-12L8 18h12z"/>
+        </svg>
+                    <p class="benefit-title">Prosperity & Abundance</p>
+                    <p class="benefit-text">In traditional belief, this stone strengthens Jupiter's influence over wealth and fortune, creating favourable conditions for financial growth and material stability.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M24 8C15.2 8 8 15.2 8 24s7.2 16 16 16 16-7.2 16-16"/><path d="M32 8l8 8-8 8"/>
+        </svg>
+                    <p class="benefit-title">Spiritual Growth</p>
+                    <p class="benefit-text">As Jupiter governs higher knowledge and dharma, the stone is believed to support spiritual seekers, deepen meditation, and accelerate the path toward self-realisation.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M24 6c-10 10-14 18-14 24a14 14 0 0028 0c0-6-4-14-14-24z"/>
+        </svg>
+                    <p class="benefit-title">Health & Vitality</p>
+                    <p class="benefit-text">Traditional texts suggest Pukhraj supports the liver, kidneys, and digestive system — organs associated with Jupiter — and may bolster overall energy and vitality.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M14 24c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10"/><circle cx="24" cy="24" r="3"/>
+        </svg>
+                    <p class="benefit-title">Marital Harmony</p>
+                    <p class="benefit-text">Particularly recommended in Vedic tradition for women seeking a compatible partner, this stone is thought to strengthen Jupiter's blessings over marriage and relationships.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="8" y="20" width="32" height="20" rx="2"/><path d="M16 20V16a8 8 0 0116 0v4"/>
+        </svg>
+                    <p class="benefit-title">Protection & Positivity</p>
+                    <p class="benefit-text">Said to act as a protective shield against negative energies, envy, and misfortune — creating an aura of grace and goodwill around the wearer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── TYPES ─────────────────────────────────────────── -->
+    <section class="types-section">
+        <div class="types-inner">
+            <div class="reveal">
+                <p class="section-label">Varieties</p>
+                <h2>Types of <em>Pukhraj</em></h2>
+                <div class="divider"></div>
+                <p style="max-width:560px;">Each origin produces a distinctly different character of stone. Geographic origin is a primary factor in a Yellow Sapphire's value and astrological potency.</p>
+            </div>
+            <div class="types-row">
+                <!-- Ceylon -->
+                <div class="type-card reveal">
+                    <div class="type-gem-wrap">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="gc1" cx="40%" cy="35%" r="60%">
+              <stop offset="0%" stop-color="#FFF8C0"/><stop offset="100%" stop-color="#D4A820"/>
+            </radialGradient></defs>
+            <ellipse cx="50" cy="50" rx="36" ry="28" fill="url(#gc1)" opacity="0.95"/>
+            <ellipse cx="42" cy="40" rx="10" ry="6" fill="white" opacity="0.35" transform="rotate(-25,42,40)"/>
+          </svg>
+                    </div>
+                    <p class="type-name">Ceylon</p>
+                    <p class="type-desc">Light to medium lemon-yellow with exceptional clarity and brilliance. Sri Lanka's finest; considered the most premium origin globally.</p>
+                </div>
+                <!-- Burma -->
+                <div class="type-card reveal">
+                    <div class="type-gem-wrap">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="gc2" cx="40%" cy="35%" r="60%">
+              <stop offset="0%" stop-color="#F5C840"/><stop offset="100%" stop-color="#8A6010"/>
+            </radialGradient></defs>
+            <ellipse cx="50" cy="50" rx="36" ry="28" fill="url(#gc2)" opacity="0.95"/>
+            <ellipse cx="42" cy="40" rx="10" ry="6" fill="white" opacity="0.3" transform="rotate(-25,42,40)"/>
+          </svg>
+                    </div>
+                    <p class="type-name">Burma</p>
+                    <p class="type-desc">Rich golden yellow with vibrant saturation and distinctive natural silk inclusions. Highly prized for its depth of colour.</p>
+                </div>
+                <!-- Madagascar -->
+                <div class="type-card reveal">
+                    <div class="type-gem-wrap">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="gc3" cx="40%" cy="35%" r="60%">
+              <stop offset="0%" stop-color="#E8C050"/><stop offset="100%" stop-color="#705010"/>
+            </radialGradient></defs>
+            <ellipse cx="50" cy="50" rx="36" ry="28" fill="url(#gc3)" opacity="0.95"/>
+            <ellipse cx="42" cy="40" rx="10" ry="6" fill="white" opacity="0.3" transform="rotate(-25,42,40)"/>
+          </svg>
+                    </div>
+                    <p class="type-name">Madagascar</p>
+                    <p class="type-desc">Deep canary-yellow with excellent luster. Offers good clarity at competitive value; increasingly important source for quality specimens.</p>
+                </div>
+                <!-- Thailand -->
+                <div class="type-card reveal">
+                    <div class="type-gem-wrap">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="gc4" cx="40%" cy="35%" r="60%">
+              <stop offset="0%" stop-color="#D8B840"/><stop offset="100%" stop-color="#604808"/>
+            </radialGradient></defs>
+            <ellipse cx="50" cy="50" rx="36" ry="28" fill="url(#gc4)" opacity="0.95"/>
+            <ellipse cx="42" cy="40" rx="10" ry="6" fill="white" opacity="0.25" transform="rotate(-25,42,40)"/>
+          </svg>
+                    </div>
+                    <p class="type-name">Thailand</p>
+                    <p class="type-desc">Medium yellow with good transparency and fine brilliance. Often heat-treated to enhance colour; widely available in various sizes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── ASTROLOGICAL ───────────────────────────────────── -->
+    <section class="astro-section">
+        <div class="astro-bg-decor"></div>
+        <div class="astro-inner">
+            <div class="astro-visual reveal">
+                <div class="planet-dial">
+                    <div class="planet-dial-ring"></div>
+                    <div class="planet-dial-inner"></div>
+                    <div class="planet-center">
+                        <p class="planet-name">♃</p>
+                        <p class="planet-name" style="font-size:1.4rem;margin-top:4px;">Jupiter</p>
+                        <p class="planet-sub">Brihaspati</p>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal">
+                <p class="section-label">Vedic Astrology</p>
+                <h2>Jupiter's <em>Sacred Stone</em></h2>
+                <div class="divider"></div>
+                <ul class="astro-list">
+                    <li>
+                        <span class="astro-num">01</span>
+                        <div>
+                            <p class="astro-item-title">Who Should Wear</p>
+                            <p class="astro-item-text">Individuals with a weakened or afflicted Jupiter in their birth chart, especially those born under Sagittarius and Pisces ascendants, are primary candidates. Consultation with a Jyotishi is essential.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="astro-num">02</span>
+                        <div>
+                            <p class="astro-item-title">Auspicious Day & Time</p>
+                            <p class="astro-item-text">Thursday (Guruvar) during Shukla Paksha (waxing moon) is the traditional prescription. Morning hours, ideally during Jupiter's hora, are considered most potent for installation.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="astro-num">03</span>
+                        <div>
+                            <p class="astro-item-title">Metal & Setting</p>
+                            <p class="astro-item-text">Gold is the classical metal for Pukhraj, harmonising Jupiter's solar energy. The stone must touch the skin — an open-back setting is preferred so the gem contacts the finger directly.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="astro-num">04</span>
+                        <div>
+                            <p class="astro-item-title">Minimum Weight</p>
+                            <p class="astro-item-text">Traditional texts recommend a minimum of 2 carats for astrological effect, though 3–5 carats is considered optimal. Larger is not always better — quality and absence of heat treatment matter greatly.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── HOW TO IDENTIFY ────────────────────────────────── -->
+    <section class="identify-section">
+        <div class="identify-inner">
+            <div class="reveal">
+                <p class="section-label">Gemology</p>
+                <h2>How to <em>Identify</em> a Genuine Stone</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="identify-steps">
+                <div class="identify-step reveal">
+                    <p class="step-num">01</p>
+                    <p class="step-title">Hardness Test</p>
+                    <p class="step-text">With a Mohs hardness of 9, Yellow Sapphire will not be scratched by a steel file (hardness 6.5) or quartz (7). Glass scratches easily at 5.5 — a genuine stone will resist this. Never attempt this on a finished piece without expert
+                        guidance.</p>
+                </div>
+                <div class="identify-step reveal">
+                    <p class="step-num">02</p>
+                    <p class="step-title">Refractive Index</p>
+                    <p class="step-text">A refractometer is the gemologist's primary tool. Corundum reads between 1.762 and 1.770 with a birefringence of 0.008. Glass and synthetic impostors will read differently. Lab certification (GIA, IGI) remains the gold standard.</p>
+                </div>
+                <div class="identify-step reveal">
+                    <p class="step-num">03</p>
+                    <p class="step-title">Inclusions Under Loupe</p>
+                    <p class="step-text">Natural sapphires often contain characteristic rutile needle inclusions ("silk"), fingerprint inclusions, or growth zoning. A completely flawless stone at low price is a red flag. Examine under 10× magnification with a trained eye.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CARE GUIDE ─────────────────────────────────────── -->
+    <section class="care-section">
+        <div class="care-inner">
+
+            <!-- Header -->
+            <div class="care-header reveal">
+                <p class="section-label">Maintenance</p>
+                <h2>Complete Care <em>Guide</em></h2>
+                <div class="divider"></div>
+                <p class="care-intro">Yellow Sapphire ranks 9 on the Mohs scale — second only to diamond — making it one of the most durable gemstones. Yet mindful care preserves both its physical brilliance and, in traditional belief, its energetic potency for decades.</p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="care-tabs reveal">
+                <button class="care-tab-btn active" onclick="showCareTab('daily')">Daily Care</button>
+                <button class="care-tab-btn" onclick="showCareTab('cleaning')">Deep Cleaning</button>
+                <button class="care-tab-btn" onclick="showCareTab('storage')">Storage</button>
+                <button class="care-tab-btn" onclick="showCareTab('seasonal')">Seasonal Guide</button>
+                <button class="care-tab-btn" onclick="showCareTab('vedic')">Vedic Rituals</button>
+                <button class="care-tab-btn" onclick="showCareTab('donts')">Do's &amp; Don'ts</button>
+            </div>
+
+            <!-- Panel: Daily Care -->
+            <div class="care-panel active" id="tab-daily">
+                <div class="care-tips">
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="18" cy="18" r="14"/><path d="M18 10v8l5 3"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Morning Handling</p>
+                            <p class="care-tip-text">Always put on your Pukhraj ring after applying moisturiser, sunscreen, or perfume — never before. Chemical residue from these products can build up on the stone's surface over time, creating a dull film that reduces its natural
+                                brilliance. A few seconds of patience each morning will significantly extend the life of your stone's lustre.</p>
+                            <span class="care-tip-note">Tip: Keep the ring in a small dish near your dressing table as a reminder.</span>
+                        </div>
+                    </div>
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M6 18c0-7 5-12 12-12s12 5 12 12-5 12-12 12"/><path d="M18 10v8l-4 4"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Quick Wipe After Wearing</p>
+                            <p class="care-tip-text">Before setting the ring down each evening, gently wipe the stone and setting with a dry, soft microfibre cloth. Skin oils, sweat, and fine dust accumulate daily — removing them immediately prevents build-up in crevices around
+                                the prongs and beneath the stone, which is especially important for open-back settings where the stone touches the skin.</p>
+                        </div>
+                    </div>
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M18 4l3 9h9l-7 5 3 9-8-6-8 6 3-9-7-5h9z"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Remove During Physical Activity</p>
+                            <p class="care-tip-text">Always remove the ring before gym sessions, sports, gardening, cooking, or any manual work. Even at Mohs 9, a sharp impact at the right angle can chip or fracture corundum — particularly at girdle edges. The gold setting is
+                                also vulnerable to bending or deforming under force, which can loosen the prongs holding the stone.</p>
+                            <span class="care-tip-note">Traditional belief: physical impact is also said to disrupt the stone's energetic alignment.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel: Deep Cleaning -->
+            <div class="care-panel" id="tab-cleaning">
+                <div class="care-tips">
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M10 26c0-8 4-14 8-18 4 4 8 10 8 18a8 8 0 01-16 0z"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Home Soap Wash (Fortnightly)</p>
+                            <p class="care-tip-text">Fill a small bowl with warm — never hot — water and add two drops of mild, pH-neutral dish soap. Soak the ring for 10–15 minutes to loosen oils and debris. Using a soft-bristled toothbrush (baby or cosmetic grade), gently scrub
+                                beneath the stone, around the prongs, and along the band. Rinse thoroughly under running lukewarm water — plug the drain first — and pat completely dry with a lint-free cloth. Allow to air-dry for 30 minutes before storing
+                                or wearing.</p>
+                            <span class="care-tip-note">Frequency: Every two weeks for daily-wear rings; monthly for occasional wear.</span>
+                        </div>
+                    </div>
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="6" y="10" width="24" height="18" rx="2"/><path d="M12 10V7a6 6 0 0112 0v3"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Ultrasonic Cleaners</p>
+                            <p class="care-tip-text">Ultrasonic cleaning is generally safe for untreated natural Yellow Sapphires, as corundum handles vibration well. However, you must never use ultrasonic cleaning if your stone has been fracture-filled, oiled, or has significant
+                                internal fractures — the vibrations can propagate existing cracks and cause the stone to shatter. When in doubt, use the soap-and-brush method. Always ask your gemologist about treatments when purchasing.</p>
+                            <span class="care-tip-note">Never use ultrasonic cleaners on heat-treated stones with significant inclusions.</span>
+                        </div>
+                    </div>
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M18 6l2 6h7l-5.5 4 2 6L18 18l-5.5 4 2-6L9 12h7z"/><circle cx="18" cy="28" r="2"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Professional Steam Cleaning</p>
+                            <p class="care-tip-text">A professional jeweller's steam cleaner can reach into intricate settings that a brush cannot. This is safe for clean, untreated Yellow Sapphires and effectively removes stubborn grease build-up. Schedule this alongside your
+                                annual professional inspection. Steam at high pressure should be avoided for stones with surface-reaching fractures, as rapid thermal change can stress the stone.</p>
+                        </div>
+                    </div>
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="18" cy="18" r="12"/><path d="M13 18h10M18 13v10"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">What to Avoid Absolutely</p>
+                            <p class="care-tip-text">Never use bleach, chlorine, ammonia-based glass cleaners, toothpaste, baking soda paste, or abrasive cloths on your Pukhraj. While the stone itself is scratch-resistant, these chemicals corrode gold settings, weaken solder
+                                joints, and can discolour metal over time. Similarly, avoid hand sanitisers — their high alcohol and hydrogen peroxide content is damaging to both metal and any adhesive used in the setting.</p>
+                            <span class="care-tip-note">Pure warm water and mild soap is always the safest option.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel: Storage -->
+            <div class="care-panel" id="tab-storage">
+                <div class="care-tips">
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="4" y="10" width="28" height="22" rx="2"/><path d="M12 10V8a6 6 0 0112 0v2"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Individual Compartment Storage</p>
+                            <p class="care-tip-text">Store your Yellow Sapphire ring in a fabric-lined box with individual compartments or in its own soft pouch — never loose in a drawer with other jewellery. Despite being a 9 on the Mohs scale, sapphires can scratch softer stones
+                                like emeralds, pearls, or opals, and can in turn be scratched by diamonds (10). Isolation prevents surface abrasion that gradually dulls the stone's surface polish.</p>
+                            <span class="care-tip-note">Velvet or silk pouches are ideal; avoid plastic bags that trap moisture.</span>
+                        </div>
+                    </div>
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="18" cy="14" r="6"/><path d="M6 30c0-6 5-10 12-10s12 4 12 10"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Temperature & Light Conditions</p>
+                            <p class="care-tip-text">Store in a cool, dry location away from direct sunlight, extreme heat, or damp conditions. Prolonged UV exposure can, over years, cause subtle colour shift in iron-coloured sapphires. Humidity can tarnish gold settings and,
+                                in extreme cases, promote corrosion at solder points. A bedroom drawer or jewellery safe — away from bathroom steam — is ideal.</p>
+                        </div>
+                    </div>
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M8 28V14l10-8 10 8v14"/><path d="M14 28v-8h8v8"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Travel Storage</p>
+                            <p class="care-tip-text">When travelling, use a dedicated travel jewellery roll or hard case with a lock. Place the ring in its own padded slot. Never pack gemstone jewellery loose in a suitcase where it can tumble against other objects. If carrying
+                                on, keep fine jewellery in your cabin bag — checked luggage is subject to rough handling and temperature extremes in cargo holds.</p>
+                            <span class="care-tip-note">Airport X-ray scanners do not harm gemstones or gold.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel: Seasonal -->
+            <div class="care-panel" id="tab-seasonal">
+                <div class="care-season-grid reveal">
+                    <div class="care-season-card">
+                        <p class="care-season-title"><span>☀️</span> Summer</p>
+                        <p class="care-season-text">Perspiration increases in heat — wipe the stone more frequently. Remove before swimming in the sea (salt water) or pools (chlorine). Sunscreen application is high; always put the ring on last. Store away from windowsill heat.</p>
+                    </div>
+                    <div class="care-season-card">
+                        <p class="care-season-title"><span>🌧️</span> Monsoon</p>
+                        <p class="care-season-text">High humidity can tarnish gold settings faster. Ensure the ring is completely dry before storing. Check prongs more frequently, as moisture can loosen microscopic solder joints over time. Avoid silica gel pouches directly touching
+                            the stone.</p>
+                    </div>
+                    <div class="care-season-card">
+                        <p class="care-season-title"><span>🍂</span> Autumn / Post-Monsoon</p>
+                        <p class="care-season-text">An excellent time for professional cleaning and inspection after the humid season. Dust the jewellery box and replace any silica sachets. Check that settings haven't shifted from seasonal expansion and contraction of the metal
+                            band.</p>
+                    </div>
+                    <div class="care-season-card">
+                        <p class="care-season-title"><span>❄️</span> Winter</p>
+                        <p class="care-season-text">Cold can cause fingers to shrink, making rings more prone to slipping off. Be extra mindful outdoors. Dry indoor heat from heaters can crack older gold settings. If the band feels looser than usual, visit a jeweller for resizing
+                            rather than forcing it.</p>
+                    </div>
+                </div>
+                <div class="care-tip reveal" style="margin-top:20px;">
+                    <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M18 4v4M18 28v4M4 18h4M28 18h4M7.8 7.8l2.8 2.8M25.4 25.4l2.8 2.8M7.8 28.2l2.8-2.8M25.4 10.6l2.8-2.8"/>
+          <circle cx="18" cy="18" r="7"/>
+        </svg>
+                    <div class="care-tip-body">
+                        <p class="care-tip-title">Annual Inspection Rhythm</p>
+                        <p class="care-tip-text">Schedule a professional jeweller inspection every 12 months, ideally at the start of summer before heavy wear. The jeweller will check prong tightness, inspect for micro-cracks in the stone, re-polish the setting if needed, and
+                            advise on any developing concerns before they become costly problems.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel: Vedic Rituals -->
+            <div class="care-panel" id="tab-vedic">
+                <div class="care-tips">
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M18 4C10 12 6 18 6 24a12 12 0 0024 0c0-6-4-12-12-20z"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Monthly Panchamrit Cleansing</p>
+                            <p class="care-tip-text">On the first Thursday of each month (or on any Shukla Paksha Thursday), place the ring in a small copper or silver bowl. Pour over it, in sequence: raw cow's milk, pure honey, ghee, curd (yoghurt), and Gangajal or clean water
+                                — the five sacred substances of Panchamrit. Let it rest for 15 minutes, then rinse with clean water and dry gently. Recite the Guru Beej Mantra — "Om Gram Greem Graum Sah Gurave Namah" — 108 times while the stone rests
+                                in the mixture.</p>
+                            <span class="care-tip-note">This is an energetic practice; the stone does not require this for physical cleanliness.</span>
+                        </div>
+                    </div>
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M12 28V16l6-10 6 10v12"/><path d="M9 28h18"/><circle cx="18" cy="16" r="2"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Reinstallation After Extended Absence</p>
+                            <p class="care-tip-text">If the ring has been set aside for more than 40 days — due to travel, illness, or ritual impurity — it should be re-consecrated before wearing again. Perform the Panchamrit cleansing, then hold the ring in folded hands facing
+                                east at sunrise on a Thursday. Visualise golden Jupiter light entering the stone. Recite "Om Brihaspetaye Namah" 108 times before placing it back on the index finger of the right hand.</p>
+                        </div>
+                    </div>
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M18 6l2 7h7l-6 4 2 7-5-4-5 4 2-7-6-4h7z"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">If the Stone is Damaged or Lost</p>
+                            <p class="care-tip-text">A cracked, chipped, or lost Yellow Sapphire is considered highly inauspicious in Vedic tradition, often interpreted as the stone having absorbed a significant negative event on behalf of the wearer. Do not continue wearing
+                                a cracked stone. Consult a qualified Jyotishi for guidance on the appropriate ritual response, and have the stone replaced with a new, certified natural Pukhraj re-consecrated through a proper installation ceremony.</p>
+                            <span class="care-tip-note">Never replace with a glass or synthetic substitute without your astrologer's knowledge.</span>
+                        </div>
+                    </div>
+                    <div class="care-tip reveal">
+                        <svg class="care-tip-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="18" cy="18" r="14"/><path d="M12 18h12M18 12v12"/>
+          </svg>
+                        <div class="care-tip-body">
+                            <p class="care-tip-title">Passing the Stone On</p>
+                            <p class="care-tip-text">If you wish to pass a Pukhraj to a family member — a common practice in Indian households — the stone should first be energetically cleared. Place it in a bowl of raw cow's milk for 24 hours, then leave it under morning sunlight
+                                (not harsh midday sun) for 2–3 hours on a Thursday. The new wearer should then perform a fresh consecration with their Jyotishi to tune the stone to their own Jupiter placement.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel: Do's & Don'ts -->
+            <div class="care-panel" id="tab-donts">
+                <div class="care-dondont reveal">
+                    <div class="care-do">
+                        <p class="care-list-title">✦ Do's</p>
+                        <ul class="care-list">
+                            <li>Clean fortnightly with warm water and mild soap using a soft brush</li>
+                            <li>Dry thoroughly with a lint-free cloth before storing</li>
+                            <li>Store in an individual fabric pouch or compartment</li>
+                            <li>Remove before swimming, sports, or manual labour</li>
+                            <li>Apply perfume and cosmetics before putting the ring on</li>
+                            <li>Schedule a professional inspection every 12 months</li>
+                            <li>Keep in a cool, dry location away from direct sunlight</li>
+                            <li>Perform monthly Panchamrit cleansing (Vedic tradition)</li>
+                            <li>Consult a Jyotishi immediately if the stone cracks or chips</li>
+                            <li>Use gold (22ct or 24ct) as the setting metal</li>
+                            <li>Wipe gently with a microfibre cloth after each wear</li>
+                            <li>Seek lab certification (GIA, IGI, or GRS) for any new stone</li>
+                        </ul>
+                    </div>
+                    <div class="care-dont">
+                        <p class="care-list-title">✦ Don'ts</p>
+                        <ul class="care-list">
+                            <li>Never use bleach, chlorine, ammonia, or abrasive cleaners</li>
+                            <li>Do not use toothpaste or baking soda paste — they are mildly abrasive</li>
+                            <li>Avoid ultrasonic cleaners for fracture-filled or heavily included stones</li>
+                            <li>Never store loose with other jewellery — scratching risk</li>
+                            <li>Do not expose to prolonged direct sunlight or UV</li>
+                            <li>Never wear while applying hairspray, dry shampoo, or serums</li>
+                            <li>Avoid swimming in chlorinated pools or the sea while wearing</li>
+                            <li>Do not use hand sanitiser while wearing the ring</li>
+                            <li>Never continue wearing a cracked or chipped stone</li>
+                            <li>Do not wear during sleep — metal prongs can deform</li>
+                            <li>Avoid harsh steam or boiling water directly on the stone</li>
+                            <li>Never purchase without a lab certification for astrological use</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ── FACT TABLE ─────────────────────────────────────── -->
+    <section class="table-section">
+        <div class="table-inner">
+            <div class="reveal">
+                <p class="section-label">Quick Reference</p>
+                <h2>Complete <em>Fact Sheet</em></h2>
+                <div class="divider"></div>
+            </div>
+            <table class="reveal">
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sanskrit Name</td>
+                        <td>Pukhraj / Pushyarāga</td>
+                    </tr>
+                    <tr>
+                        <td>Mineral Species</td>
+                        <td>Corundum (Aluminium Oxide — Al₂O₃)</td>
+                    </tr>
+                    <tr>
+                        <td>Colour Agent</td>
+                        <td>Trace iron (Fe³⁺); occasionally chromium</td>
+                    </tr>
+                    <tr>
+                        <td>Hardness (Mohs)</td>
+                        <td>9.0</td>
+                    </tr>
+                    <tr>
+                        <td>Specific Gravity</td>
+                        <td>3.99 – 4.01</td>
+                    </tr>
+                    <tr>
+                        <td>Refractive Index</td>
+                        <td>1.762 – 1.770 (birefringence 0.008)</td>
+                    </tr>
+                    <tr>
+                        <td>Crystal System</td>
+                        <td>Trigonal</td>
+                    </tr>
+                    <tr>
+                        <td>Cleavage</td>
+                        <td>None; conchoidal fracture</td>
+                    </tr>
+                    <tr>
+                        <td>Lustre</td>
+                        <td>Vitreous to adamantine</td>
+                    </tr>
+                    <tr>
+                        <td>Primary Origins</td>
+                        <td>Sri Lanka, Myanmar, Madagascar, Thailand, Australia, Tanzania</td>
+                    </tr>
+                    <tr>
+                        <td>Ruling Planet</td>
+                        <td>Jupiter (Brihaspati / Guru)</td>
+                    </tr>
+                    <tr>
+                        <td>Zodiac Signs</td>
+                        <td>Sagittarius (Dhanu), Pisces (Meen)</td>
+                    </tr>
+                    <tr>
+                        <td>Recommended Finger</td>
+                        <td>Index finger (Tarjanī), right hand</td>
+                    </tr>
+                    <tr>
+                        <td>Setting Metal</td>
+                        <td>Gold (22 or 24 carat preferred)</td>
+                    </tr>
+                    <tr>
+                        <td>Auspicious Day</td>
+                        <td>Thursday (Guruvar), Shukla Paksha</td>
+                    </tr>
+                    <tr>
+                        <td>Mantra</td>
+                        <td>Om Brihaspetaye Namah (108 repetitions)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ─────────────────────────────────────────── -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-brand">
+                <a class="nav-logo" href="#"><span>RATNA</span>VALI</a>
+                <p>A curated knowledge resource on Vedic gemstones, planetary stones, and the ancient science of Navaratna.</p>
+            </div>
+            <div class="footer-col">
+                <p class="footer-col-title">Knowledge Centre</p>
+                <ul>
+                    <li><a href="#">Yellow Sapphire (Pukhraj)</a></li>
+                    <li><a href="#">Ruby (Manik)</a></li>
+                    <li><a href="#">Emerald (Panna)</a></li>
+                    <li><a href="#">Blue Sapphire (Neelam)</a></li>
+                    <li><a href="#">Diamond (Heera)</a></li>
+                    <li><a href="#">Pearl (Moti)</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <p class="footer-col-title">Explore</p>
+                <ul>
+                    <li><a href="#">Navaratna Guide</a></li>
+                    <li><a href="#">Astrology &amp; Gems</a></li>
+                    <li><a href="#">Gemstone Grading</a></li>
+                    <li><a href="#">Lab Certification</a></li>
+                    <li><a href="#">About Ratnavali</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Ratnavali. For educational purposes only. Consult a qualified Jyotishi before wearing any gemstone.</p>
+            <p>Crafted with reverence in India &nbsp;·&nbsp; <a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Disclaimer</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Care tab switcher
+        function showCareTab(id) {
+            document.querySelectorAll('.care-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.care-tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('tab-' + id).classList.add('active');
+            event.currentTarget.classList.add('active');
+            // Re-trigger reveal for newly visible items
+            document.querySelectorAll('#tab-' + id + ' .reveal').forEach(el => {
+                el.classList.remove('visible');
+                setTimeout(() => observer.observe(el), 50);
+            });
+        }
+    </script>
+</body>
+
+</html>
